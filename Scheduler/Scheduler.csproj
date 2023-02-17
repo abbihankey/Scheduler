@@ -46,14 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="FormMainMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="FormMainMenu.Designer.cs">
+      <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormMainMenu.resx">
+      <DependentUpon>FormMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -62,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -75,6 +79,39 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CalendarIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\calendar%282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Appointment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\teamwork.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\report.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\group.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\15-minutes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\clock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\caution%281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
