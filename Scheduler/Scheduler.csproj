@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -157,6 +158,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\caution%281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MySql.Data">
+      <Version>8.0.32</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
