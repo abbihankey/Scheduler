@@ -29,7 +29,7 @@ namespace Scheduler
     {
         public FormMainMenu()
         {
-            //get the connection string
+            /* //get the connection string
             string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
             //make the connection
             MySqlConnection con = null;
@@ -52,7 +52,7 @@ namespace Scheduler
                 {
                     con.Close();
                 }
-            }
+            } */
 
             InitializeComponent();
             buttonDashboard.BackColor = Color.FromArgb(74, 74, 74);

@@ -85,6 +85,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\DBConnection.cs" />
     <EmbeddedResource Include="FormAppointments.resx">
       <DependentUpon>FormAppointments.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,6 +164,9 @@
     <PackageReference Include="MySql.Data">
       <Version>8.0.32</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Database\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
