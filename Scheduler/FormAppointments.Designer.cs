@@ -30,6 +30,7 @@ namespace Scheduler
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.listBoxTime = new System.Windows.Forms.ListBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@ namespace Scheduler
             this.label1 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.listBoxTime = new System.Windows.Forms.ListBox();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -64,6 +64,14 @@ namespace Scheduler
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(458, 255);
             this.panel1.TabIndex = 18;
+            // 
+            // listBoxTime
+            // 
+            this.listBoxTime.FormattingEnabled = true;
+            this.listBoxTime.Location = new System.Drawing.Point(84, 117);
+            this.listBoxTime.Name = "listBoxTime";
+            this.listBoxTime.Size = new System.Drawing.Size(351, 17);
+            this.listBoxTime.TabIndex = 15;
             // 
             // buttonSubmit
             // 
@@ -139,14 +147,6 @@ namespace Scheduler
             this.textBox4.Size = new System.Drawing.Size(350, 20);
             this.textBox4.TabIndex = 7;
             // 
-            // listBoxTime
-            // 
-            this.listBoxTime.FormattingEnabled = true;
-            this.listBoxTime.Location = new System.Drawing.Point(84, 117);
-            this.listBoxTime.Name = "listBoxTime";
-            this.listBoxTime.Size = new System.Drawing.Size(351, 17);
-            this.listBoxTime.TabIndex = 15;
-            // 
             // buttonSearch
             // 
             this.buttonSearch.Location = new System.Drawing.Point(882, 15);
@@ -196,7 +196,7 @@ namespace Scheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.ClientSize = new System.Drawing.Size(969, 539);
+            this.ClientSize = new System.Drawing.Size(1200, 660);
             this.ControlBox = false;
             this.Controls.Add(this.label);
             this.Controls.Add(this.buttonSearch);
