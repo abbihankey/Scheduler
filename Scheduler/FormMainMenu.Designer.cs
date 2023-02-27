@@ -65,7 +65,7 @@ namespace Scheduler
             this.buttonCustomers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCustomers.FlatAppearance.BorderSize = 0;
             this.buttonCustomers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCustomers.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCustomers.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCustomers.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonCustomers.Image = global::Scheduler.Properties.Resources.customers;
             this.buttonCustomers.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -88,7 +88,7 @@ namespace Scheduler
             this.buttonAppointments.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonAppointments.FlatAppearance.BorderSize = 0;
             this.buttonAppointments.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAppointments.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAppointments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonAppointments.Image = global::Scheduler.Properties.Resources.appointment;
             this.buttonAppointments.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -111,7 +111,7 @@ namespace Scheduler
             this.buttonCalendar.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonCalendar.FlatAppearance.BorderSize = 0;
             this.buttonCalendar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonCalendar.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonCalendar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonCalendar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonCalendar.Image = global::Scheduler.Properties.Resources.calendar;
             this.buttonCalendar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -134,7 +134,7 @@ namespace Scheduler
             this.buttonDashboard.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonDashboard.FlatAppearance.BorderSize = 0;
             this.buttonDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDashboard.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.buttonDashboard.Image = global::Scheduler.Properties.Resources.report;
             this.buttonDashboard.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -174,7 +174,7 @@ namespace Scheduler
             // 
             this.labelTitle.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
-            this.labelTitle.Font = new System.Drawing.Font("Lato", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelTitle.Location = new System.Drawing.Point(67, 0);
             this.labelTitle.Name = "labelTitle";

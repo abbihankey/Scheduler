@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -27,6 +29,30 @@ namespace Scheduler
     {
         public FormMainMenu()
         {
+            /* //get the connection string
+            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            //make the connection
+            MySqlConnection con = null;
+            //exception
+            try
+            {
+                con = new MySqlConnection(constr);
+                //open the connection
+                con.Open();
+                MessageBox.Show("Connection is open");
+            }
+            catch(MySqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //close connection
+                if(con != null)
+                {
+                    con.Close();
+                }
+            } */
 
             InitializeComponent();
             buttonDashboard.BackColor = Color.FromArgb(74, 74, 74);
@@ -34,9 +60,9 @@ namespace Scheduler
             
             //MDI
             FormDashboard newMDIChild = new FormDashboard();
-            // Set the Parent Form of the Child window.
+                // Set the Parent Form of the Child window.
             newMDIChild.MdiParent = this;
-            // Display the new form.
+                // Display the new form.
             newMDIChild.StartPosition = FormStartPosition.Manual;
             
             newMDIChild.Show();
