@@ -1,6 +1,8 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -17,6 +19,19 @@ namespace Scheduler
             
             InitializeComponent();
             panelCustomerDetails.Visible = false;
+
+
+            //populate data grid
+            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(constr);
+            string sqlString = "SELECT * FROM Customer";
+            MySqlCommand cmd = new MySqlCommand(sqlString, con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dataGridViewCustomers.DataSource = dt; 
+
+
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
@@ -26,6 +41,7 @@ namespace Scheduler
             labelCustomerDetails.Text = "Add Customer";
             
             //Show new unique customer ID
+            /* 
             var uniquePartID = Inventory.Parts.Count + 1;
             foreach (Part part in Inventory.Parts)
             {
@@ -35,10 +51,12 @@ namespace Scheduler
                 }
             }
             textBoxCustomerID.Text = uniquePartID.ToString();
+            */
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            /*
             int min;
             int max;
             decimal price;
@@ -136,6 +154,7 @@ namespace Scheduler
 
             }
             panelCustomerDetails.Visible = false;
+            */
         }
     }
 }
