@@ -29,39 +29,77 @@ namespace Scheduler
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridViewCalendar = new System.Windows.Forms.DataGridView();
+            this.radioButtonMonthly = new System.Windows.Forms.RadioButton();
+            this.radioButtonWeekly = new System.Windows.Forms.RadioButton();
+            this.radioButtonAll = new System.Windows.Forms.RadioButton();
+            this.radioButtonDaily = new System.Windows.Forms.RadioButton();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendar)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewCalendar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 63);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(945, 464);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewCalendar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewCalendar.Location = new System.Drawing.Point(12, 37);
+            this.dataGridViewCalendar.Name = "dataGridViewCalendar";
+            this.dataGridViewCalendar.Size = new System.Drawing.Size(945, 490);
+            this.dataGridViewCalendar.TabIndex = 0;
             // 
-            // comboBox1
+            // radioButtonMonthly
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(783, 36);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(174, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.radioButtonMonthly.AutoSize = true;
+            this.radioButtonMonthly.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonMonthly.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radioButtonMonthly.Location = new System.Drawing.Point(898, 12);
+            this.radioButtonMonthly.Name = "radioButtonMonthly";
+            this.radioButtonMonthly.Size = new System.Drawing.Size(59, 19);
+            this.radioButtonMonthly.TabIndex = 3;
+            this.radioButtonMonthly.TabStop = true;
+            this.radioButtonMonthly.Text = "Month";
+            this.radioButtonMonthly.UseVisualStyleBackColor = true;
+            this.radioButtonMonthly.CheckedChanged += new System.EventHandler(this.radioButtonMonthly_CheckedChanged);
             // 
-            // label1
+            // radioButtonWeekly
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(732, 38);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 19);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "View";
+            this.radioButtonWeekly.AutoSize = true;
+            this.radioButtonWeekly.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonWeekly.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radioButtonWeekly.Location = new System.Drawing.Point(840, 12);
+            this.radioButtonWeekly.Name = "radioButtonWeekly";
+            this.radioButtonWeekly.Size = new System.Drawing.Size(52, 19);
+            this.radioButtonWeekly.TabIndex = 4;
+            this.radioButtonWeekly.TabStop = true;
+            this.radioButtonWeekly.Text = "Week";
+            this.radioButtonWeekly.UseVisualStyleBackColor = true;
+            this.radioButtonWeekly.CheckedChanged += new System.EventHandler(this.radioButtonWeekly_CheckedChanged);
+            // 
+            // radioButtonAll
+            // 
+            this.radioButtonAll.AutoSize = true;
+            this.radioButtonAll.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonAll.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radioButtonAll.Location = new System.Drawing.Point(737, 12);
+            this.radioButtonAll.Name = "radioButtonAll";
+            this.radioButtonAll.Size = new System.Drawing.Size(39, 19);
+            this.radioButtonAll.TabIndex = 5;
+            this.radioButtonAll.TabStop = true;
+            this.radioButtonAll.Text = "All";
+            this.radioButtonAll.UseVisualStyleBackColor = true;
+            this.radioButtonAll.CheckedChanged += new System.EventHandler(this.radioButtonAll_CheckedChanged);
+            // 
+            // radioButtonDaily
+            // 
+            this.radioButtonDaily.AutoSize = true;
+            this.radioButtonDaily.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.radioButtonDaily.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.radioButtonDaily.Location = new System.Drawing.Point(782, 12);
+            this.radioButtonDaily.Name = "radioButtonDaily";
+            this.radioButtonDaily.Size = new System.Drawing.Size(45, 19);
+            this.radioButtonDaily.TabIndex = 6;
+            this.radioButtonDaily.TabStop = true;
+            this.radioButtonDaily.Text = "Day";
+            this.radioButtonDaily.UseVisualStyleBackColor = true;
+            this.radioButtonDaily.CheckedChanged += new System.EventHandler(this.radioButtonDaily_CheckedChanged);
             // 
             // FormCalendar
             // 
@@ -69,13 +107,15 @@ namespace Scheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(969, 539);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.radioButtonDaily);
+            this.Controls.Add(this.radioButtonAll);
+            this.Controls.Add(this.radioButtonWeekly);
+            this.Controls.Add(this.radioButtonMonthly);
+            this.Controls.Add(this.dataGridViewCalendar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormCalendar";
             this.Text = "FormCalendar";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -83,8 +123,10 @@ namespace Scheduler
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridViewCalendar;
+        private System.Windows.Forms.RadioButton radioButtonMonthly;
+        private System.Windows.Forms.RadioButton radioButtonWeekly;
+        private System.Windows.Forms.RadioButton radioButtonAll;
+        private System.Windows.Forms.RadioButton radioButtonDaily;
     }
 }

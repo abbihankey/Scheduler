@@ -29,167 +29,265 @@ namespace Scheduler
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.listBoxTime = new System.Windows.Forms.ListBox();
-            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBoxCustomerID = new System.Windows.Forms.TextBox();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.labelCustomerDetails = new System.Windows.Forms.Label();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.textBoxEnd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.textBoxStart = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxUserID = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.textBoxTitle = new System.Windows.Forms.TextBox();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.textBoxDescription = new System.Windows.Forms.TextBox();
+            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonDelete = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label = new System.Windows.Forms.Label();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.dataGridViewAppointments = new System.Windows.Forms.DataGridView();
+            this.panelCustomerDetails = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxAppointmentID = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointments)).BeginInit();
+            this.panelCustomerDetails.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel1
+            // label5
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.panel1.Controls.Add(this.listBoxTime);
-            this.panel1.Controls.Add(this.buttonSubmit);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.textBox3);
-            this.panel1.Controls.Add(this.textBox4);
-            this.panel1.Location = new System.Drawing.Point(12, 143);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(458, 255);
-            this.panel1.TabIndex = 18;
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label5.Location = new System.Drawing.Point(51, 159);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 20);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Customer ID";
             // 
-            // listBoxTime
+            // textBoxCustomerID
             // 
-            this.listBoxTime.FormattingEnabled = true;
-            this.listBoxTime.Location = new System.Drawing.Point(84, 117);
-            this.listBoxTime.Name = "listBoxTime";
-            this.listBoxTime.Size = new System.Drawing.Size(351, 17);
-            this.listBoxTime.TabIndex = 15;
+            this.textBoxCustomerID.Location = new System.Drawing.Point(55, 181);
+            this.textBoxCustomerID.Name = "textBoxCustomerID";
+            this.textBoxCustomerID.Size = new System.Drawing.Size(350, 20);
+            this.textBoxCustomerID.TabIndex = 19;
             // 
-            // buttonSubmit
+            // buttonCancel
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(360, 214);
-            this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
-            this.buttonSubmit.TabIndex = 3;
-            this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonCancel.Location = new System.Drawing.Point(329, 428);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 17;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label6.Location = new System.Drawing.Point(51, 380);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(76, 20);
+            this.label6.TabIndex = 16;
+            this.label6.Text = "End Time";
+            // 
+            // labelCustomerDetails
+            // 
+            this.labelCustomerDetails.AutoSize = true;
+            this.labelCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelCustomerDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelCustomerDetails.Location = new System.Drawing.Point(90, 61);
+            this.labelCustomerDetails.Name = "labelCustomerDetails";
+            this.labelCustomerDetails.Size = new System.Drawing.Size(287, 25);
+            this.labelCustomerDetails.TabIndex = 18;
+            this.labelCustomerDetails.Text = "Add or Update Appointments";
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(248, 428);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 3;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label4.Location = new System.Drawing.Point(34, 117);
+            this.label4.Location = new System.Drawing.Point(51, 335);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(43, 19);
+            this.label4.Size = new System.Drawing.Size(82, 20);
             this.label4.TabIndex = 14;
-            this.label4.Text = "Time";
+            this.label4.Text = "Start Time";
+            // 
+            // textBoxEnd
+            // 
+            this.textBoxEnd.Location = new System.Drawing.Point(55, 402);
+            this.textBoxEnd.Name = "textBoxEnd";
+            this.textBoxEnd.Size = new System.Drawing.Size(349, 20);
+            this.textBoxEnd.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Location = new System.Drawing.Point(25, 91);
+            this.label3.Location = new System.Drawing.Point(51, 294);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 19);
+            this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 13;
-            this.label3.Text = "Phone";
+            this.label3.Text = "Description";
+            // 
+            // textBoxStart
+            // 
+            this.textBoxStart.Location = new System.Drawing.Point(55, 357);
+            this.textBoxStart.Name = "textBoxStart";
+            this.textBoxStart.Size = new System.Drawing.Size(350, 20);
+            this.textBoxStart.TabIndex = 9;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(39, 62);
+            this.label2.Location = new System.Drawing.Point(51, 249);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 19);
+            this.label2.Size = new System.Drawing.Size(38, 20);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Type";
+            this.label2.Text = "Title";
             // 
-            // textBox2
+            // textBoxUserID
             // 
-            this.textBox2.Location = new System.Drawing.Point(85, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(350, 20);
-            this.textBox2.TabIndex = 5;
+            this.textBoxUserID.Location = new System.Drawing.Point(55, 226);
+            this.textBoxUserID.Name = "textBoxUserID";
+            this.textBoxUserID.Size = new System.Drawing.Size(350, 20);
+            this.textBoxUserID.TabIndex = 5;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(3, 36);
+            this.label1.Location = new System.Drawing.Point(51, 204);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(78, 19);
+            this.label1.Size = new System.Drawing.Size(64, 20);
             this.label1.TabIndex = 11;
-            this.label1.Text = "Customer";
+            this.label1.Text = "User ID";
             // 
-            // textBox3
+            // textBoxTitle
             // 
-            this.textBox3.Location = new System.Drawing.Point(85, 64);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(350, 20);
-            this.textBox3.TabIndex = 6;
+            this.textBoxTitle.Location = new System.Drawing.Point(55, 271);
+            this.textBoxTitle.Name = "textBoxTitle";
+            this.textBoxTitle.Size = new System.Drawing.Size(350, 20);
+            this.textBoxTitle.TabIndex = 6;
             // 
-            // textBox4
+            // buttonDelete
             // 
-            this.textBox4.Location = new System.Drawing.Point(85, 90);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(350, 20);
-            this.textBox4.TabIndex = 7;
+            this.buttonDelete.Location = new System.Drawing.Point(638, 617);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 22;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            // 
+            // textBoxDescription
+            // 
+            this.textBoxDescription.Location = new System.Drawing.Point(55, 316);
+            this.textBoxDescription.Name = "textBoxDescription";
+            this.textBoxDescription.Size = new System.Drawing.Size(350, 20);
+            this.textBoxDescription.TabIndex = 7;
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Location = new System.Drawing.Point(476, 617);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(75, 23);
+            this.buttonAdd.TabIndex = 27;
+            this.buttonAdd.Text = "Add";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            // 
+            // buttonUpdate
+            // 
+            this.buttonUpdate.Location = new System.Drawing.Point(557, 617);
+            this.buttonUpdate.Name = "buttonUpdate";
+            this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
+            this.buttonUpdate.TabIndex = 26;
+            this.buttonUpdate.Text = "Update";
+            this.buttonUpdate.UseVisualStyleBackColor = true;
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(882, 15);
+            this.buttonSearch.Location = new System.Drawing.Point(280, 14);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 22;
+            this.buttonSearch.TabIndex = 24;
             this.buttonSearch.Text = "Search";
             this.buttonSearch.UseVisualStyleBackColor = true;
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(613, 18);
+            this.textBox1.Location = new System.Drawing.Point(11, 18);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(263, 20);
-            this.textBox1.TabIndex = 21;
+            this.textBox1.TabIndex = 23;
             // 
-            // buttonDelete
+            // dataGridViewAppointments
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(882, 510);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
-            this.buttonDelete.TabIndex = 20;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.dataGridViewAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewAppointments.Location = new System.Drawing.Point(11, 43);
+            this.dataGridViewAppointments.Name = "dataGridViewAppointments";
+            this.dataGridViewAppointments.Size = new System.Drawing.Size(702, 568);
+            this.dataGridViewAppointments.TabIndex = 21;
             // 
-            // dataGridView1
+            // panelCustomerDetails
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(476, 45);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(481, 459);
-            this.dataGridView1.TabIndex = 19;
+            this.panelCustomerDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.panelCustomerDetails.Controls.Add(this.label7);
+            this.panelCustomerDetails.Controls.Add(this.textBoxAppointmentID);
+            this.panelCustomerDetails.Controls.Add(this.label5);
+            this.panelCustomerDetails.Controls.Add(this.textBoxCustomerID);
+            this.panelCustomerDetails.Controls.Add(this.buttonCancel);
+            this.panelCustomerDetails.Controls.Add(this.label6);
+            this.panelCustomerDetails.Controls.Add(this.labelCustomerDetails);
+            this.panelCustomerDetails.Controls.Add(this.buttonSave);
+            this.panelCustomerDetails.Controls.Add(this.label4);
+            this.panelCustomerDetails.Controls.Add(this.textBoxEnd);
+            this.panelCustomerDetails.Controls.Add(this.label3);
+            this.panelCustomerDetails.Controls.Add(this.textBoxStart);
+            this.panelCustomerDetails.Controls.Add(this.label2);
+            this.panelCustomerDetails.Controls.Add(this.textBoxUserID);
+            this.panelCustomerDetails.Controls.Add(this.label1);
+            this.panelCustomerDetails.Controls.Add(this.textBoxTitle);
+            this.panelCustomerDetails.Controls.Add(this.textBoxDescription);
+            this.panelCustomerDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelCustomerDetails.Location = new System.Drawing.Point(742, 0);
+            this.panelCustomerDetails.Name = "panelCustomerDetails";
+            this.panelCustomerDetails.Size = new System.Drawing.Size(458, 660);
+            this.panelCustomerDetails.TabIndex = 25;
             // 
-            // label
+            // label7
             // 
-            this.label.AutoSize = true;
-            this.label.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label.Location = new System.Drawing.Point(8, 121);
-            this.label.Name = "label";
-            this.label.Size = new System.Drawing.Size(216, 19);
-            this.label.TabIndex = 23;
-            this.label.Text = "Add or Update Appointments";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label7.Location = new System.Drawing.Point(51, 115);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 20);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Appointment ID";
+            // 
+            // textBoxAppointmentID
+            // 
+            this.textBoxAppointmentID.Location = new System.Drawing.Point(55, 137);
+            this.textBoxAppointmentID.Name = "textBoxAppointmentID";
+            this.textBoxAppointmentID.Size = new System.Drawing.Size(350, 20);
+            this.textBoxAppointmentID.TabIndex = 21;
             // 
             // FormAppointments
             // 
@@ -198,20 +296,21 @@ namespace Scheduler
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(1200, 660);
             this.ControlBox = false;
-            this.Controls.Add(this.label);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonAdd);
+            this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.dataGridViewAppointments);
+            this.Controls.Add(this.panelCustomerDetails);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "FormAppointments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormAppointments";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointments)).EndInit();
+            this.panelCustomerDetails.ResumeLayout(false);
+            this.panelCustomerDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,20 +318,29 @@ namespace Scheduler
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.ListBox listBoxTime;
-        private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBoxCustomerID;
+        private System.Windows.Forms.Button buttonCancel;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label labelCustomerDetails;
+        private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBoxEnd;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBoxStart;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxUserID;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox textBoxTitle;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.TextBox textBoxDescription;
+        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label label;
+        private System.Windows.Forms.DataGridView dataGridViewAppointments;
+        private System.Windows.Forms.Panel panelCustomerDetails;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxAppointmentID;
     }
 }
