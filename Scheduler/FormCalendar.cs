@@ -41,7 +41,7 @@ namespace Scheduler
 
             }
         } */
-
+        
         private void handleDay()
         {
             dt.Clear();
@@ -56,6 +56,13 @@ namespace Scheduler
             DateTime tempDate = Convert.ToDateTime(startDate);
             string endDate = currentDate.AddDays(7 - dow).ToString();
             getData("SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);");
+            //convert to local time 
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                DateTime y = (DateTime)dt.Rows[i]["start"];
+                dt.Rows[i]["start"] = y.ToLocalTime();
+            }
+     
             dataGridViewCalendar.DataSource = dt;
         }
         private void handleMonth()
@@ -103,7 +110,7 @@ namespace Scheduler
         {
             string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
             MySqlConnection con = new MySqlConnection(constr);
-            string sqlString = "SELECT * FROM Appointment"; //WHERE USER ID MATCHES CURRENT LOGGED IN USER
+            string sqlString = "SELECT * FROM Appointment"; //WHERE USER ID MATCHES CURRENT LOGGED IN USER?
             MySqlCommand cmd = new MySqlCommand(sqlString, con);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
