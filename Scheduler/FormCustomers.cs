@@ -19,7 +19,7 @@ namespace Scheduler
         {
             
             InitializeComponent();
-            panelCustomerDetails.Visible = false;
+            
 
 
             //populate data grid
@@ -30,33 +30,20 @@ namespace Scheduler
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
             adp.Fill(dt);
-            dataGridViewCustomers.DataSource = dt; 
+            dataGridViewCustomers.DataSource = dt;
 
+            int ID = 0;
 
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            //show and label panel
-            panelCustomerDetails.Visible = true;
-            labelCustomerDetails.Text = "Add Customer";
             
-            //Show new unique customer ID
-            /* 
-            var uniquePartID = Inventory.Parts.Count + 1;
-            foreach (Part part in Inventory.Parts)
-            {
-                if (part.PartID == uniquePartID)
-                {
-                    uniquePartID++;
-                }
-            }
-            textBoxCustomerID.Text = uniquePartID.ToString();
-            */
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
+            /*
             try
             {
                 
@@ -66,9 +53,26 @@ namespace Scheduler
             {
                 MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             } 
+            */
 
-
-
+            /*
+               if (txt_Name.Text != "" && txt_State.Text != "")
+            {
+                cmd = new SqlCommand("insert into tbl_Record(Name,State) values(@name,@state)", con);
+                con.Open();
+                cmd.Parameters.AddWithValue("@name", txt_Name.Text);
+                cmd.Parameters.AddWithValue("@state", txt_State.Text);
+                cmd.ExecuteNonQuery();
+                con.Close();
+                MessageBox.Show("Record Inserted Successfully");
+                DisplayData();
+                ClearData();
+            }
+            else
+            {
+                MessageBox.Show("Please Provide Details!");
+            }
+            */
 
 
             /*
@@ -170,6 +174,23 @@ namespace Scheduler
             }
             panelCustomerDetails.Visible = false;
             */
+        }
+
+        private void buttonInsert_Click(object sender, EventArgs e)
+        {
+
+            var insertcustomerform = new FormInsertCustomer();
+            insertcustomerform.Show();
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

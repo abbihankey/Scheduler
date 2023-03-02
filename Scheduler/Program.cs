@@ -146,9 +146,9 @@ namespace Scheduler
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            DBConnection.startConnection();
+            DB.startConnection();
             Application.Run(new FormMainMenu());
-            DBConnection.closeConnection();
+            DB.closeConnection();
         }
     }
 }
