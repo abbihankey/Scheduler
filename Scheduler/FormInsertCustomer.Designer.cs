@@ -47,6 +47,8 @@ namespace Scheduler
             this.panelInsertCustomers = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.comboBoxActive = new System.Windows.Forms.ComboBox();
+            this.labelZipCode = new System.Windows.Forms.Label();
+            this.textBoxZipCode = new System.Windows.Forms.TextBox();
             this.panelInsertCustomers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +67,7 @@ namespace Scheduler
             // 
             this.textBoxCustomerID.Location = new System.Drawing.Point(51, 84);
             this.textBoxCustomerID.Name = "textBoxCustomerID";
+            this.textBoxCustomerID.ReadOnly = true;
             this.textBoxCustomerID.Size = new System.Drawing.Size(350, 20);
             this.textBoxCustomerID.TabIndex = 34;
             // 
@@ -190,6 +193,8 @@ namespace Scheduler
             // 
             // panelInsertCustomers
             // 
+            this.panelInsertCustomers.Controls.Add(this.labelZipCode);
+            this.panelInsertCustomers.Controls.Add(this.textBoxZipCode);
             this.panelInsertCustomers.Controls.Add(this.comboBoxActive);
             this.panelInsertCustomers.Controls.Add(this.label7);
             this.panelInsertCustomers.Controls.Add(this.buttonSubmit);
@@ -205,7 +210,7 @@ namespace Scheduler
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(54, 331);
+            this.label7.Location = new System.Drawing.Point(54, 376);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 20);
             this.label7.TabIndex = 38;
@@ -219,10 +224,28 @@ namespace Scheduler
             this.comboBoxActive.Items.AddRange(new object[] {
             "Yes",
             "No"});
-            this.comboBoxActive.Location = new System.Drawing.Point(55, 354);
+            this.comboBoxActive.Location = new System.Drawing.Point(58, 399);
             this.comboBoxActive.Name = "comboBoxActive";
             this.comboBoxActive.Size = new System.Drawing.Size(350, 21);
             this.comboBoxActive.TabIndex = 41;
+            // 
+            // labelZipCode
+            // 
+            this.labelZipCode.AutoSize = true;
+            this.labelZipCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelZipCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelZipCode.Location = new System.Drawing.Point(51, 331);
+            this.labelZipCode.Name = "labelZipCode";
+            this.labelZipCode.Size = new System.Drawing.Size(69, 20);
+            this.labelZipCode.TabIndex = 43;
+            this.labelZipCode.Text = "ZipCode";
+            // 
+            // textBoxZipCode
+            // 
+            this.textBoxZipCode.Location = new System.Drawing.Point(55, 353);
+            this.textBoxZipCode.Name = "textBoxZipCode";
+            this.textBoxZipCode.Size = new System.Drawing.Size(350, 20);
+            this.textBoxZipCode.TabIndex = 42;
             // 
             // FormInsertCustomer
             // 
@@ -271,5 +294,7 @@ namespace Scheduler
         private System.Windows.Forms.Panel panelInsertCustomers;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox comboBoxActive;
+        private System.Windows.Forms.Label labelZipCode;
+        private System.Windows.Forms.TextBox textBoxZipCode;
     }
 }
