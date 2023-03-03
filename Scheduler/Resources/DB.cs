@@ -14,6 +14,13 @@ namespace Scheduler.Resources
 {
     public class DB
     {
+        private static int userID;
+        private static string username;
+        public static string getUsername()
+        {
+            return username; 
+        }
+
         public static MySqlConnection con { get; set; }
         
         public static bool verifyInput(Panel panel) //https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.controls?view=windowsdesktop-7.0
@@ -37,13 +44,13 @@ namespace Scheduler.Resources
             }
             return true;
         }
-        public static int selectMaxID(string table, string id)
+        public static int selectMaxID(string table, string iD)
         {
             //https://dev.mysql.com/doc/dev/connector-net/6.10/html/T_MySql_Data_MySqlClient_MySqlDataReader.html
             //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-7.0
 
             startConnection();
-            var query = $"SELECT max({id}) FROM {table}";
+            var query = $"SELECT max({iD}) FROM {table}";
             MySqlCommand comm = new MySqlCommand(query, con);
             MySqlDataReader reader = comm.ExecuteReader();
 
@@ -101,7 +108,7 @@ namespace Scheduler.Resources
             DateTime currentTime = DateTime.Now.ToUniversalTime();
             return currentTime;
         }
-        public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime) 
+        public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username) 
         {
             //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlcommand.executenonquery?view=dotnet-plat-ext-7.0
             //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
@@ -111,12 +118,15 @@ namespace Scheduler.Resources
             MySqlTransaction transaction = con.BeginTransaction();
             string createDate = formatTime(createTime);
 
+
+            string user = DB.getUsername();
+
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
             //query
-            var query = "INSERT INTO customer (customerId, customerName, addressID, active, createDate) "
-                + $"VALUES ('{id}', '{name}', '{addressID}', '{active}', '{formattedCurrentTime}')";
+            var query = "INSERT INTO customer (customerId, customerName, addressId, active, createDate, createdBy, lastUpdateBy) "
+                + $"VALUES ('{id}', '{name}', '{addressID}', '{active}', '{formattedCurrentTime}', '{user}', '{user}')";
             MySqlCommand comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();
@@ -127,15 +137,21 @@ namespace Scheduler.Resources
         //insert city
         public static int insertCity(int countryID, string city)
         {
-            int maxCityID = selectMaxID("cityID", "city");
-            int newCityID = maxCityID++;
+            int maxCityID = selectMaxID("city", "cityId");
+            int newCityID = maxCityID +1;
+            string user = DB.getUsername();
+
+            DateTime currentTime = getCurrentTime();
+            var formattedCurrentTime = formatTime(currentTime);
+
+            // DateTime lastUpdate = "null"; //get actual value
 
             startConnection(); //not needed
             MySqlTransaction transaction = con.BeginTransaction();
 
             //query
-            var query = "INSERT INTO country (cityId, city, countryId)"
-                + $"VALUES ('{newCityID}', '{city}', '{countryID}')";
+            var query = "INSERT INTO city (cityId, city, countryId, createDate, createdBy, lastUpdate, lastUpdateBy)"
+                + $"VALUES ('{newCityID}', '{city}', '{countryID}', '{formattedCurrentTime}', '{user}', '{formattedCurrentTime}', '{user}')";
             MySqlCommand comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();
@@ -149,17 +165,19 @@ namespace Scheduler.Resources
         public static int insertCountry(string country)
         {
             int maxCountryID = selectMaxID("country", "countryID");
-            int newCountryID = maxCountryID++;
+            int newCountryID = maxCountryID +1;
             
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
+
+            string user = DB.getUsername();
 
             startConnection(); //not needed
             MySqlTransaction transaction = con.BeginTransaction();
 
             //query
-            var query = "INSERT INTO country (countryId, country, createDate)"
-                + $"VALUES ('{newCountryID}', '{country}', '{formattedCurrentTime}')";
+            var query = "INSERT INTO country (countryId, country, createDate, createdBy, lastUpdateBy)"
+                + $"VALUES ('{newCountryID}', '{country}', '{formattedCurrentTime}', '{user}', '{user}')";
             MySqlCommand comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();
@@ -172,17 +190,20 @@ namespace Scheduler.Resources
         public static int insertAddress(int cityID, string address, string zip, string phone)
         {
             int maxAddressID = selectMaxID("address", "addressID");
-            int newAddressID = maxAddressID++;
+            int newAddressID = maxAddressID +1;
 
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
+            string user = DB.getUsername();
+
             startConnection(); //not needed
             MySqlTransaction transaction = con.BeginTransaction();
+            var address2 = "null";
 
             //query
-            var query = "INSERT INTO address (addressId, address, cityID, zip, phone, createDate)"
-                + $"VALUES ('{newAddressID}', '{address}','{cityID}','{zip}','{phone}', '{formattedCurrentTime}')";
+            var query = "INSERT INTO address (addressId, address, address2, cityId, postalCode, phone, createDate, createdBy, lastUpdateBy)"
+                + $"VALUES ('{newAddressID}', '{address}','{address2}','{cityID}','{zip}','{phone}','{formattedCurrentTime}','{user}', '{user}')";
             MySqlCommand comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();

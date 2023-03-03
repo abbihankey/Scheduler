@@ -26,9 +26,10 @@ namespace Scheduler
         {
 
             int maxCustomerID = DB.selectMaxID("customer", "customerId");
-            int newCustomerID = maxCustomerID++;
+            int newCustomerID = maxCustomerID +1;
             int active;
             var createTime = DB.getCurrentTime();
+            var username = DB.getUsername();
 
             bool notEmpty = DB.verifyInput(panelInsertCustomers);
             if (notEmpty == true)
@@ -46,7 +47,7 @@ namespace Scheduler
                 int country = DB.insertCountry(textBoxCountry.Text);
                 int city = DB.insertCity(country, textBoxCity.Text);
                 int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
-                DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime);
+                DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime, username);
             }
             else
             {
