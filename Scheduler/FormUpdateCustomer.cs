@@ -11,13 +11,13 @@ using System.Windows.Forms;
 
 namespace Scheduler
 {
-    public partial class FormInsertCustomer : Form
+    public partial class FormUpdateCustomer : Form
     {
-        
-        public FormInsertCustomer()
+
+        public FormUpdateCustomer()
         {
-            
-            
+
+
             InitializeComponent();
 
         }
@@ -26,15 +26,15 @@ namespace Scheduler
         {
 
             int maxCustomerID = DB.selectMaxID("customer", "customerId");
-            int newCustomerID = maxCustomerID +1;
+            int newCustomerID = maxCustomerID + 1;
             int active;
             var createTime = DB.getCurrentTime();
             var username = DB.getUsername();
 
             bool notEmpty = DB.verifyInput(panelInsertCustomers);
             if (notEmpty == true)
-            {   
-                if(comboBoxActive.SelectedText == "Yes")
+            {
+                if (comboBoxActive.SelectedText == "Yes")
                 {
                     active = 1;
                 }
@@ -42,8 +42,8 @@ namespace Scheduler
                 {
                     active = 0;
                 }
-                
-                var currentTime = DB.getCurrentTime(); 
+
+                var currentTime = DB.getCurrentTime();
                 int country = DB.insertCountry(textBoxCountry.Text);
                 int city = DB.insertCity(country, textBoxCity.Text);
                 int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
@@ -53,7 +53,7 @@ namespace Scheduler
             {
                 MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
             }
-        
+
         }
 
         private void labelCustomerDetails_Click(object sender, EventArgs e)

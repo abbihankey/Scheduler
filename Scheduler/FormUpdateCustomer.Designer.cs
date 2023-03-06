@@ -1,7 +1,7 @@
 ﻿
 namespace Scheduler
 {
-    partial class FormInsertCustomer
+    partial class FormUpdateCustomer
     {
         /// <summary>
         /// Required designer variable.
@@ -45,10 +45,10 @@ namespace Scheduler
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.panelInsertCustomers = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboBoxActive = new System.Windows.Forms.ComboBox();
             this.labelZipCode = new System.Windows.Forms.Label();
             this.textBoxZipCode = new System.Windows.Forms.TextBox();
+            this.comboBoxActive = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.panelInsertCustomers.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,9 +98,9 @@ namespace Scheduler
             this.labelCustomerDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelCustomerDetails.Location = new System.Drawing.Point(164, 32);
             this.labelCustomerDetails.Name = "labelCustomerDetails";
-            this.labelCustomerDetails.Size = new System.Drawing.Size(130, 19);
+            this.labelCustomerDetails.Size = new System.Drawing.Size(139, 19);
             this.labelCustomerDetails.TabIndex = 33;
-            this.labelCustomerDetails.Text = "Insert Customers";
+            this.labelCustomerDetails.Text = "Update Customers";
             this.labelCustomerDetails.Click += new System.EventHandler(this.labelCustomerDetails_Click);
             // 
             // label4
@@ -211,30 +211,6 @@ namespace Scheduler
             this.panelInsertCustomers.Size = new System.Drawing.Size(452, 488);
             this.panelInsertCustomers.TabIndex = 38;
             // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(51, 387);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 19);
-            this.label7.TabIndex = 38;
-            this.label7.Text = "Active";
-            // 
-            // comboBoxActive
-            // 
-            this.comboBoxActive.AutoCompleteCustomSource.AddRange(new string[] {
-            "Yes"});
-            this.comboBoxActive.FormattingEnabled = true;
-            this.comboBoxActive.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
-            this.comboBoxActive.Location = new System.Drawing.Point(55, 410);
-            this.comboBoxActive.Name = "comboBoxActive";
-            this.comboBoxActive.Size = new System.Drawing.Size(350, 21);
-            this.comboBoxActive.TabIndex = 41;
-            // 
             // labelZipCode
             // 
             this.labelZipCode.AutoSize = true;
@@ -253,7 +229,31 @@ namespace Scheduler
             this.textBoxZipCode.Size = new System.Drawing.Size(350, 20);
             this.textBoxZipCode.TabIndex = 42;
             // 
-            // FormInsertCustomer
+            // comboBoxActive
+            // 
+            this.comboBoxActive.AutoCompleteCustomSource.AddRange(new string[] {
+            "Yes"});
+            this.comboBoxActive.FormattingEnabled = true;
+            this.comboBoxActive.Items.AddRange(new object[] {
+            "Yes",
+            "No"});
+            this.comboBoxActive.Location = new System.Drawing.Point(55, 410);
+            this.comboBoxActive.Name = "comboBoxActive";
+            this.comboBoxActive.Size = new System.Drawing.Size(350, 21);
+            this.comboBoxActive.TabIndex = 41;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label7.Location = new System.Drawing.Point(51, 387);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 19);
+            this.label7.TabIndex = 38;
+            this.label7.Text = "Active";
+            // 
+            // FormUpdateCustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -268,7 +268,7 @@ namespace Scheduler
             this.Controls.Add(this.textBoxAddress);
             this.Controls.Add(this.panelInsertCustomers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "FormInsertCustomer";
+            this.Name = "FormUpdateCustomer";
             this.ShowIcon = false;
             this.Text = "Insert Customer";
             this.TopMost = true;
