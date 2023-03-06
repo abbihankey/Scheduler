@@ -216,7 +216,22 @@ namespace Scheduler.Resources
         {
             return DateTime.Now.ToUniversalTime();
         }
-    
+        public static void DeleteCustomer(int rowID)
+        {
+            startConnection();
+            MySqlTransaction transaction = con.BeginTransaction();
+
+            //query
+            var query = $"DELETE FROM customer WHERE customerId = '{rowID}'";
+
+
+            MySqlCommand comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
+            closeConnection();
+            return;
+        }
     }
         
 }

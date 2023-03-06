@@ -1,7 +1,9 @@
-﻿using Scheduler.Resources;
+﻿using MySql.Data.MySqlClient;
+using Scheduler.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -21,7 +23,7 @@ namespace Scheduler
             InitializeComponent();
 
         }
-
+        
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
 
@@ -53,10 +55,17 @@ namespace Scheduler
             {
                 MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
             }
-        
+            
+            this.Close();
+
         }
 
         private void labelCustomerDetails_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormInsertCustomer_FormClosed(object sender, FormClosedEventArgs e)
         {
 
         }

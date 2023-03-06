@@ -35,6 +35,7 @@ namespace Scheduler
             this.buttonInsert = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonRefresh = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,6 +93,16 @@ namespace Scheduler
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
+            // buttonRefresh
+            // 
+            this.buttonRefresh.Location = new System.Drawing.Point(404, 617);
+            this.buttonRefresh.Name = "buttonRefresh";
+            this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
+            this.buttonRefresh.TabIndex = 41;
+            this.buttonRefresh.Text = "Refresh";
+            this.buttonRefresh.UseVisualStyleBackColor = true;
+            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
+            // 
             // FormCustomers
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -99,6 +110,7 @@ namespace Scheduler
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(745, 660);
             this.ControlBox = false;
+            this.Controls.Add(this.buttonRefresh);
             this.Controls.Add(this.buttonInsert);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonDelete);
@@ -118,12 +130,12 @@ namespace Scheduler
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridViewCustomers;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
+        public System.Windows.Forms.DataGridView dataGridViewCustomers;
+        private System.Windows.Forms.Button buttonRefresh;
     }
 }
