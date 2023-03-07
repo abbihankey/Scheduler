@@ -40,20 +40,7 @@ namespace Scheduler
             bool notEmpty = DB.verifyInput(panelInsertCustomers);
             if (notEmpty == true)
             {
-                if (comboBoxActive.SelectedText == "Yes")
-                {
-                    active = 1;
-                }
-                else
-                {
-                    active = 0;
-                }
-
-                var currentTime = DB.getCurrentTime();
-                int country = DB.insertCountry(textBoxCountry.Text);
-                int city = DB.insertCity(country, textBoxCity.Text);
-                int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
-                DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime, username);
+                DB.UpdateCustomer();
             }
             else
             {

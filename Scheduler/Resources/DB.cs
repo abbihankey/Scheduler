@@ -108,6 +108,8 @@ namespace Scheduler.Resources
             DateTime currentTime = DateTime.Now.ToUniversalTime();
             return currentTime;
         }
+        public static Dictionary<string, string> customerDetails = new Dictionary<string, string>();
+
         public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username) 
         {
             //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlcommand.executenonquery?view=dotnet-plat-ext-7.0
@@ -232,32 +234,58 @@ namespace Scheduler.Resources
             closeConnection();
             return;
         }
-        public static void UpdateCustomer(int rowID)
+        public static void UpdateCustomer(Dictionary<string, string> newCustomerDetails)
         {
+            string user = DB.getUsername();
+            DateTime currentTime = getCurrentTime();
+            var formattedCurrentTime = formatTime(currentTime);
+
             startConnection();
-
-            //query: update country
-            MySqlTransaction transaction = con.BeginTransaction();
-            var updateCountryQuery = $"UPDATE country SET country =  '{rowID}'";
-
-            //query: update city
-            MySqlTransaction transaction = con.BeginTransaction();
-
-
-            //query: update address
-            MySqlTransaction transaction = con.BeginTransaction();
-
 
             //query: update customer
             MySqlTransaction transaction = con.BeginTransaction();
-
+            var query = $"UPDATE customer" +
+                $"SET customerName = '{newCustomerDetails["customerName"]}', active = '{newCustomerDetails["active"]}', lastUpdate = '{formattedCurrentTime}', lastUpdatedBy = '{user}'" +
+                $"WHERE customerName = '{customerDetails["customerName"]}'";
 
             MySqlCommand comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();
             transaction.Commit();
-            closeConnection();
-            return;
+
+            //query: update city
+            transaction = con.BeginTransaction();
+            query = $"UPDATE city" +
+                $"SET country = '{newCustomerDetails["city"]}', lastUpdate = '{formattedCurrentTime}, lastUpdatedBy = '{user}'" +
+                $"WHERE city = '{customerDetails["city"]}'";
+
+            comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
+
+
+            //query: update address
+            transaction = con.BeginTransaction();
+            query = $"UPDATE address" +
+                $"SET address = '{newCustomerDetails["address"]}', postalCode = '{newCustomerDetails["postalCode"]}', lastUpdate = '{formattedCurrentTime}', lastUpdatedBy = '{user}'" +
+                $"WHERE address = '{customerDetails["address"]}'";
+
+            comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
+
+            //query: update country
+            transaction = con.BeginTransaction();
+            query = $"UPDATE country" +
+                $"SET country = '{newCustomerDetails["customerName"]}', lastUpdate = '{formattedCurrentTime}', lastUpdatedBy = '{user}'" +
+                $"WHERE country = '{customerDetails["country"]}'";
+
+            comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
         }
         static public Dictionary<string, string> getCustomerDictionary(int customerID)
         {
@@ -322,7 +350,13 @@ namespace Scheduler.Resources
             return customerDictionary;
         }
         //update customer (pass in dict)
-        
+        public bool updateCustomer(Dictionary<string, string> newCustomerDetails)
+        {
+            startConnection();
+
+            //query update customer
+            
+        }
     }
 
         
