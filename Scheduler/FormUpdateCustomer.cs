@@ -19,12 +19,18 @@ namespace Scheduler
 
 
             InitializeComponent();
+            //populate text boxes w selected row
 
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-
+            
+            //get row id and pass into update method
+            
+            
+            
+            
             int maxCustomerID = DB.selectMaxID("customer", "customerId");
             int newCustomerID = maxCustomerID + 1;
             int active;

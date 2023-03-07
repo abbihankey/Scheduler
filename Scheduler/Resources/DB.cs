@@ -232,6 +232,98 @@ namespace Scheduler.Resources
             closeConnection();
             return;
         }
+        public static void UpdateCustomer(int rowID)
+        {
+            startConnection();
+
+            //query: update country
+            MySqlTransaction transaction = con.BeginTransaction();
+            var updateCountryQuery = $"UPDATE country SET country =  '{rowID}'";
+
+            //query: update city
+            MySqlTransaction transaction = con.BeginTransaction();
+
+
+            //query: update address
+            MySqlTransaction transaction = con.BeginTransaction();
+
+
+            //query: update customer
+            MySqlTransaction transaction = con.BeginTransaction();
+
+
+            MySqlCommand comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
+            closeConnection();
+            return;
+        }
+        static public Dictionary<string, string> getCustomerDictionary(int customerID)
+        {
+            //https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqldatareader?view=sqlclient-dotnet-standard-5.1
+
+            startConnection();
+            //customer query
+            MySqlTransaction transaction = con.BeginTransaction();
+            var query = $"SELECT * FROM customer WHERE customerId = '{customerID}'";
+            MySqlCommand comm = new MySqlCommand(query, con);
+            // Use reader?
+            MySqlDataReader reader = comm.ExecuteReader();
+            reader.Read();
+            // comm.Transaction = transaction;
+            // comm.ExecuteNonQuery();
+            // transaction.Commit();
+            closeConnection();
+
+            Dictionary<string, string> customerDictionary = new Dictionary<string, string>();
+
+            //customer dictionary
+            customerDictionary.Add("customerName", reader[1].ToString());
+            customerDictionary.Add("addressId", reader[2].ToString());
+            customerDictionary.Add("active", reader[3].ToString());
+            reader.Close();
+
+            //address query
+            query = $"SELECT * FROM address WHERE addressId = '{customerDictionary["addressId"]}'";
+            comm = new MySqlCommand(query, con);
+            reader = comm.ExecuteReader();
+            reader.Read();
+
+            //address dictionary
+            customerDictionary.Add("address", reader[1].ToString());
+            customerDictionary.Add("cityId", reader[3].ToString());
+            customerDictionary.Add("postalCode", reader[4].ToString());
+            customerDictionary.Add("address", reader[1].ToString());
+            reader.Close();
+
+            //city query
+            query = $"SELECT * FROM city WHERE cityId = '{customerDictionary["cityId"]}'";
+            comm = new MySqlCommand(query, con);
+            reader = comm.ExecuteReader();
+            reader.Read();
+
+            //city dictionary
+            customerDictionary.Add("city", reader[1].ToString());
+            customerDictionary.Add("countryId", reader[2].ToString());
+            reader.Close();
+
+            //country query
+            query = $"SELECT * FROM country WHERE countryId = '{customerDictionary["countryId"]}'";
+            comm = new MySqlCommand(query, con);
+            reader = comm.ExecuteReader();
+            reader.Read();
+
+            //county dictionary
+            customerDictionary.Add("country", reader[1].ToString());
+            reader.Close();
+            closeConnection();
+            
+            return customerDictionary;
+        }
+        //update customer (pass in dict)
+        
     }
+
         
 }
