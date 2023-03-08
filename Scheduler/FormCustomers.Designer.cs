@@ -323,6 +323,7 @@ namespace Scheduler
             this.buttonSubmit.TabIndex = 62;
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // buttonCancel
             // 

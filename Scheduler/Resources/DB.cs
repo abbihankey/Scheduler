@@ -343,14 +343,7 @@ namespace Scheduler.Resources
             
             return customerDictionary;
         }
-        //update customer (pass in dict)
-       // public bool updateCustomer(Dictionary<string, string> newCustomerDetails)
-        //{
-            //startConnection();
-
-            //query update customer
-            
-        //} 
+        
     }
 
         

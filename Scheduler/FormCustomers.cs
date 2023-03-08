@@ -17,6 +17,7 @@ namespace Scheduler
     public partial class FormCustomers : Form
     {
         public static Dictionary<string, string> selectedCustomerDictionary = new Dictionary<string, string>();
+        public static Dictionary<string, string> updatedCustomerDictionary = new Dictionary<string, string>();
         public FormCustomers()
         {
             
@@ -137,6 +138,38 @@ namespace Scheduler
         private void buttonCancel_Click(object sender, EventArgs e)
         {
             panelUpdateCustomers.Visible = false;
+        }
+
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            updatedCustomerDictionary.Add("customerName", textBoxName.Text);
+            updatedCustomerDictionary.Add("address", textBoxAddress.Text);
+            updatedCustomerDictionary.Add("phone", textBoxPhone.Text);
+            updatedCustomerDictionary.Add("city", textBoxCity.Text);
+            updatedCustomerDictionary.Add("country", textBoxCountry.Text);
+            updatedCustomerDictionary.Add("postalCode", textBoxZipCode.Text);
+
+            if (comboBoxActive.SelectedText == "Yes") 
+            {
+                updatedCustomerDictionary.Add("active", "True");
+            }
+            else
+            {
+                updatedCustomerDictionary.Add("active", "False");
+            }
+
+            /* if (DB.UpdateCustomer(updatedCustomerDictionary))
+            {
+                MessageBox.Show("Update successful. Please refresh the table to view the updates.");
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Error: Update unsuccessful.");
+                return;
+            } */
+            DB.UpdateCustomer(updatedCustomerDictionary);
+
         }
     }
 }
