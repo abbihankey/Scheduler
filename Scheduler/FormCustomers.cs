@@ -16,10 +16,13 @@ namespace Scheduler
 {
     public partial class FormCustomers : Form
     {
+        public static Dictionary<string, string> selectedCustomerDictionary = new Dictionary<string, string>();
         public FormCustomers()
         {
+            
 
             InitializeComponent();
+            panelUpdateCustomers.Visible = false;
             populateCustomerDGV();
 
 
@@ -59,6 +62,44 @@ namespace Scheduler
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
 
+            if (dataGridViewCustomers.SelectedRows.Count > 0)
+            {
+                
+                
+                
+                
+                
+                panelUpdateCustomers.Visible = true;
+                int selectedIndex = dataGridViewCustomers.SelectedRows[0].Index;
+                int customerID = int.Parse(dataGridViewCustomers[0, selectedIndex].Value.ToString());
+                // populate textboxes in form DB.getCustomerDetails(customerID);
+                // show update form 
+                selectedCustomerDictionary = DB.getCustomerDictionary(customerID);
+                textBoxCustomerID.Text = customerID.ToString();
+                textBoxName.Text = selectedCustomerDictionary["customerName"];
+                textBoxAddress.Text = selectedCustomerDictionary["address"];
+                textBoxPhone.Text = selectedCustomerDictionary["phone"];
+                textBoxCity.Text = selectedCustomerDictionary["city"];
+                textBoxCountry.Text = selectedCustomerDictionary["country"];
+                textBoxZipCode.Text = selectedCustomerDictionary["postalCode"];
+                if (selectedCustomerDictionary["active"] == "True")
+                {
+                    comboBoxActive.SelectedText = "Yes";
+                    return;
+                }
+                else
+                {
+                    comboBoxActive.SelectedText = "No";
+                    return;
+                }
+
+            }
+            else
+            {
+               MessageBox.Show("Please select a row from the data grid.", "Error", MessageBoxButtons.OK);
+               return;
+            }
+            
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -91,6 +132,11 @@ namespace Scheduler
         private void buttonRefresh_Click(object sender, EventArgs e)
         {
             populateCustomerDGV();
+        }
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            panelUpdateCustomers.Visible = false;
         }
     }
 }

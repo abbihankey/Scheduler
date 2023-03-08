@@ -290,19 +290,13 @@ namespace Scheduler.Resources
         static public Dictionary<string, string> getCustomerDictionary(int customerID)
         {
             //https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqldatareader?view=sqlclient-dotnet-standard-5.1
+            var customerId = customerID.ToString();
 
             startConnection();
-            //customer query
-            MySqlTransaction transaction = con.BeginTransaction();
-            var query = $"SELECT * FROM customer WHERE customerId = '{customerID}'";
+            var query = $"SELECT * FROM customer WHERE customerId = '{customerId}'";
             MySqlCommand comm = new MySqlCommand(query, con);
-            // Use reader?
             MySqlDataReader reader = comm.ExecuteReader();
             reader.Read();
-            // comm.Transaction = transaction;
-            // comm.ExecuteNonQuery();
-            // transaction.Commit();
-            closeConnection();
 
             Dictionary<string, string> customerDictionary = new Dictionary<string, string>();
 
@@ -322,7 +316,7 @@ namespace Scheduler.Resources
             customerDictionary.Add("address", reader[1].ToString());
             customerDictionary.Add("cityId", reader[3].ToString());
             customerDictionary.Add("postalCode", reader[4].ToString());
-            customerDictionary.Add("address", reader[1].ToString());
+            customerDictionary.Add("phone", reader[5].ToString());
             reader.Close();
 
             //city query
@@ -350,13 +344,13 @@ namespace Scheduler.Resources
             return customerDictionary;
         }
         //update customer (pass in dict)
-        public bool updateCustomer(Dictionary<string, string> newCustomerDetails)
-        {
-            startConnection();
+       // public bool updateCustomer(Dictionary<string, string> newCustomerDetails)
+        //{
+            //startConnection();
 
             //query update customer
             
-        }
+        //} 
     }
 
         
