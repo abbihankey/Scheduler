@@ -35,8 +35,7 @@ namespace Scheduler
             this.buttonInsert = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.buttonRefresh = new System.Windows.Forms.Button();
-            this.panelUpdateCustomers = new System.Windows.Forms.Panel();
+            this.panelCustomers = new System.Windows.Forms.Panel();
             this.labelZipCode = new System.Windows.Forms.Label();
             this.textBoxZipCode = new System.Windows.Forms.TextBox();
             this.labelCustomerDetails = new System.Windows.Forms.Label();
@@ -57,7 +56,7 @@ namespace Scheduler
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
-            this.panelUpdateCustomers.SuspendLayout();
+            this.panelCustomers.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridViewCustomers
@@ -115,43 +114,33 @@ namespace Scheduler
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // buttonRefresh
+            // panelCustomers
             // 
-            this.buttonRefresh.Location = new System.Drawing.Point(606, 617);
-            this.buttonRefresh.Name = "buttonRefresh";
-            this.buttonRefresh.Size = new System.Drawing.Size(75, 23);
-            this.buttonRefresh.TabIndex = 41;
-            this.buttonRefresh.Text = "Refresh";
-            this.buttonRefresh.UseVisualStyleBackColor = true;
-            this.buttonRefresh.Click += new System.EventHandler(this.buttonRefresh_Click);
-            // 
-            // panelUpdateCustomers
-            // 
-            this.panelUpdateCustomers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.panelUpdateCustomers.Controls.Add(this.buttonSubmit);
-            this.panelUpdateCustomers.Controls.Add(this.buttonCancel);
-            this.panelUpdateCustomers.Controls.Add(this.labelZipCode);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxZipCode);
-            this.panelUpdateCustomers.Controls.Add(this.labelCustomerDetails);
-            this.panelUpdateCustomers.Controls.Add(this.label6);
-            this.panelUpdateCustomers.Controls.Add(this.comboBoxActive);
-            this.panelUpdateCustomers.Controls.Add(this.label7);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxCountry);
-            this.panelUpdateCustomers.Controls.Add(this.label4);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxPhone);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxAddress);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxCity);
-            this.panelUpdateCustomers.Controls.Add(this.label5);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxCustomerID);
-            this.panelUpdateCustomers.Controls.Add(this.label3);
-            this.panelUpdateCustomers.Controls.Add(this.label2);
-            this.panelUpdateCustomers.Controls.Add(this.textBoxName);
-            this.panelUpdateCustomers.Controls.Add(this.label1);
-            this.panelUpdateCustomers.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelUpdateCustomers.Location = new System.Drawing.Point(943, 0);
-            this.panelUpdateCustomers.Name = "panelUpdateCustomers";
-            this.panelUpdateCustomers.Size = new System.Drawing.Size(452, 660);
-            this.panelUpdateCustomers.TabIndex = 49;
+            this.panelCustomers.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.panelCustomers.Controls.Add(this.buttonSubmit);
+            this.panelCustomers.Controls.Add(this.buttonCancel);
+            this.panelCustomers.Controls.Add(this.labelZipCode);
+            this.panelCustomers.Controls.Add(this.textBoxZipCode);
+            this.panelCustomers.Controls.Add(this.labelCustomerDetails);
+            this.panelCustomers.Controls.Add(this.label6);
+            this.panelCustomers.Controls.Add(this.comboBoxActive);
+            this.panelCustomers.Controls.Add(this.label7);
+            this.panelCustomers.Controls.Add(this.textBoxCountry);
+            this.panelCustomers.Controls.Add(this.label4);
+            this.panelCustomers.Controls.Add(this.textBoxPhone);
+            this.panelCustomers.Controls.Add(this.textBoxAddress);
+            this.panelCustomers.Controls.Add(this.textBoxCity);
+            this.panelCustomers.Controls.Add(this.label5);
+            this.panelCustomers.Controls.Add(this.textBoxCustomerID);
+            this.panelCustomers.Controls.Add(this.label3);
+            this.panelCustomers.Controls.Add(this.label2);
+            this.panelCustomers.Controls.Add(this.textBoxName);
+            this.panelCustomers.Controls.Add(this.label1);
+            this.panelCustomers.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelCustomers.Location = new System.Drawing.Point(943, 0);
+            this.panelCustomers.Name = "panelCustomers";
+            this.panelCustomers.Size = new System.Drawing.Size(452, 660);
+            this.panelCustomers.TabIndex = 49;
             // 
             // labelZipCode
             // 
@@ -176,11 +165,11 @@ namespace Scheduler
             this.labelCustomerDetails.AutoSize = true;
             this.labelCustomerDetails.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelCustomerDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelCustomerDetails.Location = new System.Drawing.Point(163, 121);
+            this.labelCustomerDetails.Location = new System.Drawing.Point(194, 112);
             this.labelCustomerDetails.Name = "labelCustomerDetails";
-            this.labelCustomerDetails.Size = new System.Drawing.Size(139, 19);
+            this.labelCustomerDetails.Size = new System.Drawing.Size(59, 19);
             this.labelCustomerDetails.TabIndex = 54;
-            this.labelCustomerDetails.Text = "Update Customers";
+            this.labelCustomerDetails.Text = "Update";
             // 
             // label6
             // 
@@ -342,8 +331,7 @@ namespace Scheduler
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(1395, 660);
             this.ControlBox = false;
-            this.Controls.Add(this.panelUpdateCustomers);
-            this.Controls.Add(this.buttonRefresh);
+            this.Controls.Add(this.panelCustomers);
             this.Controls.Add(this.buttonInsert);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonDelete);
@@ -357,8 +345,8 @@ namespace Scheduler
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "FormCustomers";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).EndInit();
-            this.panelUpdateCustomers.ResumeLayout(false);
-            this.panelUpdateCustomers.PerformLayout();
+            this.panelCustomers.ResumeLayout(false);
+            this.panelCustomers.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -371,8 +359,7 @@ namespace Scheduler
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
         public System.Windows.Forms.DataGridView dataGridViewCustomers;
-        private System.Windows.Forms.Button buttonRefresh;
-        private System.Windows.Forms.Panel panelUpdateCustomers;
+        private System.Windows.Forms.Panel panelCustomers;
         private System.Windows.Forms.Label labelZipCode;
         private System.Windows.Forms.TextBox textBoxZipCode;
         private System.Windows.Forms.Label labelCustomerDetails;

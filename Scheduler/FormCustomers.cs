@@ -23,7 +23,7 @@ namespace Scheduler
             
 
             InitializeComponent();
-            panelUpdateCustomers.Visible = false;
+            panelCustomers.Visible = false;
             populateCustomerDGV();
 
 
@@ -56,21 +56,27 @@ namespace Scheduler
         private void buttonInsert_Click(object sender, EventArgs e)
         {
 
-            var insertcustomerform = new FormInsertCustomer();
-            insertcustomerform.Show();
+            // var insertcustomerform = new FormInsertCustomer();
+            // insertcustomerform.Show();
+            panelCustomers.Visible = true;
+            labelCustomerDetails.Text = "Insert";
+            //clear text boxes
+            textBoxName.Clear();
+            textBoxAddress.Clear();
+            textBoxPhone.Clear();
+            textBoxCity.Clear();
+            textBoxCountry.Clear();
+            textBoxZipCode.Clear();
+
         }
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-
+            labelCustomerDetails.Text = "Update";
             if (dataGridViewCustomers.SelectedRows.Count > 0)
             {
                 
-                
-                
-                
-                
-                panelUpdateCustomers.Visible = true;
+                panelCustomers.Visible = true;
                 int selectedIndex = dataGridViewCustomers.SelectedRows[0].Index;
                 int customerID = int.Parse(dataGridViewCustomers[0, selectedIndex].Value.ToString());
                 // populate textboxes in form DB.getCustomerDetails(customerID);
@@ -83,7 +89,7 @@ namespace Scheduler
                 textBoxCity.Text = selectedCustomerDictionary["city"];
                 textBoxCountry.Text = selectedCustomerDictionary["country"];
                 textBoxZipCode.Text = selectedCustomerDictionary["postalCode"];
-                if (selectedCustomerDictionary["active"] == "True")
+                if (selectedCustomerDictionary["active"] == "1")
                 {
                     comboBoxActive.SelectedText = "Yes";
                     return;
@@ -137,38 +143,70 @@ namespace Scheduler
 
         private void buttonCancel_Click(object sender, EventArgs e)
         {
-            panelUpdateCustomers.Visible = false;
+            panelCustomers.Visible = false;
         }
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            updatedCustomerDictionary.Add("customerName", textBoxName.Text);
-            updatedCustomerDictionary.Add("address", textBoxAddress.Text);
-            updatedCustomerDictionary.Add("phone", textBoxPhone.Text);
-            updatedCustomerDictionary.Add("city", textBoxCity.Text);
-            updatedCustomerDictionary.Add("country", textBoxCountry.Text);
-            updatedCustomerDictionary.Add("postalCode", textBoxZipCode.Text);
-
-            if (comboBoxActive.SelectedText == "Yes") 
+           
+            if (labelCustomerDetails.Text == "Update")
             {
-                updatedCustomerDictionary.Add("active", "True");
+                //if panel text is Update
+                updatedCustomerDictionary.Add("customerName", textBoxName.Text);
+                updatedCustomerDictionary.Add("address", textBoxAddress.Text);
+                updatedCustomerDictionary.Add("phone", textBoxPhone.Text);
+                updatedCustomerDictionary.Add("city", textBoxCity.Text);
+                updatedCustomerDictionary.Add("country", textBoxCountry.Text);
+                updatedCustomerDictionary.Add("postalCode", textBoxZipCode.Text);
+
+                if (comboBoxActive.SelectedText == "Yes")
+                {
+                    updatedCustomerDictionary.Add("active", "1");
+                }
+                else
+                {
+                    updatedCustomerDictionary.Add("active", "0");
+                }
+                DB.UpdateCustomer(updatedCustomerDictionary, selectedCustomerDictionary);
+                panelCustomers.Visible = false;
+                populateCustomerDGV();
             }
             else
             {
-                updatedCustomerDictionary.Add("active", "False");
-            }
 
-            /* if (DB.UpdateCustomer(updatedCustomerDictionary))
-            {
-                MessageBox.Show("Update successful. Please refresh the table to view the updates.");
-                return;
+                int maxCustomerID = DB.selectMaxID("customer", "customerId");
+                int newCustomerID = maxCustomerID + 1;
+                textBoxCustomerID.Text = newCustomerID.ToString();
+                int active;
+                var createTime = DB.getCurrentTime();
+                var username = DB.getUsername();
+
+                bool notEmpty = DB.verifyInput(panelCustomers);
+                if (notEmpty == true)
+                {
+                    if (comboBoxActive.SelectedText == "Yes")
+                    {
+                        active = 1;
+                    }
+                    else
+                    {
+                        active = 0;
+                    }
+
+                    var currentTime = DB.getCurrentTime();
+                    int country = DB.insertCountry(textBoxCountry.Text);
+                    int city = DB.insertCity(country, textBoxCity.Text);
+                    int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
+                    DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime, username);
+                }
+                else
+                {
+                    MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                }
+                panelCustomers.Visible = false;
+                populateCustomerDGV();
             }
-            else
-            {
-                MessageBox.Show("Error: Update unsuccessful.");
-                return;
-            } */
-            DB.UpdateCustomer(updatedCustomerDictionary);
+            
 
         }
     }

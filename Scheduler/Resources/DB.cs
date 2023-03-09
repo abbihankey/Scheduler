@@ -18,7 +18,8 @@ namespace Scheduler.Resources
         private static string username;
         public static string getUsername()
         {
-            return username; 
+            return username = "Test";
+
         }
 
         public static MySqlConnection con { get; set; }
@@ -100,7 +101,7 @@ namespace Scheduler.Resources
 
         public static string formatTime(DateTime dateValue)
         {
-            string sqlDateTime = dateValue.ToString("yy=MM=dd HH:mm");
+            string sqlDateTime = dateValue.ToString("yy-MM-dd HH:mm");
             return sqlDateTime;
         }
         public static DateTime currentTime()
@@ -108,7 +109,7 @@ namespace Scheduler.Resources
             DateTime currentTime = DateTime.Now.ToUniversalTime();
             return currentTime;
         }
-        public static Dictionary<string, string> customerDetails = new Dictionary<string, string>();
+        //public static Dictionary<string, string> customerDetails = new Dictionary<string, string>();
 
         public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username) 
         {
@@ -234,19 +235,20 @@ namespace Scheduler.Resources
             closeConnection();
             return;
         }
-        public static void UpdateCustomer(Dictionary<string, string> newCustomerDetails)
+        public static void UpdateCustomer(Dictionary<string, string> newCustomerDetails, Dictionary<string, string> selectedCustomerDictionary)
         {
             string user = DB.getUsername();
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
+            
 
             startConnection();
 
             //query: update customer
             MySqlTransaction transaction = con.BeginTransaction();
             var query = $"UPDATE customer" +
-                $"SET customerName = '{newCustomerDetails["customerName"]}', active = '{newCustomerDetails["active"]}', lastUpdate = '{formattedCurrentTime}', lastUpdatedBy = '{user}'" +
-                $"WHERE customerName = '{customerDetails["customerName"]}'";
+                $" SET customerName = '{newCustomerDetails["customerName"]}', active = '{newCustomerDetails["active"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" WHERE customerName = '{selectedCustomerDictionary["customerName"]}'";
 
             MySqlCommand comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
@@ -254,22 +256,23 @@ namespace Scheduler.Resources
             transaction.Commit();
 
             //query: update city
+            /*
             transaction = con.BeginTransaction();
             query = $"UPDATE city" +
-                $"SET country = '{newCustomerDetails["city"]}', lastUpdate = '{formattedCurrentTime}, lastUpdatedBy = '{user}'" +
-                $"WHERE city = '{customerDetails["city"]}'";
+                $" SET city = '{newCustomerDetails["city"]}', lastUpdate = '{formattedCurrentTime}, lastUpdateBy = '{user}', WHERE city = '{selectedCustomerDictionary["city"]}'";
+                // $" WHERE city = '{selectedCustomerDictionary["city"]}'";
 
             comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();
-            transaction.Commit();
+            transaction.Commit(); */
 
 
             //query: update address
             transaction = con.BeginTransaction();
             query = $"UPDATE address" +
-                $"SET address = '{newCustomerDetails["address"]}', postalCode = '{newCustomerDetails["postalCode"]}', lastUpdate = '{formattedCurrentTime}', lastUpdatedBy = '{user}'" +
-                $"WHERE address = '{customerDetails["address"]}'";
+                $" SET address = '{newCustomerDetails["address"]}', postalCode = '{newCustomerDetails["postalCode"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" WHERE address = '{selectedCustomerDictionary["address"]}'";
 
             comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
@@ -279,8 +282,8 @@ namespace Scheduler.Resources
             //query: update country
             transaction = con.BeginTransaction();
             query = $"UPDATE country" +
-                $"SET country = '{newCustomerDetails["customerName"]}', lastUpdate = '{formattedCurrentTime}', lastUpdatedBy = '{user}'" +
-                $"WHERE country = '{customerDetails["country"]}'";
+                $" SET country = '{newCustomerDetails["customerName"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" WHERE country = '{selectedCustomerDictionary["country"]}'";
 
             comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
