@@ -42,17 +42,17 @@ namespace Scheduler
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(12, 63);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(458, 439);
+            this.dataGridView1.Size = new System.Drawing.Size(458, 560);
             this.dataGridView1.TabIndex = 0;
             // 
             // labelUpcomingApps
             // 
             this.labelUpcomingApps.AutoSize = true;
-            this.labelUpcomingApps.Font = new System.Drawing.Font("Lato", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUpcomingApps.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUpcomingApps.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.labelUpcomingApps.Location = new System.Drawing.Point(12, 32);
             this.labelUpcomingApps.Name = "labelUpcomingApps";
-            this.labelUpcomingApps.Size = new System.Drawing.Size(184, 19);
+            this.labelUpcomingApps.Size = new System.Drawing.Size(184, 20);
             this.labelUpcomingApps.TabIndex = 1;
             this.labelUpcomingApps.Text = "Upcoming Appointments";
             // 
@@ -67,18 +67,18 @@ namespace Scheduler
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.panel1.Location = new System.Drawing.Point(499, 63);
+            this.panel1.Location = new System.Drawing.Point(488, 104);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(458, 214);
+            this.panel1.Size = new System.Drawing.Size(458, 242);
             this.panel1.TabIndex = 3;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.panel2.Location = new System.Drawing.Point(499, 288);
+            this.panel2.Location = new System.Drawing.Point(488, 381);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(458, 214);
+            this.panel2.Size = new System.Drawing.Size(458, 242);
             this.panel2.TabIndex = 4;
             // 
             // FormDashboard
@@ -86,7 +86,7 @@ namespace Scheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.ClientSize = new System.Drawing.Size(969, 539);
+            this.ClientSize = new System.Drawing.Size(1169, 635);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.comboBox1);

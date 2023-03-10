@@ -109,7 +109,7 @@ namespace Scheduler.Resources
             DateTime currentTime = DateTime.Now.ToUniversalTime();
             return currentTime;
         }
-        //public static Dictionary<string, string> customerDetails = new Dictionary<string, string>();
+        
 
         public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username) 
         {
@@ -346,7 +346,45 @@ namespace Scheduler.Resources
             
             return customerDictionary;
         }
-        
+        public static void DeleteAppointment(int rowID)
+        {
+            startConnection();
+            MySqlTransaction transaction = con.BeginTransaction();
+
+            //query
+            var query = $"DELETE FROM appointment WHERE appointmentId = '{rowID}'";
+
+
+            MySqlCommand comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
+            closeConnection();
+            return;
+        }
+        public static void insertAppointment(int id, string title, string description, string location, DateTime start, DateTime end)
+        {
+            //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlcommand.executenonquery?view=dotnet-plat-ext-7.0
+            //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
+
+            // string sqlDateTime = formatTime(dateTime); //is this needed??
+            startConnection();
+            MySqlTransaction transaction = con.BeginTransaction();
+            // string createDate = formatTime(createTime);
+            string user = DB.getUsername();
+            DateTime currentTime = getCurrentTime();
+            var formattedCurrentTime = formatTime(currentTime);
+
+            //query
+            //var query = "INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) "
+            //   + $"VALUES ('{id}', '{name}', '{addressID}', '{active}', '{formattedCurrentTime}', '{user}', '{user}')";
+            // MySqlCommand comm = new MySqlCommand(query, con);
+            //comm.Transaction = transaction;
+            //comm.ExecuteNonQuery();
+            transaction.Commit();
+            closeConnection();
+
+        }
     }
 
         

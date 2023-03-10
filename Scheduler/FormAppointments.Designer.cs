@@ -33,7 +33,7 @@ namespace Scheduler
             this.textBoxCustomerID = new System.Windows.Forms.TextBox();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
-            this.labelCustomerDetails = new System.Windows.Forms.Label();
+            this.labelAppointmentDetails = new System.Windows.Forms.Label();
             this.buttonSave = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.textBoxEnd = new System.Windows.Forms.TextBox();
@@ -50,11 +50,11 @@ namespace Scheduler
             this.buttonSearch = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewAppointments = new System.Windows.Forms.DataGridView();
-            this.panelCustomerDetails = new System.Windows.Forms.Panel();
+            this.panelAppointmentDetails = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxAppointmentID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointments)).BeginInit();
-            this.panelCustomerDetails.SuspendLayout();
+            this.panelAppointmentDetails.SuspendLayout();
             this.SuspendLayout();
             // 
             // label5
@@ -83,6 +83,7 @@ namespace Scheduler
             this.buttonCancel.TabIndex = 17;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // label6
             // 
@@ -95,16 +96,16 @@ namespace Scheduler
             this.label6.TabIndex = 16;
             this.label6.Text = "End Time";
             // 
-            // labelCustomerDetails
+            // labelAppointmentDetails
             // 
-            this.labelCustomerDetails.AutoSize = true;
-            this.labelCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelCustomerDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelCustomerDetails.Location = new System.Drawing.Point(90, 61);
-            this.labelCustomerDetails.Name = "labelCustomerDetails";
-            this.labelCustomerDetails.Size = new System.Drawing.Size(287, 25);
-            this.labelCustomerDetails.TabIndex = 18;
-            this.labelCustomerDetails.Text = "Add or Update Appointments";
+            this.labelAppointmentDetails.AutoSize = true;
+            this.labelAppointmentDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAppointmentDetails.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelAppointmentDetails.Location = new System.Drawing.Point(192, 66);
+            this.labelAppointmentDetails.Name = "labelAppointmentDetails";
+            this.labelAppointmentDetails.Size = new System.Drawing.Size(81, 25);
+            this.labelAppointmentDetails.TabIndex = 18;
+            this.labelAppointmentDetails.Text = "Update";
             // 
             // buttonSave
             // 
@@ -112,8 +113,9 @@ namespace Scheduler
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 3;
-            this.buttonSave.Text = "Save";
+            this.buttonSave.Text = "Submit";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // label4
             // 
@@ -189,12 +191,13 @@ namespace Scheduler
             // 
             // buttonDelete
             // 
-            this.buttonDelete.Location = new System.Drawing.Point(638, 617);
+            this.buttonDelete.Location = new System.Drawing.Point(838, 617);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(75, 23);
             this.buttonDelete.TabIndex = 22;
             this.buttonDelete.Text = "Delete";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // textBoxDescription
             // 
@@ -205,21 +208,23 @@ namespace Scheduler
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(476, 617);
+            this.buttonAdd.Location = new System.Drawing.Point(676, 617);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(75, 23);
             this.buttonAdd.TabIndex = 27;
-            this.buttonAdd.Text = "Add";
+            this.buttonAdd.Text = "Insert";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(557, 617);
+            this.buttonUpdate.Location = new System.Drawing.Point(757, 617);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(75, 23);
             this.buttonUpdate.TabIndex = 26;
             this.buttonUpdate.Text = "Update";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonSearch
             // 
@@ -242,34 +247,34 @@ namespace Scheduler
             this.dataGridViewAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAppointments.Location = new System.Drawing.Point(11, 43);
             this.dataGridViewAppointments.Name = "dataGridViewAppointments";
-            this.dataGridViewAppointments.Size = new System.Drawing.Size(702, 568);
+            this.dataGridViewAppointments.Size = new System.Drawing.Size(902, 568);
             this.dataGridViewAppointments.TabIndex = 21;
             // 
-            // panelCustomerDetails
+            // panelAppointmentDetails
             // 
-            this.panelCustomerDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
-            this.panelCustomerDetails.Controls.Add(this.label7);
-            this.panelCustomerDetails.Controls.Add(this.textBoxAppointmentID);
-            this.panelCustomerDetails.Controls.Add(this.label5);
-            this.panelCustomerDetails.Controls.Add(this.textBoxCustomerID);
-            this.panelCustomerDetails.Controls.Add(this.buttonCancel);
-            this.panelCustomerDetails.Controls.Add(this.label6);
-            this.panelCustomerDetails.Controls.Add(this.labelCustomerDetails);
-            this.panelCustomerDetails.Controls.Add(this.buttonSave);
-            this.panelCustomerDetails.Controls.Add(this.label4);
-            this.panelCustomerDetails.Controls.Add(this.textBoxEnd);
-            this.panelCustomerDetails.Controls.Add(this.label3);
-            this.panelCustomerDetails.Controls.Add(this.textBoxStart);
-            this.panelCustomerDetails.Controls.Add(this.label2);
-            this.panelCustomerDetails.Controls.Add(this.textBoxUserID);
-            this.panelCustomerDetails.Controls.Add(this.label1);
-            this.panelCustomerDetails.Controls.Add(this.textBoxTitle);
-            this.panelCustomerDetails.Controls.Add(this.textBoxDescription);
-            this.panelCustomerDetails.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelCustomerDetails.Location = new System.Drawing.Point(742, 0);
-            this.panelCustomerDetails.Name = "panelCustomerDetails";
-            this.panelCustomerDetails.Size = new System.Drawing.Size(458, 660);
-            this.panelCustomerDetails.TabIndex = 25;
+            this.panelAppointmentDetails.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(74)))), ((int)(((byte)(74)))), ((int)(((byte)(74)))));
+            this.panelAppointmentDetails.Controls.Add(this.label7);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxAppointmentID);
+            this.panelAppointmentDetails.Controls.Add(this.label5);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxCustomerID);
+            this.panelAppointmentDetails.Controls.Add(this.buttonCancel);
+            this.panelAppointmentDetails.Controls.Add(this.label6);
+            this.panelAppointmentDetails.Controls.Add(this.labelAppointmentDetails);
+            this.panelAppointmentDetails.Controls.Add(this.buttonSave);
+            this.panelAppointmentDetails.Controls.Add(this.label4);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxEnd);
+            this.panelAppointmentDetails.Controls.Add(this.label3);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxStart);
+            this.panelAppointmentDetails.Controls.Add(this.label2);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxUserID);
+            this.panelAppointmentDetails.Controls.Add(this.label1);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxTitle);
+            this.panelAppointmentDetails.Controls.Add(this.textBoxDescription);
+            this.panelAppointmentDetails.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panelAppointmentDetails.Location = new System.Drawing.Point(925, 0);
+            this.panelAppointmentDetails.Name = "panelAppointmentDetails";
+            this.panelAppointmentDetails.Size = new System.Drawing.Size(458, 660);
+            this.panelAppointmentDetails.TabIndex = 25;
             // 
             // label7
             // 
@@ -286,6 +291,7 @@ namespace Scheduler
             // 
             this.textBoxAppointmentID.Location = new System.Drawing.Point(55, 137);
             this.textBoxAppointmentID.Name = "textBoxAppointmentID";
+            this.textBoxAppointmentID.ReadOnly = true;
             this.textBoxAppointmentID.Size = new System.Drawing.Size(350, 20);
             this.textBoxAppointmentID.TabIndex = 21;
             // 
@@ -294,23 +300,23 @@ namespace Scheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.ClientSize = new System.Drawing.Size(1200, 660);
+            this.ClientSize = new System.Drawing.Size(1383, 660);
             this.ControlBox = false;
+            this.Controls.Add(this.panelAppointmentDetails);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridViewAppointments);
-            this.Controls.Add(this.panelCustomerDetails);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "FormAppointments";
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "FormAppointments";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointments)).EndInit();
-            this.panelCustomerDetails.ResumeLayout(false);
-            this.panelCustomerDetails.PerformLayout();
+            this.panelAppointmentDetails.ResumeLayout(false);
+            this.panelAppointmentDetails.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -322,7 +328,7 @@ namespace Scheduler
         private System.Windows.Forms.TextBox textBoxCustomerID;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label labelCustomerDetails;
+        private System.Windows.Forms.Label labelAppointmentDetails;
         private System.Windows.Forms.Button buttonSave;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBoxEnd;
@@ -339,7 +345,7 @@ namespace Scheduler
         private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridViewAppointments;
-        private System.Windows.Forms.Panel panelCustomerDetails;
+        private System.Windows.Forms.Panel panelAppointmentDetails;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxAppointmentID;
     }

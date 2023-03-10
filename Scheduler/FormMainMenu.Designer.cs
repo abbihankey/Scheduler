@@ -167,7 +167,7 @@ namespace Scheduler
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelTitleBar.Location = new System.Drawing.Point(152, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(1060, 66);
+            this.panelTitleBar.Size = new System.Drawing.Size(1170, 66);
             this.panelTitleBar.TabIndex = 1;
             // 
             // labelTitle
@@ -176,7 +176,7 @@ namespace Scheduler
             this.labelTitle.BackColor = System.Drawing.Color.Transparent;
             this.labelTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelTitle.Location = new System.Drawing.Point(-106, 0);
+            this.labelTitle.Location = new System.Drawing.Point(-51, 0);
             this.labelTitle.Name = "labelTitle";
             this.labelTitle.Size = new System.Drawing.Size(1121, 66);
             this.labelTitle.TabIndex = 0;
@@ -205,7 +205,7 @@ namespace Scheduler
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1212, 735);
+            this.ClientSize = new System.Drawing.Size(1322, 735);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.menuStrip1);
