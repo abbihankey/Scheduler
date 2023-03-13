@@ -23,6 +23,10 @@ namespace Scheduler
             InitializeComponent();
             panelAppointmentDetails.Visible = false;
             populateAppointmentDGV();
+            dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
+            dateTimePickerStart.Format = DateTimePickerFormat.Custom;
+            dateTimePickerEnd.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            dateTimePickerStart.CustomFormat = "MM/dd/yyyy hh:mm:ss";
 
 
 
@@ -50,7 +54,15 @@ namespace Scheduler
             labelAppointmentDetails.Text = "Insert";
             textBoxTitle.Clear();
             textBoxDescription.Clear();
-            
+            textBoxAppointmentID.Clear();
+            textBoxCustomerID.Clear();
+            textBoxUserID.Clear();
+            textBoxTitle.Clear();
+            textBoxDescription.Clear();
+            textBoxLocation.Clear();
+            textBoxType.Clear();
+
+
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -58,26 +70,20 @@ namespace Scheduler
             if (labelAppointmentDetails.Text == "Update")
             {
                 
-                /* 
-                updatedAppDictionary.Add("customerName", textBoxName.Text);
-                updatedAppDictionary.Add("address", textBoxAddress.Text);
-                updatedAppDictionary.Add("phone", textBoxPhone.Text);
-                updatedAppDictionary.Add("city", textBoxCity.Text);
-                updatedAppDictionary.Add("country", textBoxCountry.Text);
                 
+                updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
+                updatedAppDictionary.Add("title", textBoxTitle.Text);
+                updatedAppDictionary.Add("description", textBoxDescription.Text);
+                updatedAppDictionary.Add("location", textBoxLocation.Text);
+                updatedAppDictionary.Add("type", textBoxType.Text);
+                updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
+                updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
 
-                if (comboBoxActive.SelectedText == "Yes")
-                {
-                    updatedCustomerDictionary.Add("active", "1");
-                }
-                else
-                {
-                    updatedCustomerDictionary.Add("active", "0");
-                }
+
                 DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
-                panelCustomers.Visible = false;
-                populateCustomerDGV(); 
-                */
+                panelAppointmentDetails.Visible = false;
+                populateAppointmentDGV(); 
+                
             }
             else
             {
@@ -92,13 +98,18 @@ namespace Scheduler
                 bool notEmpty = DB.verifyInput(panelAppointmentDetails);
                 if (notEmpty == true)
                 {
-                    /*
-                    var currentTime = DB.getCurrentTime();
-                    int country = DB.insertCountry(textBoxCountry.Text);
-                    int city = DB.insertCity(country, textBoxCity.Text);
-                    int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
-                    DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime, username);
-                    */
+                    
+                    int custID = Convert.ToInt32(textBoxCustomerID.Text);
+                    string title = textBoxTitle.Text;
+                    string description = textBoxDescription.Text;
+                    string location = textBoxLocation.Text;
+                    string type = textBoxType.Text;
+                    DateTime start = dateTimePickerStart.Value;
+                    DateTime end = dateTimePickerEnd.Value;
+
+
+
+                    DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
                 }
                 else
                 {
@@ -148,7 +159,44 @@ namespace Scheduler
         {
             labelAppointmentDetails.Text = "Update";
             panelAppointmentDetails.Visible = true;
-            
+
+            if (dataGridViewAppointments.SelectedRows.Count > 0)
+            {
+
+                
+                int selectedIndex = dataGridViewAppointments.SelectedRows[0].Index;
+                int appointmentID = int.Parse(dataGridViewAppointments[0, selectedIndex].Value.ToString());
+                // populate textboxes in form 
+                // show update form 
+                selectedAppDictionary = DB.getAppointmentDictionary(appointmentID);
+                textBoxAppointmentID.Text = appointmentID.ToString();
+                textBoxCustomerID.Text = selectedAppDictionary["customerId"];
+                textBoxUserID.Text = selectedAppDictionary["userId"];
+                textBoxTitle.Text = selectedAppDictionary["title"];
+                textBoxDescription.Text = selectedAppDictionary["description"];
+                textBoxLocation.Text = selectedAppDictionary["location"];
+                textBoxType.Text = selectedAppDictionary["type"];
+                dateTimePickerStart.CustomFormat = selectedAppDictionary["start"];
+                dateTimePickerEnd.CustomFormat = selectedAppDictionary["end"];
+
+            }
+            else
+            {
+                MessageBox.Show("Please select a row from the data grid.", "Error", MessageBoxButtons.OK);
+                panelAppointmentDetails.Visible = false;
+                return;
+            }
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -23,7 +23,7 @@ namespace Scheduler.Resources
         }
 
         public static MySqlConnection con { get; set; }
-        
+
         public static bool verifyInput(Panel panel) //https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.controls?view=windowsdesktop-7.0
         {
             foreach (Control child in panel.Controls)
@@ -109,9 +109,9 @@ namespace Scheduler.Resources
             DateTime currentTime = DateTime.Now.ToUniversalTime();
             return currentTime;
         }
-        
 
-        public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username) 
+
+        public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username)
         {
             //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlcommand.executenonquery?view=dotnet-plat-ext-7.0
             //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
@@ -141,7 +141,7 @@ namespace Scheduler.Resources
         public static int insertCity(int countryID, string city)
         {
             int maxCityID = selectMaxID("city", "cityId");
-            int newCityID = maxCityID +1;
+            int newCityID = maxCityID + 1;
             string user = DB.getUsername();
 
             DateTime currentTime = getCurrentTime();
@@ -168,8 +168,8 @@ namespace Scheduler.Resources
         public static int insertCountry(string country)
         {
             int maxCountryID = selectMaxID("country", "countryID");
-            int newCountryID = maxCountryID +1;
-            
+            int newCountryID = maxCountryID + 1;
+
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
@@ -193,7 +193,7 @@ namespace Scheduler.Resources
         public static int insertAddress(int cityID, string address, string zip, string phone)
         {
             int maxAddressID = selectMaxID("address", "addressID");
-            int newAddressID = maxAddressID +1;
+            int newAddressID = maxAddressID + 1;
 
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
@@ -240,7 +240,7 @@ namespace Scheduler.Resources
             string user = DB.getUsername();
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
-            
+
 
             startConnection();
 
@@ -343,8 +343,39 @@ namespace Scheduler.Resources
             customerDictionary.Add("country", reader[1].ToString());
             reader.Close();
             closeConnection();
-            
+
             return customerDictionary;
+        }
+        static public Dictionary<string, string> getAppointmentDictionary(int appointmentID)
+        {
+            //https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqldatareader?view=sqlclient-dotnet-standard-5.1
+            var appId = appointmentID.ToString();
+
+            startConnection();
+            var query = $"SELECT * FROM appointment WHERE appointmentId = '{appointmentID}'";
+            MySqlCommand comm = new MySqlCommand(query, con);
+            MySqlDataReader reader = comm.ExecuteReader();
+            reader.Read();
+
+            Dictionary<string, string> appointmentDictionary = new Dictionary<string, string>();
+
+            //customer dictionary
+            appointmentDictionary.Add("appointmentId", appId);
+            appointmentDictionary.Add("customerId", reader[1].ToString());
+            appointmentDictionary.Add("userId", reader[2].ToString());
+            appointmentDictionary.Add("title", reader[3].ToString());
+            appointmentDictionary.Add("description", reader[4].ToString());
+            appointmentDictionary.Add("location", reader[5].ToString());
+            appointmentDictionary.Add("type", reader[7].ToString());
+            appointmentDictionary.Add("url", reader[8].ToString());
+            appointmentDictionary.Add("start", reader[9].ToString());
+            appointmentDictionary.Add("end", reader[10].ToString());
+            
+            reader.Close();
+
+            
+
+            return appointmentDictionary;
         }
         public static void DeleteAppointment(int rowID)
         {
@@ -362,30 +393,57 @@ namespace Scheduler.Resources
             closeConnection();
             return;
         }
-        public static void insertAppointment(int id, string title, string description, string location, DateTime start, DateTime end)
+        public static void insertAppointment(int appID, int custID, string title, string description, string location, string type, DateTime start, DateTime end)
         {
             //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqlcommand.executenonquery?view=dotnet-plat-ext-7.0
             //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
 
-            // string sqlDateTime = formatTime(dateTime); //is this needed??
+            // pass in appID
+            int userID = 1; //method later
+            string formattedStart = formatTime(start);
+            string formattedEnd = formatTime(end);
             startConnection();
             MySqlTransaction transaction = con.BeginTransaction();
-            // string createDate = formatTime(createTime);
-            string user = DB.getUsername();
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
+            string user = DB.getUsername();
 
             //query
-            //var query = "INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) "
-            //   + $"VALUES ('{id}', '{name}', '{addressID}', '{active}', '{formattedCurrentTime}', '{user}', '{user}')";
-            // MySqlCommand comm = new MySqlCommand(query, con);
-            //comm.Transaction = transaction;
-            //comm.ExecuteNonQuery();
+            var query = "INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) "
+               + $"VALUES ('{appID}', '{custID}', '{userID}', '{title}', '{description}', '{location}', 'null', '{type}', 'null', '{formattedStart}', '{formattedEnd}', '{formattedCurrentTime}', '{user}', '{formattedCurrentTime}', '{user}')";
+            MySqlCommand comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
             transaction.Commit();
             closeConnection();
 
         }
-    }
+        public static void UpdateAppointment(Dictionary<string, string> updatedAppDictionary, Dictionary<string, string> selectedAppDictionary)
+        {
+            string user = DB.getUsername();
+            DateTime currentTime = getCurrentTime();
+            var formattedCurrentTime = formatTime(currentTime);
+            
+            
+            DateTime start = Convert.ToDateTime(updatedAppDictionary["start"]);
+            string formattedStart = formatTime(start);
+            DateTime end = Convert.ToDateTime(updatedAppDictionary["end"]);
+            string formattedEnd = formatTime(end);
 
+
+            startConnection();
+
+            //query
+            MySqlTransaction transaction = con.BeginTransaction();
+            var query = $"UPDATE appointment" +
+                $" SET customerId = '{updatedAppDictionary["customerId"]}', title = '{updatedAppDictionary["title"]}', description = '{updatedAppDictionary["description"]}', location = '{updatedAppDictionary["location"]}', type = '{updatedAppDictionary["type"]}', start = '{formattedStart}', end = '{formattedEnd}', url = 'null', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" WHERE appointmentId = '{selectedAppDictionary["appointmentId"]}'";
+            MySqlCommand comm = new MySqlCommand(query, con);
+            comm.Transaction = transaction;
+            comm.ExecuteNonQuery();
+            transaction.Commit();
+            closeConnection();
+        }
+    }
         
 }
