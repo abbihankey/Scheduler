@@ -19,8 +19,8 @@ namespace Scheduler
             InitializeComponent();
             this.Dock = DockStyle.Fill;
             //var searchValue = 1;
-            populateAppointmentDGV();
-            populateTypeDGV();
+            //populateAppointmentDGV();
+            //populateTypeDGV();
 
 
         }
@@ -29,7 +29,7 @@ namespace Scheduler
             //populate data grid
             string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
             MySqlConnection con = new MySqlConnection(constr);
-            string sqlString = "SELECT type, start, end FROM Appointment";
+            string sqlString = "SELECT type, count(*) FROM Appointment";
             MySqlCommand cmd = new MySqlCommand(sqlString, con);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
@@ -103,6 +103,57 @@ namespace Scheduler
 
 
 
+        }
+
+        private void buttonSearchByMonth_Click(object sender, EventArgs e)
+        {
+            //dataGridViewType.Rows.Clear();
+            //string[] Months = new string[] { "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+            var searchValue = comboBoxMonth.SelectedItem;
+            
+
+            
+            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(constr);
+            string sqlString = $" SELECT type, count(*) FROM appointment WHERE monthname(start) = '{searchValue}' GROUP BY type";
+            MySqlCommand cmd = new MySqlCommand(sqlString, con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dataGridViewType.DataSource = dt;
+        }
+
+        private void buttonSearchCustSched_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.textBoxSearchCust.Text))
+            {
+                MessageBox.Show("Please enter an user ID.");
+                return;
+            }
+            if (!int.TryParse(this.textBoxSearchCust.Text, out int searchID))
+            {
+                MessageBox.Show("Please enter an user ID.");
+                return;
+            }
+            else
+            {
+                var searchValue = textBoxSearchCust.Text;
+                string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+                MySqlConnection con = new MySqlConnection(constr);
+                string sqlString = $" SELECT appointmentId, start, end, type FROM appointment WHERE customerId = '{searchValue}'";
+                MySqlCommand cmd = new MySqlCommand(sqlString, con);
+                MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adp.Fill(dt);
+                dataGridViewCustomerSchedules.DataSource = dt;
+
+            }
+            if (dataGridViewCustomerSchedules.Rows.Count == 0)
+            {
+                MessageBox.Show("There are 0 appointments associated with the user ID.");
+                return;
+            }
+            return;
         }
     }
 }
