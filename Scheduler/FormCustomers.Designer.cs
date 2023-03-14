@@ -30,8 +30,6 @@ namespace Scheduler
         private void InitializeComponent()
         {
             this.dataGridViewCustomers = new System.Windows.Forms.DataGridView();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonSearch = new System.Windows.Forms.Button();
             this.buttonInsert = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
@@ -62,27 +60,11 @@ namespace Scheduler
             // dataGridViewCustomers
             // 
             this.dataGridViewCustomers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewCustomers.Location = new System.Drawing.Point(22, 43);
+            this.dataGridViewCustomers.Location = new System.Drawing.Point(22, 12);
             this.dataGridViewCustomers.Name = "dataGridViewCustomers";
             this.dataGridViewCustomers.ReadOnly = true;
-            this.dataGridViewCustomers.Size = new System.Drawing.Size(902, 568);
+            this.dataGridViewCustomers.Size = new System.Drawing.Size(902, 599);
             this.dataGridViewCustomers.TabIndex = 0;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(22, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 20);
-            this.textBox1.TabIndex = 3;
-            // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(291, 14);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 4;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
             // 
             // buttonInsert
             // 
@@ -335,8 +317,6 @@ namespace Scheduler
             this.Controls.Add(this.buttonInsert);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridViewCustomers);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimizeBox = false;
@@ -348,13 +328,10 @@ namespace Scheduler
             this.panelCustomers.ResumeLayout(false);
             this.panelCustomers.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button buttonSearch;
         private System.Windows.Forms.Button buttonInsert;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonDelete;
