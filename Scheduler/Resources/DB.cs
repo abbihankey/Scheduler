@@ -444,6 +444,27 @@ namespace Scheduler.Resources
             transaction.Commit();
             closeConnection();
         }
+        public static bool isOverlaping(DateTime inputStart, DateTime inputEnd)
+        {
+            startConnection();
+            string formattedInputStart = formatTime(inputStart);
+            string formattedInputEnd = formatTime(inputEnd);
+            var query = $" SELECT COUNT(*) FROM appointment WHERE '{formattedInputStart}' <= end AND '{formattedInputEnd}' >= start";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+            closeConnection();
+            if (count > 0)
+            {
+                
+                return true;
+            }
+            else
+            {
+                
+                return false;
+            }
+            
+        }
     }
         
 }

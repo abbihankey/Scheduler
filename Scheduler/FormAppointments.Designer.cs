@@ -331,6 +331,8 @@ namespace Scheduler
             // dateTimePickerStart
             // 
             this.dateTimePickerStart.Location = new System.Drawing.Point(55, 452);
+            this.dateTimePickerStart.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerStart.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(350, 20);
             this.dateTimePickerStart.TabIndex = 27;

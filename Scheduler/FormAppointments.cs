@@ -69,25 +69,39 @@ namespace Scheduler
         {
             if (labelAppointmentDetails.Text == "Update")
             {
-                
-                
-                updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
-                updatedAppDictionary.Add("title", textBoxTitle.Text);
-                updatedAppDictionary.Add("description", textBoxDescription.Text);
-                updatedAppDictionary.Add("location", textBoxLocation.Text);
-                updatedAppDictionary.Add("type", textBoxType.Text);
-                updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
-                updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
+                DateTime inputStart = dateTimePickerStart.Value;
+                DateTime inputEnd = dateTimePickerEnd.Value;
+                bool overlap = DB.isOverlaping(inputStart, inputEnd);
+
+                if (overlap == true)
+                {
+                    MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
+                }
+                else
+                {
+                    updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
+                    updatedAppDictionary.Add("title", textBoxTitle.Text);
+                    updatedAppDictionary.Add("description", textBoxDescription.Text);
+                    updatedAppDictionary.Add("location", textBoxLocation.Text);
+                    updatedAppDictionary.Add("type", textBoxType.Text);
+                    updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
+                    updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
 
 
-                DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
-                panelAppointmentDetails.Visible = false;
-                populateAppointmentDGV(); 
+                    DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
+                    panelAppointmentDetails.Visible = false;
+                    populateAppointmentDGV();
+                }
+                
+                        
                 
             }
             else
             {
-                
+                DateTime inputStart = dateTimePickerStart.Value;
+                DateTime inputEnd = dateTimePickerEnd.Value;
+                bool overlap = DB.isOverlaping(inputStart, inputEnd);
+
                 int maxAppID = DB.selectMaxID("appointment", "appointmentId");
                 int newAppID = maxAppID + 1;
                 textBoxCustomerID.Text = newAppID.ToString();
@@ -96,27 +110,35 @@ namespace Scheduler
 
                 
                 bool notEmpty = DB.verifyInput(panelAppointmentDetails);
-                if (notEmpty == true)
+                if (overlap == true)
                 {
-                    
-                    int custID = Convert.ToInt32(textBoxCustomerID.Text);
-                    string title = textBoxTitle.Text;
-                    string description = textBoxDescription.Text;
-                    string location = textBoxLocation.Text;
-                    string type = textBoxType.Text;
-                    DateTime start = dateTimePickerStart.Value;
-                    DateTime end = dateTimePickerEnd.Value;
-
-
-
-                    DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                    MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
                 }
                 else
                 {
-                    MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                    if (notEmpty == true)
+                    {
+
+                        int custID = Convert.ToInt32(textBoxCustomerID.Text);
+                        string title = textBoxTitle.Text;
+                        string description = textBoxDescription.Text;
+                        string location = textBoxLocation.Text;
+                        string type = textBoxType.Text;
+                        DateTime start = dateTimePickerStart.Value;
+                        DateTime end = dateTimePickerEnd.Value;
+
+
+
+                        DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                    }
+                    panelAppointmentDetails.Visible = false;
+                    populateAppointmentDGV();
                 }
-                panelAppointmentDetails.Visible = false;
-                populateAppointmentDGV();
+                    
                 
             }
         }
