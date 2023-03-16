@@ -41,6 +41,8 @@ namespace Scheduler
             DataTable dt = new DataTable();
             adp.Fill(dt);
             dataGridViewCustomers.DataSource = dt;
+
+            
         }
  
         private void buttonAdd_Click(object sender, EventArgs e)

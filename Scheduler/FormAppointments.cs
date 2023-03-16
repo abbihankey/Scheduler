@@ -41,12 +41,21 @@ namespace Scheduler
             MySqlCommand cmd = new MySqlCommand(sqlString, con);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
+            
+
+            for (int index = 0; index < dt.Rows.Count; index++)
+            {
+                dt.Rows[index]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[index]["start"], TimeZoneInfo.Local).ToString();
+            }
+            for (int index = 0; index < dt.Rows.Count; index++)
+            {
+                dt.Rows[index]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[index]["end"], TimeZoneInfo.Local).ToString();
+            }
+
             adp.Fill(dt);
             dataGridViewAppointments.DataSource = dt;
 
-            //CONVERT FROM UTC TO LOCAL TIMES
 
-           
         }
         private void buttonAdd_Click(object sender, EventArgs e)
         {
