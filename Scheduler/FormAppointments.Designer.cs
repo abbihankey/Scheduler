@@ -49,14 +49,14 @@ namespace Scheduler
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewAppointments = new System.Windows.Forms.DataGridView();
             this.panelAppointmentDetails = new System.Windows.Forms.Panel();
-            this.label7 = new System.Windows.Forms.Label();
-            this.textBoxAppointmentID = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxLocation = new System.Windows.Forms.TextBox();
+            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
             this.label9 = new System.Windows.Forms.Label();
             this.textBoxType = new System.Windows.Forms.TextBox();
-            this.dateTimePickerStart = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxLocation = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxAppointmentID = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewAppointments)).BeginInit();
             this.panelAppointmentDetails.SuspendLayout();
             this.SuspendLayout();
@@ -237,9 +237,11 @@ namespace Scheduler
             // 
             this.dataGridViewAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewAppointments.Location = new System.Drawing.Point(11, 43);
+            this.dataGridViewAppointments.MultiSelect = false;
             this.dataGridViewAppointments.Name = "dataGridViewAppointments";
             this.dataGridViewAppointments.Size = new System.Drawing.Size(902, 568);
             this.dataGridViewAppointments.TabIndex = 21;
+            this.dataGridViewAppointments.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAppointments_CellFormatting);
             // 
             // panelAppointmentDetails
             // 
@@ -271,24 +273,39 @@ namespace Scheduler
             this.panelAppointmentDetails.Size = new System.Drawing.Size(458, 660);
             this.panelAppointmentDetails.TabIndex = 25;
             // 
-            // label7
+            // dateTimePickerEnd
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label7.Location = new System.Drawing.Point(51, 115);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(121, 20);
-            this.label7.TabIndex = 22;
-            this.label7.Text = "Appointment ID";
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(55, 498);
+            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
+            this.dateTimePickerEnd.Size = new System.Drawing.Size(350, 20);
+            this.dateTimePickerEnd.TabIndex = 28;
             // 
-            // textBoxAppointmentID
+            // dateTimePickerStart
             // 
-            this.textBoxAppointmentID.Location = new System.Drawing.Point(55, 137);
-            this.textBoxAppointmentID.Name = "textBoxAppointmentID";
-            this.textBoxAppointmentID.ReadOnly = true;
-            this.textBoxAppointmentID.Size = new System.Drawing.Size(350, 20);
-            this.textBoxAppointmentID.TabIndex = 21;
+            this.dateTimePickerStart.Location = new System.Drawing.Point(55, 452);
+            this.dateTimePickerStart.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
+            this.dateTimePickerStart.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
+            this.dateTimePickerStart.Name = "dateTimePickerStart";
+            this.dateTimePickerStart.Size = new System.Drawing.Size(350, 20);
+            this.dateTimePickerStart.TabIndex = 27;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label9.Location = new System.Drawing.Point(51, 384);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 20);
+            this.label9.TabIndex = 26;
+            this.label9.Text = "Type";
+            // 
+            // textBoxType
+            // 
+            this.textBoxType.Location = new System.Drawing.Point(55, 406);
+            this.textBoxType.Name = "textBoxType";
+            this.textBoxType.Size = new System.Drawing.Size(350, 20);
+            this.textBoxType.TabIndex = 25;
             // 
             // label8
             // 
@@ -310,39 +327,24 @@ namespace Scheduler
             this.textBoxLocation.TabIndex = 23;
             this.textBoxLocation.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // label9
+            // label7
             // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label9.Location = new System.Drawing.Point(51, 384);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(43, 20);
-            this.label9.TabIndex = 26;
-            this.label9.Text = "Type";
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.label7.Location = new System.Drawing.Point(51, 115);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 20);
+            this.label7.TabIndex = 22;
+            this.label7.Text = "Appointment ID";
             // 
-            // textBoxType
+            // textBoxAppointmentID
             // 
-            this.textBoxType.Location = new System.Drawing.Point(55, 406);
-            this.textBoxType.Name = "textBoxType";
-            this.textBoxType.Size = new System.Drawing.Size(350, 20);
-            this.textBoxType.TabIndex = 25;
-            // 
-            // dateTimePickerStart
-            // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(55, 452);
-            this.dateTimePickerStart.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
-            this.dateTimePickerStart.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
-            this.dateTimePickerStart.Name = "dateTimePickerStart";
-            this.dateTimePickerStart.Size = new System.Drawing.Size(350, 20);
-            this.dateTimePickerStart.TabIndex = 27;
-            // 
-            // dateTimePickerEnd
-            // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(55, 498);
-            this.dateTimePickerEnd.Name = "dateTimePickerEnd";
-            this.dateTimePickerEnd.Size = new System.Drawing.Size(350, 20);
-            this.dateTimePickerEnd.TabIndex = 28;
+            this.textBoxAppointmentID.Location = new System.Drawing.Point(55, 137);
+            this.textBoxAppointmentID.Name = "textBoxAppointmentID";
+            this.textBoxAppointmentID.ReadOnly = true;
+            this.textBoxAppointmentID.Size = new System.Drawing.Size(350, 20);
+            this.textBoxAppointmentID.TabIndex = 21;
             // 
             // FormAppointments
             // 

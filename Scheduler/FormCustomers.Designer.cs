@@ -34,6 +34,8 @@ namespace Scheduler
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.panelCustomers = new System.Windows.Forms.Panel();
+            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
             this.labelZipCode = new System.Windows.Forms.Label();
             this.textBoxZipCode = new System.Windows.Forms.TextBox();
             this.labelCustomerDetails = new System.Windows.Forms.Label();
@@ -51,8 +53,6 @@ namespace Scheduler
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonSubmit = new System.Windows.Forms.Button();
-            this.buttonCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCustomers)).BeginInit();
             this.panelCustomers.SuspendLayout();
             this.SuspendLayout();
@@ -65,6 +65,7 @@ namespace Scheduler
             this.dataGridViewCustomers.ReadOnly = true;
             this.dataGridViewCustomers.Size = new System.Drawing.Size(902, 599);
             this.dataGridViewCustomers.TabIndex = 0;
+            this.dataGridViewCustomers.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewCustomers_CellFormatting);
             // 
             // buttonInsert
             // 
@@ -123,6 +124,26 @@ namespace Scheduler
             this.panelCustomers.Name = "panelCustomers";
             this.panelCustomers.Size = new System.Drawing.Size(452, 660);
             this.panelCustomers.TabIndex = 49;
+            // 
+            // buttonSubmit
+            // 
+            this.buttonSubmit.Location = new System.Drawing.Point(241, 526);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
+            this.buttonSubmit.TabIndex = 62;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(327, 526);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 61;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // labelZipCode
             // 
@@ -285,26 +306,6 @@ namespace Scheduler
             this.label1.Size = new System.Drawing.Size(50, 19);
             this.label1.TabIndex = 49;
             this.label1.Text = "Name";
-            // 
-            // buttonSubmit
-            // 
-            this.buttonSubmit.Location = new System.Drawing.Point(241, 526);
-            this.buttonSubmit.Name = "buttonSubmit";
-            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
-            this.buttonSubmit.TabIndex = 62;
-            this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = true;
-            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
-            // 
-            // buttonCancel
-            // 
-            this.buttonCancel.Location = new System.Drawing.Point(327, 526);
-            this.buttonCancel.Name = "buttonCancel";
-            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
-            this.buttonCancel.TabIndex = 61;
-            this.buttonCancel.Text = "Cancel";
-            this.buttonCancel.UseVisualStyleBackColor = true;
-            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // FormCustomers
             // 

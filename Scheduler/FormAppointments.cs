@@ -41,19 +41,24 @@ namespace Scheduler
             MySqlCommand cmd = new MySqlCommand(sqlString, con);
             MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
             DataTable dt = new DataTable();
-            
+            adp.Fill(dt);
+            dataGridViewAppointments.DataSource = dt;
 
+            //not using, using cell formatting event handler instead
+            /*
             for (int index = 0; index < dt.Rows.Count; index++)
             {
                 dt.Rows[index]["start"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[index]["start"], TimeZoneInfo.Local).ToString();
             }
             for (int index = 0; index < dt.Rows.Count; index++)
             {
-                dt.Rows[index]["end"] = TimeZoneInfo.ConvertTimeFromUtc((DateTime)dt.Rows[index]["end"], TimeZoneInfo.Local).ToString();
-            }
 
-            adp.Fill(dt);
-            dataGridViewAppointments.DataSource = dt;
+                var end = dt.Rows[index]["end"];
+                // dt.Rows[index]["end"] = end.ToLocalTime();
+            }
+            */
+
+
 
 
         }
@@ -80,28 +85,36 @@ namespace Scheduler
             {
                 DateTime inputStart = dateTimePickerStart.Value;
                 DateTime inputEnd = dateTimePickerEnd.Value;
+                DB.checkBusinessHours(inputStart, inputEnd);
                 bool overlap = DB.isOverlaping(inputStart, inputEnd);
+                bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
 
-                if (overlap == true)
+                if (withinBusinessHours == true)
                 {
-                    MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
+                    if (overlap == true)
+                    {
+                        MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
+                    }
+                    else
+                    {
+                        updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
+                        updatedAppDictionary.Add("title", textBoxTitle.Text);
+                        updatedAppDictionary.Add("description", textBoxDescription.Text);
+                        updatedAppDictionary.Add("location", textBoxLocation.Text);
+                        updatedAppDictionary.Add("type", textBoxType.Text);
+                        updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
+                        updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
+
+
+                        DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
+                        panelAppointmentDetails.Visible = false;
+                        populateAppointmentDGV();
+                    }
                 }
                 else
                 {
-                    updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
-                    updatedAppDictionary.Add("title", textBoxTitle.Text);
-                    updatedAppDictionary.Add("description", textBoxDescription.Text);
-                    updatedAppDictionary.Add("location", textBoxLocation.Text);
-                    updatedAppDictionary.Add("type", textBoxType.Text);
-                    updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
-                    updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
-
-
-                    DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
-                    panelAppointmentDetails.Visible = false;
-                    populateAppointmentDGV();
+                    MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
                 }
-                
                         
                 
             }
@@ -110,42 +123,49 @@ namespace Scheduler
                 DateTime inputStart = dateTimePickerStart.Value;
                 DateTime inputEnd = dateTimePickerEnd.Value;
                 bool overlap = DB.isOverlaping(inputStart, inputEnd);
-
+                bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
                 int maxAppID = DB.selectMaxID("appointment", "appointmentId");
                 int newAppID = maxAppID + 1;
                 textBoxCustomerID.Text = newAppID.ToString();
                 var createTime = DB.getCurrentTime();
                 var username = DB.getUsername();
-
-                
                 bool notEmpty = DB.verifyInput(panelAppointmentDetails);
-                if (overlap == true)
+
+
+                if (withinBusinessHours == true)
                 {
-                    MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
-                }
-                else
-                {
-                    if (notEmpty == true)
+                    if (overlap == true)
                     {
-
-                        int custID = Convert.ToInt32(textBoxCustomerID.Text);
-                        string title = textBoxTitle.Text;
-                        string description = textBoxDescription.Text;
-                        string location = textBoxLocation.Text;
-                        string type = textBoxType.Text;
-                        DateTime start = dateTimePickerStart.Value;
-                        DateTime end = dateTimePickerEnd.Value;
-
-
-
-                        DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                        MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
                     }
                     else
                     {
-                        MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                        if (notEmpty == true)
+                        {
+
+                            int custID = Convert.ToInt32(textBoxCustomerID.Text);
+                            string title = textBoxTitle.Text;
+                            string description = textBoxDescription.Text;
+                            string location = textBoxLocation.Text;
+                            string type = textBoxType.Text;
+                            DateTime start = dateTimePickerStart.Value;
+                            DateTime end = dateTimePickerEnd.Value;
+
+
+
+                            DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                        }
+                        panelAppointmentDetails.Visible = false;
+                        populateAppointmentDGV();
                     }
-                    panelAppointmentDetails.Visible = false;
-                    populateAppointmentDGV();
+                }
+                else
+                {
+                    MessageBox.Show("The start / end dates you selected are outside of business hours (9 AM to 5 PM). Please make changes and try again.", "Error", MessageBoxButtons.OK);
                 }
                     
                 
@@ -228,6 +248,17 @@ namespace Scheduler
         private void label8_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridViewAppointments_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
+ 
+            }
         }
     }
 }

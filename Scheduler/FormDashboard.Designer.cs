@@ -53,6 +53,7 @@ namespace Scheduler
             this.dataGridViewUserAppointments.Name = "dataGridViewUserAppointments";
             this.dataGridViewUserAppointments.Size = new System.Drawing.Size(444, 231);
             this.dataGridViewUserAppointments.TabIndex = 0;
+            this.dataGridViewUserAppointments.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewUserAppointments_CellFormatting);
             // 
             // labelUpcomingApps
             // 
@@ -108,6 +109,7 @@ namespace Scheduler
             this.dataGridViewCustomerSchedules.Name = "dataGridViewCustomerSchedules";
             this.dataGridViewCustomerSchedules.Size = new System.Drawing.Size(444, 231);
             this.dataGridViewCustomerSchedules.TabIndex = 27;
+            this.dataGridViewCustomerSchedules.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewCustomerSchedules_CellFormatting);
             // 
             // label1
             // 
@@ -148,6 +150,7 @@ namespace Scheduler
             this.dataGridViewType.Name = "dataGridViewType";
             this.dataGridViewType.Size = new System.Drawing.Size(246, 231);
             this.dataGridViewType.TabIndex = 31;
+            this.dataGridViewType.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewType_CellFormatting);
             // 
             // comboBoxMonth
             // 

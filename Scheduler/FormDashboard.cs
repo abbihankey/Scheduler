@@ -155,5 +155,38 @@ namespace Scheduler
             }
             return;
         }
+
+        private void dataGridViewUserAppointments_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
+
+            }
+        }
+
+        private void dataGridViewType_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
+
+            }
+        }
+
+        private void dataGridViewCustomerSchedules_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
+
+            }
+        }
     }
 }

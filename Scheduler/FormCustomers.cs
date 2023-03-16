@@ -211,5 +211,17 @@ namespace Scheduler
             
 
         }
+
+        private void dataGridViewCustomers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
+
+            }
+        }
+    
     }
 }

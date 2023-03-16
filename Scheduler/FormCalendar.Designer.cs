@@ -47,6 +47,7 @@ namespace Scheduler
             this.dataGridViewCalendar.Name = "dataGridViewCalendar";
             this.dataGridViewCalendar.Size = new System.Drawing.Size(1228, 490);
             this.dataGridViewCalendar.TabIndex = 0;
+            this.dataGridViewCalendar.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewCalendar_CellFormatting);
             // 
             // radioButtonMonthly
             // 

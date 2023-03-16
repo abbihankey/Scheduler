@@ -465,6 +465,21 @@ namespace Scheduler.Resources
             }
             
         }
+        public static bool checkBusinessHours(DateTime start, DateTime end)
+        {
+            int startHour = start.Hour;
+            int endHour = end.Hour;
+            if (startHour >= 9 && startHour <= 17 && endHour >= 9 && endHour <= 17)
+            {
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
 
     }
         
