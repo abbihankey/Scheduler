@@ -38,8 +38,6 @@ namespace Scheduler
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBoxUserID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.textBoxDescription = new System.Windows.Forms.TextBox();
@@ -66,7 +64,7 @@ namespace Scheduler
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label5.Location = new System.Drawing.Point(51, 206);
+            this.label5.Location = new System.Drawing.Point(51, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(99, 20);
             this.label5.TabIndex = 20;
@@ -74,14 +72,14 @@ namespace Scheduler
             // 
             // textBoxCustomerID
             // 
-            this.textBoxCustomerID.Location = new System.Drawing.Point(55, 228);
+            this.textBoxCustomerID.Location = new System.Drawing.Point(55, 182);
             this.textBoxCustomerID.Name = "textBoxCustomerID";
             this.textBoxCustomerID.Size = new System.Drawing.Size(350, 20);
             this.textBoxCustomerID.TabIndex = 19;
             // 
             // buttonCancel
             // 
-            this.buttonCancel.Location = new System.Drawing.Point(330, 524);
+            this.buttonCancel.Location = new System.Drawing.Point(330, 478);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 17;
@@ -94,7 +92,7 @@ namespace Scheduler
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label6.Location = new System.Drawing.Point(51, 475);
+            this.label6.Location = new System.Drawing.Point(51, 429);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 20);
             this.label6.TabIndex = 16;
@@ -113,7 +111,7 @@ namespace Scheduler
             // 
             // buttonSave
             // 
-            this.buttonSave.Location = new System.Drawing.Point(249, 524);
+            this.buttonSave.Location = new System.Drawing.Point(249, 478);
             this.buttonSave.Name = "buttonSave";
             this.buttonSave.Size = new System.Drawing.Size(75, 23);
             this.buttonSave.TabIndex = 3;
@@ -126,7 +124,7 @@ namespace Scheduler
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label4.Location = new System.Drawing.Point(51, 429);
+            this.label4.Location = new System.Drawing.Point(51, 383);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 20);
             this.label4.TabIndex = 14;
@@ -137,7 +135,7 @@ namespace Scheduler
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Location = new System.Drawing.Point(51, 294);
+            this.label3.Location = new System.Drawing.Point(51, 248);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 13;
@@ -148,34 +146,15 @@ namespace Scheduler
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(51, 249);
+            this.label2.Location = new System.Drawing.Point(51, 203);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 20);
             this.label2.TabIndex = 12;
             this.label2.Text = "Title";
             // 
-            // textBoxUserID
-            // 
-            this.textBoxUserID.Location = new System.Drawing.Point(55, 182);
-            this.textBoxUserID.Name = "textBoxUserID";
-            this.textBoxUserID.ReadOnly = true;
-            this.textBoxUserID.Size = new System.Drawing.Size(350, 20);
-            this.textBoxUserID.TabIndex = 5;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label1.Location = new System.Drawing.Point(51, 160);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 20);
-            this.label1.TabIndex = 11;
-            this.label1.Text = "User ID";
-            // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(55, 271);
+            this.textBoxTitle.Location = new System.Drawing.Point(55, 225);
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(350, 20);
             this.textBoxTitle.TabIndex = 6;
@@ -192,7 +171,7 @@ namespace Scheduler
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(55, 316);
+            this.textBoxDescription.Location = new System.Drawing.Point(55, 270);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(350, 20);
             this.textBoxDescription.TabIndex = 7;
@@ -263,8 +242,6 @@ namespace Scheduler
             this.panelAppointmentDetails.Controls.Add(this.label4);
             this.panelAppointmentDetails.Controls.Add(this.label3);
             this.panelAppointmentDetails.Controls.Add(this.label2);
-            this.panelAppointmentDetails.Controls.Add(this.textBoxUserID);
-            this.panelAppointmentDetails.Controls.Add(this.label1);
             this.panelAppointmentDetails.Controls.Add(this.textBoxTitle);
             this.panelAppointmentDetails.Controls.Add(this.textBoxDescription);
             this.panelAppointmentDetails.Dock = System.Windows.Forms.DockStyle.Right;
@@ -275,14 +252,14 @@ namespace Scheduler
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(55, 498);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(55, 452);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(350, 20);
             this.dateTimePickerEnd.TabIndex = 28;
             // 
             // dateTimePickerStart
             // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(55, 452);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(55, 406);
             this.dateTimePickerStart.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
             this.dateTimePickerStart.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
@@ -294,7 +271,7 @@ namespace Scheduler
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label9.Location = new System.Drawing.Point(51, 384);
+            this.label9.Location = new System.Drawing.Point(51, 338);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 20);
             this.label9.TabIndex = 26;
@@ -302,7 +279,7 @@ namespace Scheduler
             // 
             // textBoxType
             // 
-            this.textBoxType.Location = new System.Drawing.Point(55, 406);
+            this.textBoxType.Location = new System.Drawing.Point(55, 360);
             this.textBoxType.Name = "textBoxType";
             this.textBoxType.Size = new System.Drawing.Size(350, 20);
             this.textBoxType.TabIndex = 25;
@@ -312,7 +289,7 @@ namespace Scheduler
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label8.Location = new System.Drawing.Point(51, 339);
+            this.label8.Location = new System.Drawing.Point(51, 293);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 20);
             this.label8.TabIndex = 24;
@@ -321,7 +298,7 @@ namespace Scheduler
             // 
             // textBoxLocation
             // 
-            this.textBoxLocation.Location = new System.Drawing.Point(55, 361);
+            this.textBoxLocation.Location = new System.Drawing.Point(55, 315);
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.Size = new System.Drawing.Size(350, 20);
             this.textBoxLocation.TabIndex = 23;
@@ -384,8 +361,6 @@ namespace Scheduler
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBoxUserID;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxTitle;
         private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.TextBox textBoxDescription;

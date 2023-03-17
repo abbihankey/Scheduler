@@ -25,8 +25,8 @@ namespace Scheduler
             populateAppointmentDGV();
             dateTimePickerEnd.Format = DateTimePickerFormat.Custom;
             dateTimePickerStart.Format = DateTimePickerFormat.Custom;
-            dateTimePickerEnd.CustomFormat = "MM/dd/yyyy hh:mm:ss";
-            dateTimePickerStart.CustomFormat = "MM/dd/yyyy hh:mm:ss";
+            dateTimePickerEnd.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            dateTimePickerStart.CustomFormat = "MM/dd/yyyy hh:mm tt";
 
 
 
@@ -70,106 +70,128 @@ namespace Scheduler
             textBoxDescription.Clear();
             textBoxAppointmentID.Clear();
             textBoxCustomerID.Clear();
-            textBoxUserID.Clear();
+            //textBoxUserID.Clear();
             textBoxTitle.Clear();
             textBoxDescription.Clear();
             textBoxLocation.Clear();
             textBoxType.Clear();
+            int maxAppID = DB.selectMaxID("appointment", "appointmentId");
+            int newAppID = maxAppID + 1;
+            textBoxAppointmentID.Text = newAppID.ToString();
 
 
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
-            if (labelAppointmentDetails.Text == "Update")
+            try
             {
-                DateTime inputStart = dateTimePickerStart.Value;
-                DateTime inputEnd = dateTimePickerEnd.Value;
-                DB.checkBusinessHours(inputStart, inputEnd);
-                bool overlap = DB.isOverlaping(inputStart, inputEnd);
-                bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
-
-                if (withinBusinessHours == true)
-                {
-                    if (overlap == true)
-                    {
-                        MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
-                    }
-                    else
-                    {
-                        updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
-                        updatedAppDictionary.Add("title", textBoxTitle.Text);
-                        updatedAppDictionary.Add("description", textBoxDescription.Text);
-                        updatedAppDictionary.Add("location", textBoxLocation.Text);
-                        updatedAppDictionary.Add("type", textBoxType.Text);
-                        updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
-                        updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
-
-
-                        DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
-                        panelAppointmentDetails.Visible = false;
-                        populateAppointmentDGV();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
-                }
-                        
-                
+                Convert.ToInt32(textBoxCustomerID.Text);
             }
-            else
+            catch (Exception)
             {
-                DateTime inputStart = dateTimePickerStart.Value;
-                DateTime inputEnd = dateTimePickerEnd.Value;
-                bool overlap = DB.isOverlaping(inputStart, inputEnd);
-                bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
-                int maxAppID = DB.selectMaxID("appointment", "appointmentId");
-                int newAppID = maxAppID + 1;
-                textBoxCustomerID.Text = newAppID.ToString();
-                var createTime = DB.getCurrentTime();
-                var username = DB.getUsername();
-                bool notEmpty = DB.verifyInput(panelAppointmentDetails);
-
-
-                if (withinBusinessHours == true)
+                MessageBox.Show("Customer ID must be a number.", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            var inputID = textBoxCustomerID.Text;
+            if (DB.isExistingCustomer(inputID) == true)
+            {
+                if (labelAppointmentDetails.Text == "Update")
                 {
-                    if (overlap == true)
+                    DateTime inputStart = dateTimePickerStart.Value;
+                    DateTime inputEnd = dateTimePickerEnd.Value;
+                    DB.checkBusinessHours(inputStart, inputEnd);
+                    bool overlap = DB.isOverlaping(inputStart, inputEnd);
+                    bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
+
+                    if (withinBusinessHours == true)
                     {
-                        MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
-                    }
-                    else
-                    {
-                        if (notEmpty == true)
+                        if (overlap == true)
                         {
-
-                            int custID = Convert.ToInt32(textBoxCustomerID.Text);
-                            string title = textBoxTitle.Text;
-                            string description = textBoxDescription.Text;
-                            string location = textBoxLocation.Text;
-                            string type = textBoxType.Text;
-                            DateTime start = dateTimePickerStart.Value;
-                            DateTime end = dateTimePickerEnd.Value;
-
-
-
-                            DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                            MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
                         }
                         else
                         {
-                            MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                            updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
+                            updatedAppDictionary.Add("title", textBoxTitle.Text);
+                            updatedAppDictionary.Add("description", textBoxDescription.Text);
+                            updatedAppDictionary.Add("location", textBoxLocation.Text);
+                            updatedAppDictionary.Add("type", textBoxType.Text);
+                            updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
+                            updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
+
+
+                            DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
+                            panelAppointmentDetails.Visible = false;
+                            populateAppointmentDGV();
                         }
-                        panelAppointmentDetails.Visible = false;
-                        populateAppointmentDGV();
                     }
+                    else
+                    {
+                        MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                    }
+
+
                 }
                 else
                 {
-                    MessageBox.Show("The start / end dates you selected are outside of business hours (9 AM to 5 PM). Please make changes and try again.", "Error", MessageBoxButtons.OK);
+                    DateTime inputStart = dateTimePickerStart.Value;
+                    DateTime inputEnd = dateTimePickerEnd.Value;
+                    bool overlap = DB.isOverlaping(inputStart, inputEnd);
+                    bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
+                    int maxAppID = DB.selectMaxID("appointment", "appointmentId");
+                    int newAppID = maxAppID + 1;
+                    textBoxCustomerID.Text = newAppID.ToString();
+                    var createTime = DB.getCurrentTime();
+                    var username = DB.getUsername();
+                    bool notEmpty = DB.verifyInput(panelAppointmentDetails);
+
+
+                    if (withinBusinessHours == true)
+                    {
+                        if (overlap == true)
+                        {
+                            MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
+                        }
+                        else
+                        {
+                            if (notEmpty == true)
+                            {
+
+                                int custID = Convert.ToInt32(textBoxCustomerID.Text);
+                                string title = textBoxTitle.Text;
+                                string description = textBoxDescription.Text;
+                                string location = textBoxLocation.Text;
+                                string type = textBoxType.Text;
+                                DateTime start = dateTimePickerStart.Value;
+                                DateTime end = dateTimePickerEnd.Value;
+
+
+
+                                DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Please input into all textboxes.", "Error", MessageBoxButtons.OK);
+                            }
+                            panelAppointmentDetails.Visible = false;
+                            populateAppointmentDGV();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The start / end dates you selected are outside of business hours (9 AM to 5 PM). Please make changes and try again.", "Error", MessageBoxButtons.OK);
+                    }
+
+
                 }
-                    
-                
             }
+            else
+            {
+                MessageBox.Show("Please use the ID of an existing customer or create a new one with the desired ID on the Customer tab.", "Error", MessageBoxButtons.OK);
+            }
+            
+            
         }
 
         private void buttonCancel_Click(object sender, EventArgs e)
@@ -222,7 +244,7 @@ namespace Scheduler
                 selectedAppDictionary = DB.getAppointmentDictionary(appointmentID);
                 textBoxAppointmentID.Text = appointmentID.ToString();
                 textBoxCustomerID.Text = selectedAppDictionary["customerId"];
-                textBoxUserID.Text = selectedAppDictionary["userId"];
+                // textBoxUserID.Text = selectedAppDictionary["userId"];
                 textBoxTitle.Text = selectedAppDictionary["title"];
                 textBoxDescription.Text = selectedAppDictionary["description"];
                 textBoxLocation.Text = selectedAppDictionary["location"];

@@ -480,6 +480,26 @@ namespace Scheduler.Resources
                 return false;
             }
         }
+        public static bool isExistingCustomer(string inputID)
+        {
+            startConnection();
+            
+            var query = $" SELECT COUNT(*) FROM customer WHERE '{inputID}' = customerId";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+            closeConnection();
+            if (count > 0)
+            {
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+
+        }
 
     }
         

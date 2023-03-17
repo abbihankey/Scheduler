@@ -32,15 +32,7 @@ namespace Scheduler
             }
         }
 
-        /* private int insertData()
-        {
-            using (MySqlConnection con = new MySqlConnection(constr))
-            {
-                int newid = -1;
-                DateTime tempDt = DateTime.Now;
-
-            }
-        } */
+        
         
         private void handleDay()
         {

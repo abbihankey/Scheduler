@@ -69,6 +69,9 @@ namespace Scheduler
             textBoxCity.Clear();
             textBoxCountry.Clear();
             textBoxZipCode.Clear();
+            int maxCustomerID = DB.selectMaxID("customer", "customerId");
+            int newCustomerID = maxCustomerID + 1;
+            textBoxCustomerID.Text = newCustomerID.ToString();
 
         }
 
@@ -150,7 +153,16 @@ namespace Scheduler
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                Convert.ToInt32(textBoxZipCode.Text);
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Please only input numbers for the zipcode field.", "Error", MessageBoxButtons.OK);
+                return;
+            }
+            
             if (labelCustomerDetails.Text == "Update")
             {
                 //if panel text is Update
