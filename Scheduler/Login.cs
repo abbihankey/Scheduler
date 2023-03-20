@@ -42,7 +42,7 @@ namespace Scheduler
         }
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         private void buttonSubmit_Click_1(object sender, EventArgs e)
@@ -52,8 +52,10 @@ namespace Scheduler
             {
                 var FormMainMenu = new FormMainMenu();
                 FormMainMenu.Show();
+                
+
                 var Login = new Login();
-                Login.Close();
+                //Login.Close();
                 //record success to text file
             }
             else
