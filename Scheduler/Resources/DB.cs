@@ -500,6 +500,25 @@ namespace Scheduler.Resources
             }
 
         }
+        public static bool successfulLogIn(string username, string password)
+        {
+            startConnection();
+
+            var query = $" SELECT COUNT(*) FROM user WHERE '{username}' = username AND '{password}' = password";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+            closeConnection();
+            if (count > 0)
+            {
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
 
     }
         
