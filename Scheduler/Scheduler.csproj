@@ -93,7 +93,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\DB.cs" />
-    <Compile Include="Resources\TextIO\recordLogin.cs" />
     <EmbeddedResource Include="FormInsertCustomer.resx">
       <DependentUpon>FormInsertCustomer.cs</DependentUpon>
     </EmbeddedResource>

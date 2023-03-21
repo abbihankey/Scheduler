@@ -7,6 +7,7 @@ using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -42,6 +43,8 @@ namespace Scheduler
             }
 
         }
+
+
         public FormMainMenu()
         {
 
@@ -60,6 +63,46 @@ namespace Scheduler
             newMDIChild.Show();
         }
 
+        public static void recordLogIn(string username, bool validInfo)
+        {
+            //https://learn.microsoft.com/en-us/dotnet/api/system.io.file.appendtext?view=net-8.0
+
+            string file = "LoginRecords.text";
+            
+            //string details = $"{username} logged in successfully at {currentTime}";
+            //File.AppendAllText(file, details);
+            
+            if (!File.Exists(file))
+            {
+                using (StreamWriter sw = File.CreateText(file))
+                {
+                    sw.WriteLine("New File Created");
+
+                }
+
+            }
+            if (validInfo == true)
+            {
+                DateTime currentTime = DB.getCurrentTime();
+                using (StreamWriter sw = File.AppendText(file))
+                {
+                    sw.WriteLine($"{username} logged in successfully at {currentTime}");
+                    MessageBox.Show("Successful login recorded.");
+
+                }
+            }
+            else
+            {   
+
+                DateTime currentTime = DB.getCurrentTime();
+                using (StreamWriter sw = File.AppendText(file))
+                {
+                    sw.WriteLine($"{username} failed to login at {currentTime}");
+                    MessageBox.Show("Failed login recorded.");
+                }
+            }
+
+        }
         private static void CloseAllForms()
         {
             List<Form> openForms = new List<Form>();
@@ -185,9 +228,10 @@ namespace Scheduler
                 
                 panelLogin.Enabled = false;
                 panelLogin.Visible = false;
+                string username = textBoxUsername.Text;
+                validInfo = true;
 
-                
-                
+                recordLogIn(username, validInfo);
                 //record success to text file
             }
             else
