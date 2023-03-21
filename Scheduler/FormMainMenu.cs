@@ -1,10 +1,12 @@
 ﻿using MySql.Data.MySqlClient;
+using Scheduler.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,7 +19,6 @@ using System.Windows.Forms;
 //<a href="https://www.flaticon.com/free-icons/profile" title="profile icons">Profile icons created by Freepik - Flaticon</a>
 //<a href="https://www.flaticon.com/free-icons/waiting" title="waiting icons">Waiting icons created by Freepik - Flaticon</a>
 //<a href="https://www.flaticon.com/free-icons/caution" title="caution icons">Caution icons created by Freepik - Flaticon</a>
-
 // https://learn.microsoft.com/en-us/dotnet/desktop/winforms/advanced/how-to-create-mdi-child-forms?view=netframeworkdesktop-4.8
 
 
@@ -27,10 +28,24 @@ namespace Scheduler
     
     public partial class FormMainMenu : Form
     {
+        private void changeLanguage(string name)
+        {
+            if (name == "es-ES")
+            {
+                labelPassword.Text = "Contraseña";
+                labelUsername.Text = "Nombre de usuario";
+                buttonSubmit.Text = "Enviar";
+                var Login = new Login();
+                Login.Text = "Iniciar sesión";
+
+
+            }
+
+        }
         public FormMainMenu()
         {
-            
 
+            changeLanguage(CultureInfo.CurrentCulture.Name);
             InitializeComponent();
             buttonDashboard.BackColor = Color.FromArgb(74, 74, 74);
             IsMdiContainer = true;
@@ -159,6 +174,59 @@ namespace Scheduler
             newMDIChild.StartPosition = FormStartPosition.Manual;
             newMDIChild.WindowState = FormWindowState.Maximized;
             //Close other child forms
+
+        }
+
+        private void buttonSubmit_Click(object sender, EventArgs e)
+        {
+            bool validInfo = DB.successfulLogIn(textBoxUsername.Text, textBoxPassword.Text);
+            if (validInfo == true)
+            {
+                
+                panelLogin.Enabled = false;
+                panelLogin.Visible = false;
+
+                
+                
+                //record success to text file
+            }
+            else
+            {
+                //record failure to text file
+                if (labelPassword.Text == "Contraseña")
+                {
+                    MessageBox.Show("Nombre de usuario o contraseña no válidos. Inténtalo de nuevo.");
+                    return;
+                }
+                else
+                {
+                    MessageBox.Show("Invalid username or password. Please try again.");
+                    return;
+                }
+            }
+        }
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelPassword_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxPassword_TextChanged(object sender, EventArgs e)
+        {
 
         }
     }

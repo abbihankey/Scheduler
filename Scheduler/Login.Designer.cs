@@ -30,32 +30,32 @@ namespace Scheduler
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
-            this.labelPassword = new System.Windows.Forms.Label();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.labelUsername = new System.Windows.Forms.Label();
-            this.textBoxPassword = new System.Windows.Forms.TextBox();
-            this.buttonSubmit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.buttonSubmit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // labelPassword
+            // pictureBox1
             // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelPassword.Location = new System.Drawing.Point(23, 171);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(78, 20);
-            this.labelPassword.TabIndex = 16;
-            this.labelPassword.Text = "Password";
+            this.pictureBox1.BackgroundImage = global::Scheduler.Properties.Resources.password;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.InitialImage = global::Scheduler.Properties.Resources.password;
+            this.pictureBox1.Location = new System.Drawing.Point(208, 40);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(67, 73);
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
             // 
-            // textBoxUsername
+            // textBoxPassword
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(107, 145);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(350, 20);
-            this.textBoxUsername.TabIndex = 13;
+            this.textBoxPassword.Location = new System.Drawing.Point(107, 171);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(350, 20);
+            this.textBoxPassword.TabIndex = 14;
             // 
             // labelUsername
             // 
@@ -68,12 +68,23 @@ namespace Scheduler
             this.labelUsername.TabIndex = 15;
             this.labelUsername.Text = "Username";
             // 
-            // textBoxPassword
+            // textBoxUsername
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(107, 171);
-            this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(350, 20);
-            this.textBoxPassword.TabIndex = 14;
+            this.textBoxUsername.Location = new System.Drawing.Point(107, 145);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(350, 20);
+            this.textBoxUsername.TabIndex = 13;
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelPassword.Location = new System.Drawing.Point(23, 171);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(78, 20);
+            this.labelPassword.TabIndex = 16;
+            this.labelPassword.Text = "Password";
             // 
             // buttonSubmit
             // 
@@ -84,17 +95,6 @@ namespace Scheduler
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click_1);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackgroundImage = global::Scheduler.Properties.Resources.password;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBox1.InitialImage = global::Scheduler.Properties.Resources.password;
-            this.pictureBox1.Location = new System.Drawing.Point(208, 40);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(67, 73);
-            this.pictureBox1.TabIndex = 18;
-            this.pictureBox1.TabStop = false;
             // 
             // Login
             // 
@@ -118,12 +118,11 @@ namespace Scheduler
         }
 
         #endregion
-
-        private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.TextBox textBoxUsername;
-        private System.Windows.Forms.Label labelUsername;
-        private System.Windows.Forms.TextBox textBoxPassword;
-        private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox textBoxPassword;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.Button buttonSubmit;
     }
 }

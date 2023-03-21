@@ -27,7 +27,7 @@ namespace Scheduler
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             DB.startConnection();
-            Application.Run(new Login());
+            Application.Run(new FormMainMenu());
             DB.closeConnection();
         }
     }

@@ -15,7 +15,9 @@ namespace Scheduler
     public partial class Login : Form
     {
         public Login()
-        {
+        {   
+            // THIS FORM IS NO LONGER USED
+            // IMPLEMENTED AS PANEL ON MAIN FORM
             //https://learn.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo?view=net-8.0
             //https://learn.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo.currentuiculture?view=net-7.0
             //https://learn.microsoft.com/en-us/dotnet/api/system.globalization.cultureinfo.lcid?view=net-8.0

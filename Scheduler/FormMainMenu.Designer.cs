@@ -40,9 +40,18 @@ namespace Scheduler
             this.labelTitle = new System.Windows.Forms.Label();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
+            this.panelLogin = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.buttonSubmit = new System.Windows.Forms.Button();
+            this.labelPassword = new System.Windows.Forms.Label();
+            this.textBoxUsername = new System.Windows.Forms.TextBox();
+            this.labelUsername = new System.Windows.Forms.Label();
+            this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.panelMenu.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panelLogin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -201,11 +210,89 @@ namespace Scheduler
             this.toolStripTextBox1.Name = "toolStripTextBox1";
             this.toolStripTextBox1.Size = new System.Drawing.Size(100, 23);
             // 
+            // panelLogin
+            // 
+            this.panelLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.panelLogin.Controls.Add(this.pictureBox1);
+            this.panelLogin.Controls.Add(this.buttonSubmit);
+            this.panelLogin.Controls.Add(this.labelPassword);
+            this.panelLogin.Controls.Add(this.textBoxUsername);
+            this.panelLogin.Controls.Add(this.labelUsername);
+            this.panelLogin.Controls.Add(this.textBoxPassword);
+            this.panelLogin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelLogin.Location = new System.Drawing.Point(152, 66);
+            this.panelLogin.Name = "panelLogin";
+            this.panelLogin.Size = new System.Drawing.Size(1170, 669);
+            this.panelLogin.TabIndex = 5;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::Scheduler.Properties.Resources.password;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBox1.InitialImage = global::Scheduler.Properties.Resources.password;
+            this.pictureBox1.Location = new System.Drawing.Point(472, 127);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(67, 73);
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            // 
+            // buttonSubmit
+            // 
+            this.buttonSubmit.Location = new System.Drawing.Point(646, 297);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
+            this.buttonSubmit.TabIndex = 23;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
+            // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelPassword.Location = new System.Drawing.Point(287, 258);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(78, 20);
+            this.labelPassword.TabIndex = 22;
+            this.labelPassword.Text = "Password";
+            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
+            // 
+            // textBoxUsername
+            // 
+            this.textBoxUsername.Location = new System.Drawing.Point(371, 232);
+            this.textBoxUsername.Name = "textBoxUsername";
+            this.textBoxUsername.Size = new System.Drawing.Size(350, 20);
+            this.textBoxUsername.TabIndex = 19;
+            this.textBoxUsername.TextChanged += new System.EventHandler(this.textBoxUsername_TextChanged);
+            // 
+            // labelUsername
+            // 
+            this.labelUsername.AutoSize = true;
+            this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelUsername.Location = new System.Drawing.Point(285, 230);
+            this.labelUsername.Name = "labelUsername";
+            this.labelUsername.Size = new System.Drawing.Size(83, 20);
+            this.labelUsername.TabIndex = 21;
+            this.labelUsername.Text = "Username";
+            this.labelUsername.Click += new System.EventHandler(this.labelUsername_Click);
+            // 
+            // textBoxPassword
+            // 
+            this.textBoxPassword.Location = new System.Drawing.Point(371, 258);
+            this.textBoxPassword.Name = "textBoxPassword";
+            this.textBoxPassword.Size = new System.Drawing.Size(350, 20);
+            this.textBoxPassword.TabIndex = 20;
+            this.textBoxPassword.TextChanged += new System.EventHandler(this.textBoxPassword_TextChanged);
+            // 
             // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1322, 735);
+            this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
             this.Controls.Add(this.menuStrip1);
@@ -218,6 +305,9 @@ namespace Scheduler
             this.panelTitleBar.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panelLogin.ResumeLayout(false);
+            this.panelLogin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,6 +325,13 @@ namespace Scheduler
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
+        private System.Windows.Forms.Panel panelLogin;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button buttonSubmit;
+        private System.Windows.Forms.Label labelPassword;
+        private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Label labelUsername;
+        private System.Windows.Forms.TextBox textBoxPassword;
     }
 }
 
