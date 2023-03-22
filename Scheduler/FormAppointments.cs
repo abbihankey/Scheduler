@@ -143,7 +143,7 @@ namespace Scheduler
                 {
                     
                     //FORMAT TO UTC
-                    DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                    DateTime start = dateTimePickerStart.CustomFormat);
                     DateTime UTCStart = start.ToUniversalTime();
 
                     DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);

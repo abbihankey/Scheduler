@@ -18,6 +18,7 @@ namespace Scheduler
     {
         public static Dictionary<string, string> selectedCustomerDictionary = new Dictionary<string, string>();
         public static Dictionary<string, string> updatedCustomerDictionary = new Dictionary<string, string>();
+        
         public FormCustomers()
         {
             
