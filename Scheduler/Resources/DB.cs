@@ -65,7 +65,7 @@ namespace Scheduler.Resources
                 return Convert.ToInt32(reader[0]);
             }
             return 0;
-            closeConnection();
+            
         }
         public static int selectUserID(string username)
         {
@@ -573,15 +573,14 @@ namespace Scheduler.Resources
             DateTime timePlus15Min = currentTime.AddMinutes(15);
             var formattedTimePlus15Min = formatTime(timePlus15Min);
             var formattedCurrentTime = formatTime(currentTime);
-
             int userID = selectUserID(username);
-
             var query = $" SELECT customerId, start FROM appointment WHERE '{userID}' = userId AND start BETWEEN '{formattedCurrentTime}' AND '{formattedTimePlus15Min}'";
+            
             startConnection();
             MySqlCommand comm = new MySqlCommand(query, con);
             MySqlDataReader reader = comm.ExecuteReader();
             reader.Read();
-
+            
 
             Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
 
@@ -597,7 +596,7 @@ namespace Scheduler.Resources
                 upcomingAppDictionary.Add("start", null);
                 reader.Close();
             }
-            
+
             return upcomingAppDictionary;
         }
 

@@ -117,7 +117,13 @@ namespace Scheduler
                             updatedAppDictionary.Add("description", textBoxDescription.Text);
                             updatedAppDictionary.Add("location", textBoxLocation.Text);
                             updatedAppDictionary.Add("type", textBoxType.Text);
-                            updatedAppDictionary.Add("start", dateTimePickerStart.CustomFormat);
+                            //FORMAT TO UTC
+                            DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                            DateTime UTCStart = start.ToUniversalTime();
+
+                            DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                            DateTime UTCEnd = end.ToUniversalTime();
+                            updatedAppDictionary.Add("start", UTCStart.T);
                             updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
 
 
@@ -135,10 +141,15 @@ namespace Scheduler
                 }
                 else
                 {
-                    DateTime inputStart = dateTimePickerStart.Value;
-                    DateTime inputEnd = dateTimePickerEnd.Value;
-                    bool overlap = DB.isOverlaping(inputStart, inputEnd);
-                    bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
+                    
+                    //FORMAT TO UTC
+                    DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                    DateTime UTCStart = start.ToUniversalTime();
+
+                    DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                    DateTime UTCEnd = end.ToUniversalTime();
+                    bool overlap = DB.isOverlaping(UTCStart, UTCEnd);
+                    bool withinBusinessHours = DB.checkBusinessHours(UTCStart, UTCEnd);
                     int maxAppID = DB.selectMaxID("appointment", "appointmentId");
                     int newAppID = maxAppID + 1;
                     textBoxAppointmentID.Text = newAppID.ToString();
@@ -163,12 +174,16 @@ namespace Scheduler
                                 string description = textBoxDescription.Text;
                                 string location = textBoxLocation.Text;
                                 string type = textBoxType.Text;
-                                DateTime start = dateTimePickerStart.Value;
-                                DateTime end = dateTimePickerEnd.Value;
+                                //FORMAT TO UTC
+                                DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                                DateTime UTCStart = start.ToUniversalTime();
+
+                                DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                                DateTime UTCEnd = end.ToUniversalTime();
+                                
 
 
-
-                                DB.insertAppointment(newAppID, custID, title, description, location, type, start, end);
+                                DB.insertAppointment(newAppID, custID, title, description, location, type, UTCStart, UTCEnd);
                             }
                             else
                             {
@@ -274,12 +289,20 @@ namespace Scheduler
 
         private void dataGridViewAppointments_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            if (e.Value is DateTime)
+            //SHOULD NOT INCLUDE START/END, ONLY CREATEDATE AND LASTUPDATE
+            if (e.ColumnIndex == 11 && e.Value is DateTime)
             {
                 var UTCdate = (DateTime)e.Value;
                 var localDate = UTCdate.ToLocalTime();
                 e.Value = localDate;
- 
+
+            }
+            if (e.ColumnIndex == 13 && e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
+
             }
         }
     }
