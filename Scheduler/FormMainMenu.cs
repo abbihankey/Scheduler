@@ -29,6 +29,7 @@ namespace Scheduler
     
     public partial class FormMainMenu : Form
     {
+        public static Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
         private void changeLanguage(string name)
         {
             if (name == "es-ES")
@@ -233,6 +234,20 @@ namespace Scheduler
 
                 recordLogIn(username, validInfo);
                 //record success to text file
+                //upcoming appointments
+                upcomingAppDictionary = DB.getUpcomingAppointments(username);
+                
+               
+                if (upcomingAppDictionary["customerId"] == null)
+                {
+                    MessageBox.Show("You have no appointments in the next 15 minutes.");
+                }
+                else
+                {
+                    var upcomingAppCustID = upcomingAppDictionary["customerId"];
+                    var upcomingAppStart = upcomingAppDictionary["start"];
+                    MessageBox.Show(string.Format("A meeting with Customer ID: {0} starting at {1}.", upcomingAppCustID, upcomingAppStart));
+                }
             }
             else
             {

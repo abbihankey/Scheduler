@@ -18,7 +18,7 @@ namespace Scheduler.Resources
         private static string username;
         public static string getUsername()
         {
-            return username = "Test";
+            return username = "test";
 
         }
 
@@ -65,6 +65,29 @@ namespace Scheduler.Resources
                 return Convert.ToInt32(reader[0]);
             }
             return 0;
+            closeConnection();
+        }
+        public static int selectUserID(string username)
+        {
+            //https://dev.mysql.com/doc/dev/connector-net/6.10/html/T_MySql_Data_MySqlClient_MySqlDataReader.html
+            //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-7.0
+
+            startConnection();
+            var query = $"SELECT userId FROM user WHERE '{username}' = username";
+            MySqlCommand comm = new MySqlCommand(query, con);
+            MySqlDataReader reader = comm.ExecuteReader();
+            closeConnection();
+            if (reader.HasRows)
+            {
+                reader.Read();
+                if (reader[0] == DBNull.Value)
+                {
+                    return 0;
+                }
+                return Convert.ToInt32(reader[0]);
+            }
+            return 0;
+            
         }
         public static void startConnection()
         {
@@ -372,7 +395,7 @@ namespace Scheduler.Resources
             appointmentDictionary.Add("end", reader[10].ToString());
             
             reader.Close();
-
+            closeConnection();
             
 
             return appointmentDictionary;
@@ -519,6 +542,65 @@ namespace Scheduler.Resources
                 return false;
             }
         }
+        public static bool findMeetings15Min(string username)
+        {
+            startConnection();
+            DateTime currentTime = getCurrentTime();
+            var formattedCurrentTime = formatTime(currentTime);
+
+            var query = $" SELECT COUNT(*) FROM appointment WHERE '{username}' = username AND '{formattedCurrentTime}' = start";
+            MySqlCommand cmd = new MySqlCommand(query, con);
+            Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
+            closeConnection();
+            if (count > 0)
+            {
+
+                return true;
+            }
+            else
+            {
+
+                return false;
+            }
+        }
+        static public Dictionary<string, string> getUpcomingAppointments(string username)
+        {
+            
+
+            
+            
+            DateTime currentTime = getCurrentTime();
+            DateTime timePlus15Min = currentTime.AddMinutes(15);
+            var formattedTimePlus15Min = formatTime(timePlus15Min);
+            var formattedCurrentTime = formatTime(currentTime);
+
+            int userID = selectUserID(username);
+
+            var query = $" SELECT customerId, start FROM appointment WHERE '{userID}' = userId AND start BETWEEN '{formattedCurrentTime}' AND '{formattedTimePlus15Min}'";
+            startConnection();
+            MySqlCommand comm = new MySqlCommand(query, con);
+            MySqlDataReader reader = comm.ExecuteReader();
+            reader.Read();
+
+
+            Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
+
+            if (reader.Read())
+            {
+                upcomingAppDictionary.Add("customerId", reader[1].ToString());
+                upcomingAppDictionary.Add("start", reader[2].ToString());
+                reader.Close();
+            }
+            else
+            {
+                upcomingAppDictionary.Add("customerId", null);
+                upcomingAppDictionary.Add("start", null);
+                reader.Close();
+            }
+            
+            return upcomingAppDictionary;
+        }
+
 
     }
         

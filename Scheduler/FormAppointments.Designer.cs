@@ -43,8 +43,6 @@ namespace Scheduler
             this.textBoxDescription = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridViewAppointments = new System.Windows.Forms.DataGridView();
             this.panelAppointmentDetails = new System.Windows.Forms.Panel();
             this.dateTimePickerEnd = new System.Windows.Forms.DateTimePicker();
@@ -196,29 +194,13 @@ namespace Scheduler
             this.buttonUpdate.UseVisualStyleBackColor = true;
             this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
-            // buttonSearch
-            // 
-            this.buttonSearch.Location = new System.Drawing.Point(280, 14);
-            this.buttonSearch.Name = "buttonSearch";
-            this.buttonSearch.Size = new System.Drawing.Size(75, 23);
-            this.buttonSearch.TabIndex = 24;
-            this.buttonSearch.Text = "Search";
-            this.buttonSearch.UseVisualStyleBackColor = true;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(11, 18);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(263, 20);
-            this.textBox1.TabIndex = 23;
-            // 
             // dataGridViewAppointments
             // 
             this.dataGridViewAppointments.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewAppointments.Location = new System.Drawing.Point(11, 43);
+            this.dataGridViewAppointments.Location = new System.Drawing.Point(11, 12);
             this.dataGridViewAppointments.MultiSelect = false;
             this.dataGridViewAppointments.Name = "dataGridViewAppointments";
-            this.dataGridViewAppointments.Size = new System.Drawing.Size(902, 568);
+            this.dataGridViewAppointments.Size = new System.Drawing.Size(902, 599);
             this.dataGridViewAppointments.TabIndex = 21;
             this.dataGridViewAppointments.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridViewAppointments_CellFormatting);
             // 
@@ -334,8 +316,6 @@ namespace Scheduler
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonUpdate);
-            this.Controls.Add(this.buttonSearch);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.dataGridViewAppointments);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
@@ -346,7 +326,6 @@ namespace Scheduler
             this.panelAppointmentDetails.ResumeLayout(false);
             this.panelAppointmentDetails.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -366,8 +345,6 @@ namespace Scheduler
         private System.Windows.Forms.TextBox textBoxDescription;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonUpdate;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.DataGridView dataGridViewAppointments;
         private System.Windows.Forms.Panel panelAppointmentDetails;
         private System.Windows.Forms.Label label7;

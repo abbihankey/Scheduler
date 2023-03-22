@@ -127,12 +127,12 @@ namespace Scheduler
         {
             if (string.IsNullOrEmpty(this.textBoxSearchCust.Text))
             {
-                MessageBox.Show("Please enter an user ID.");
+                MessageBox.Show("Please enter a customer ID.");
                 return;
             }
             if (!int.TryParse(this.textBoxSearchCust.Text, out int searchID))
             {
-                MessageBox.Show("Please enter an user ID.");
+                MessageBox.Show("Please enter a customer ID.");
                 return;
             }
             else
@@ -150,7 +150,7 @@ namespace Scheduler
             }
             if (dataGridViewCustomerSchedules.Rows.Count == 0)
             {
-                MessageBox.Show("There are 0 appointments associated with the user ID.");
+                MessageBox.Show("There are 0 appointments associated with the customer ID.");
                 return;
             }
             return;

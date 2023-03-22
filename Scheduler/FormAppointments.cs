@@ -141,7 +141,7 @@ namespace Scheduler
                     bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
                     int maxAppID = DB.selectMaxID("appointment", "appointmentId");
                     int newAppID = maxAppID + 1;
-                    textBoxCustomerID.Text = newAppID.ToString();
+                    textBoxAppointmentID.Text = newAppID.ToString();
                     var createTime = DB.getCurrentTime();
                     var username = DB.getUsername();
                     bool notEmpty = DB.verifyInput(panelAppointmentDetails);
