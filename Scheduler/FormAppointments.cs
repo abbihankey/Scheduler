@@ -98,11 +98,16 @@ namespace Scheduler
             {
                 if (labelAppointmentDetails.Text == "Update")
                 {
-                    DateTime inputStart = dateTimePickerStart.Value;
-                    DateTime inputEnd = dateTimePickerEnd.Value;
-                    DB.checkBusinessHours(inputStart, inputEnd);
-                    bool overlap = DB.isOverlaping(inputStart, inputEnd);
-                    bool withinBusinessHours = DB.checkBusinessHours(inputStart, inputEnd);
+                    //DateTime inputStart = dateTimePickerStart.Value;
+                    //DateTime inputEnd = dateTimePickerEnd.Value;
+                    DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                    DateTime UTCStart = start.ToUniversalTime();
+
+                    DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                    DateTime UTCEnd = end.ToUniversalTime();
+                    DB.checkBusinessHours(UTCStart, UTCEnd);
+                    bool overlap = DB.isOverlaping(UTCStart, UTCEnd);
+                    bool withinBusinessHours = DB.checkBusinessHours(UTCStart, UTCEnd);
 
                     if (withinBusinessHours == true)
                     {
@@ -117,14 +122,9 @@ namespace Scheduler
                             updatedAppDictionary.Add("description", textBoxDescription.Text);
                             updatedAppDictionary.Add("location", textBoxLocation.Text);
                             updatedAppDictionary.Add("type", textBoxType.Text);
-                            //FORMAT TO UTC
-                            DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
-                            DateTime UTCStart = start.ToUniversalTime();
-
-                            DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
-                            DateTime UTCEnd = end.ToUniversalTime();
-                            updatedAppDictionary.Add("start", UTCStart.T);
-                            updatedAppDictionary.Add("end", dateTimePickerEnd.CustomFormat);
+                            
+                            updatedAppDictionary.Add("start", UTCStart.ToString());
+                            updatedAppDictionary.Add("end", UTCEnd.ToString());
 
 
                             DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
@@ -174,12 +174,12 @@ namespace Scheduler
                                 string description = textBoxDescription.Text;
                                 string location = textBoxLocation.Text;
                                 string type = textBoxType.Text;
-                                //FORMAT TO UTC
-                                DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
-                                DateTime UTCStart = start.ToUniversalTime();
+                                ////FORMAT TO UTC
+                                //DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                                //DateTime UTCStart = start.ToUniversalTime();
 
-                                DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
-                                DateTime UTCEnd = end.ToUniversalTime();
+                                //DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                                //DateTime UTCEnd = end.ToUniversalTime();
                                 
 
 
@@ -289,21 +289,14 @@ namespace Scheduler
 
         private void dataGridViewAppointments_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
-            //SHOULD NOT INCLUDE START/END, ONLY CREATEDATE AND LASTUPDATE
-            if (e.ColumnIndex == 11 && e.Value is DateTime)
+            
+            if (e.Value is DateTime)
             {
                 var UTCdate = (DateTime)e.Value;
                 var localDate = UTCdate.ToLocalTime();
                 e.Value = localDate;
-
             }
-            if (e.ColumnIndex == 13 && e.Value is DateTime)
-            {
-                var UTCdate = (DateTime)e.Value;
-                var localDate = UTCdate.ToLocalTime();
-                e.Value = localDate;
-
-            }
+            
         }
     }
 }
