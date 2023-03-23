@@ -100,10 +100,10 @@ namespace Scheduler
                 {
                     //DateTime inputStart = dateTimePickerStart.Value;
                     //DateTime inputEnd = dateTimePickerEnd.Value;
-                    DateTime start = DateTime.Parse(dateTimePickerStart.CustomFormat);
+                    DateTime start = dateTimePickerStart.Value;
                     DateTime UTCStart = start.ToUniversalTime();
 
-                    DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                    DateTime end = dateTimePickerEnd.Value;
                     DateTime UTCEnd = end.ToUniversalTime();
                     DB.checkBusinessHours(UTCStart, UTCEnd);
                     bool overlap = DB.isOverlaping(UTCStart, UTCEnd);
@@ -143,10 +143,10 @@ namespace Scheduler
                 {
                     
                     //FORMAT TO UTC
-                    DateTime start = dateTimePickerStart.CustomFormat);
+                    DateTime start = dateTimePickerStart.Value;
                     DateTime UTCStart = start.ToUniversalTime();
 
-                    DateTime end = DateTime.Parse(dateTimePickerEnd.CustomFormat);
+                    DateTime end = dateTimePickerEnd.Value;
                     DateTime UTCEnd = end.ToUniversalTime();
                     bool overlap = DB.isOverlaping(UTCStart, UTCEnd);
                     bool withinBusinessHours = DB.checkBusinessHours(UTCStart, UTCEnd);

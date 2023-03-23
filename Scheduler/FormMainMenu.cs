@@ -235,18 +235,17 @@ namespace Scheduler
                 recordLogIn(username, validInfo);
                 //record success to text file
                 //upcoming appointments
-                upcomingAppDictionary = DB.getUpcomingAppointments(username);
-                
-               
-                if (upcomingAppDictionary["customerId"] == null)
+                bool within15 = DB.findMeetings15Min(username);
+                if (within15 == false)
                 {
                     MessageBox.Show("You have no appointments in the next 15 minutes.");
                 }
                 else
                 {
-                    var upcomingAppCustID = upcomingAppDictionary["customerId"];
-                    var upcomingAppStart = upcomingAppDictionary["start"];
-                    MessageBox.Show(string.Format("A meeting with Customer ID: {0} starting at {1}.", upcomingAppCustID, upcomingAppStart));
+                    //var upcomingAppCustID = upcomingAppDictionary["customerId"];
+                    //var upcomingAppStart = upcomingAppDictionary["start"];
+                    //MessageBox.Show(string.Format("A meeting with Customer ID: {0} starting at {1}.", upcomingAppCustID, upcomingAppStart));
+                    MessageBox.Show("Reminder: There is an appointmet occuring in the next 15 minutes.");
                 }
             }
             else

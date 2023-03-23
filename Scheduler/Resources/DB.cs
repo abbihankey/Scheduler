@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Data;
 
 namespace Scheduler.Resources
 {
@@ -547,8 +548,11 @@ namespace Scheduler.Resources
             startConnection();
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
+            DateTime timePlus15Min = currentTime.AddMinutes(15);
+            var formattedTimePlus15Min = formatTime(timePlus15Min);
+            
 
-            var query = $" SELECT COUNT(*) FROM appointment WHERE '{username}' = username AND '{formattedCurrentTime}' = start";
+            var query = $" SELECT COUNT(*) FROM appointment WHERE start BETWEEN CAST('" + formattedCurrentTime + "' AS datetime) AND CAST('" + formattedTimePlus15Min + "' AS datetime)";
             MySqlCommand cmd = new MySqlCommand(query, con);
             Int32 count = Convert.ToInt32(cmd.ExecuteScalar());
             closeConnection();
@@ -563,44 +567,70 @@ namespace Scheduler.Resources
                 return false;
             }
         }
-        static public Dictionary<string, string> getUpcomingAppointments(string username)
+        static public int checkUpcomingAppointments(string username)
         {
-            
-
-            
-            
+            //I cannot figure out why this isnt working, using other method
+            //https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqlcommand.parameters?view=sqlclient-dotnet-standard-5.1
             DateTime currentTime = getCurrentTime();
             DateTime timePlus15Min = currentTime.AddMinutes(15);
             var formattedTimePlus15Min = formatTime(timePlus15Min);
             var formattedCurrentTime = formatTime(currentTime);
             int userID = selectUserID(username);
-            var query = $" SELECT customerId, start FROM appointment WHERE '{userID}' = userId AND start BETWEEN '{formattedCurrentTime}' AND '{formattedTimePlus15Min}'";
-            
+            //I DONT THINK THE QUERY IS WORKING, TRYING PARAM
+            //var commandText = "SELECT customerId, start FROM appointment WHERE userId = @userId AND start BETWEEN @formattedCurrentTime AND @formattedTimePlus15Min;";
+
+            //MySqlCommand command = new MySqlCommand(commandText, con);
+            //command.Parameters.AddWithValue("@UserId", userID);
+            //command.Parameters["@userId"].Value = userID;
+            //command.Parameters.Add("@formattedCurrentTime", (MySqlDbType)SqlDbType.DateTime);
+            //command.Parameters["@formattedCurrentTime"].Value = formattedCurrentTime;
+            //command.Parameters.Add("@formattedTimePlus15Min", (MySqlDbType)SqlDbType.DateTime);
+            //command.Parameters["@formattedTimePlus15Min"].Value = formattedTimePlus15Min;
+
+
+            //startConnection();
+            //Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
+            //using (var query = new MySqlCommand("SELECT customerId FROM appointment WHERE userId = @userId AND start BETWEEN @formattedCurrentTime AND @formattedTimePlus15Min;", con))
+            //{
+
+            //   query.Parameters.AddWithValue("@userId", userID);
+            //   query.Parameters.AddWithValue("@formattedCurrentTime", formattedCurrentTime);
+            //   query.Parameters.AddWithValue("@formattedTimePlus15Min", formattedTimePlus15Min);
+
+            //   query.ExecuteScalar();
+            //   //MySqlDataReader reader = query.ExecuteReader();
+            //   //reader.Read();
+            //   //if (reader.Read())
+            //   // {
+            //   //     upcomingAppDictionary.Add("customerId", reader[0].ToString());
+            //   //     upcomingAppDictionary.Add("start", reader[1].ToString());
+            //   //     reader.Close();
+            //   //}
+            //   //else
+            //   //{
+            //   //     upcomingAppDictionary.Add("customerId", null);
+            //   //     upcomingAppDictionary.Add("start", null);
+            //   //     reader.Close();
+            //   //}
+            //}
+
             startConnection();
+            //$"SELECT customerId FROM appointment WHERE userId = '{userID}' AND start >= '{formattedCurrentTime}' AND start <= '{formattedTimePlus15Min}'";
+            var query = $"SELECT * FROM appointment WHERE start BETWEEN CAST('" + formattedCurrentTime + "' AS datetime) AND CAST('" + formattedTimePlus15Min + "' AS datetime);";
             MySqlCommand comm = new MySqlCommand(query, con);
             MySqlDataReader reader = comm.ExecuteReader();
-            reader.Read();
             
-
-            Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
-
-            if (reader.Read())
+            if (reader.HasRows)
             {
-                upcomingAppDictionary.Add("customerId", reader[1].ToString());
-                upcomingAppDictionary.Add("start", reader[2].ToString());
-                reader.Close();
+                reader.Read();
+                if (reader[0] == DBNull.Value)
+                {
+                    return 0;
+                }
+                return Convert.ToInt32(reader[0]);
             }
-            else
-            {
-                upcomingAppDictionary.Add("customerId", null);
-                upcomingAppDictionary.Add("start", null);
-                reader.Close();
-            }
-
-            return upcomingAppDictionary;
+            return 0;
+            
         }
-
-
-    }
-        
+    }  
 }
