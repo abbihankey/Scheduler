@@ -245,7 +245,7 @@ namespace Scheduler
                     //var upcomingAppCustID = upcomingAppDictionary["customerId"];
                     //var upcomingAppStart = upcomingAppDictionary["start"];
                     //MessageBox.Show(string.Format("A meeting with Customer ID: {0} starting at {1}.", upcomingAppCustID, upcomingAppStart));
-                    MessageBox.Show("Reminder: There is an appointmet occuring in the next 15 minutes.");
+                    MessageBox.Show("15 Minute Reminder: Appointment(s) occuring soon. You can view these meetings on your dashboard. ");
                 }
             }
             else

@@ -567,6 +567,7 @@ namespace Scheduler.Resources
                 return false;
             }
         }
+        
         static public int checkUpcomingAppointments(string username)
         {
             //I cannot figure out why this isnt working, using other method

@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Scheduler.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,7 @@ namespace Scheduler
         {
             InitializeComponent();
             this.Dock = DockStyle.Fill;
+            populate15MinReminderDGV();
             //var searchValue = 1;
             //populateAppointmentDGV();
             //populateTypeDGV();
@@ -55,6 +57,24 @@ namespace Scheduler
             //CONVERT FROM UTC TO LOCAL TIMES
 
 
+        }
+        public void populate15MinReminderDGV()
+        {
+
+
+            DateTime currentTime = DB.getCurrentTime();
+            var formattedCurrentTime = DB.formatTime(currentTime);
+            DateTime timePlus15Min = currentTime.AddMinutes(15);
+            var formattedTimePlus15Min = DB.formatTime(timePlus15Min);
+
+            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(constr);
+            string sqlString = $" SELECT * FROM appointment WHERE start BETWEEN CAST('" + formattedCurrentTime + "' AS datetime) AND CAST('" + formattedTimePlus15Min + "' AS datetime)";
+            MySqlCommand cmd = new MySqlCommand(sqlString, con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
+            dataGridView15Min.DataSource = dt;
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
@@ -186,6 +206,16 @@ namespace Scheduler
                 var localDate = UTCdate.ToLocalTime();
                 e.Value = localDate;
 
+            }
+        }
+
+        private void dataGridView15Min_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.Value is DateTime)
+            {
+                var UTCdate = (DateTime)e.Value;
+                var localDate = UTCdate.ToLocalTime();
+                e.Value = localDate;
             }
         }
     }
