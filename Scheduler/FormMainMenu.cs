@@ -78,7 +78,9 @@ namespace Scheduler
                 using (StreamWriter sw = File.CreateText(file))
                 {
                     sw.WriteLine("New File Created");
-
+                    sw.Flush();
+                    sw.Close();
+                    return;
                 }
 
             }
@@ -88,6 +90,9 @@ namespace Scheduler
                 using (StreamWriter sw = File.AppendText(file))
                 {
                     sw.WriteLine($"{username} logged in successfully at {currentTime}");
+                    sw.Flush();
+                    sw.Close();
+                    
                     MessageBox.Show("Successful login recorded.");
 
                 }
@@ -99,6 +104,7 @@ namespace Scheduler
                 using (StreamWriter sw = File.AppendText(file))
                 {
                     sw.WriteLine($"{username} failed to login at {currentTime}");
+                    sw.Close();
                     MessageBox.Show("Failed login recorded.");
                 }
             }
