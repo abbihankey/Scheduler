@@ -49,11 +49,11 @@ namespace Scheduler
             string endDate = currentDate.AddDays(7 - dow).ToString();
             getData("SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);");
             //convert to local time 
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                DateTime y = (DateTime)dt.Rows[i]["start"];
-                dt.Rows[i]["start"] = y.ToLocalTime();
-            }
+            //for (int i = 0; i < dt.Rows.Count; i++)
+            //{
+            //    DateTime y = (DateTime)dt.Rows[i]["start"];
+            //    dt.Rows[i]["start"] = y.ToLocalTime();
+            //}
      
             dataGridViewCalendar.DataSource = dt;
         }

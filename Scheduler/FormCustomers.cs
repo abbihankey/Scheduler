@@ -18,7 +18,15 @@ namespace Scheduler
     {
         public static Dictionary<string, string> selectedCustomerDictionary = new Dictionary<string, string>();
         public static Dictionary<string, string> updatedCustomerDictionary = new Dictionary<string, string>();
+        //statement lambda expression using action delegate
+        //creates a reusable function instead of using up multiple lines for messagebox statements each time a DB record is modified
+        Action<string> DBChange = changeType =>
+        {
+            string DBchange = $"Database change made, record {changeType}.";
+            MessageBox.Show(DBchange);
+        };
         
+
         public FormCustomers()
         {
             
@@ -130,6 +138,7 @@ namespace Scheduler
                     int selectedIndex = dataGridViewCustomers.SelectedRows[0].Index;
                     int rowID = int.Parse(dataGridViewCustomers[0, selectedIndex].Value.ToString());
                     DB.DeleteCustomer(rowID);
+                    DBChange("deleted");
                     //update dgv
                     populateCustomerDGV();
                 }
@@ -154,6 +163,7 @@ namespace Scheduler
 
         private void buttonSubmit_Click(object sender, EventArgs e)
         {
+            
             try
             {
                 Convert.ToInt32(textBoxZipCode.Text);
@@ -183,6 +193,7 @@ namespace Scheduler
                     updatedCustomerDictionary.Add("active", "0");
                 }
                 DB.UpdateCustomer(updatedCustomerDictionary, selectedCustomerDictionary);
+                DBChange("updated");
                 panelCustomers.Visible = false;
                 populateCustomerDGV();
             }
@@ -213,6 +224,7 @@ namespace Scheduler
                     int city = DB.insertCity(country, textBoxCity.Text);
                     int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
                     DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime, username);
+                    DBChange("inserted");
                 }
                 else
                 {

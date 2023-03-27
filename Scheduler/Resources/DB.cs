@@ -99,7 +99,7 @@ namespace Scheduler.Resources
                 con = new MySqlConnection(constr);
                 //open the connection
                 con.Open();
-                MessageBox.Show("Connection is open");
+                //MessageBox.Show("Connection is open");
             }
             catch (MySqlException ex)
             {
@@ -128,12 +128,6 @@ namespace Scheduler.Resources
             string sqlDateTime = dateValue.ToString("yy-MM-dd HH:mm");
             return sqlDateTime;
         }
-        public static DateTime currentTime()
-        {
-            DateTime currentTime = DateTime.Now.ToUniversalTime();
-            return currentTime;
-        }
-
 
         public static void insertCustomer(int id, string name, int addressID, int active, DateTime createTime, string username)
         {
@@ -493,7 +487,9 @@ namespace Scheduler.Resources
         {
             int startHour = start.Hour;
             int endHour = end.Hour;
-            if (startHour >= 9 && startHour <= 17 && endHour >= 9 && endHour <= 17)
+
+
+            if (startHour >= 9 && startHour <= 17 && endHour >= 9 && endHour <= 17) //lambda??
             {
 
                 return true;
