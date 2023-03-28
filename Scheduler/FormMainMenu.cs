@@ -30,6 +30,46 @@ namespace Scheduler
     public partial class FormMainMenu : Form
     {
         public static Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
+        //public static void writeLogin(string username, bool validInfo)
+        //{
+            
+        //    try
+        //    {
+        //        //FileStream inp = new FileStream(fileName, FileMode.Open, FileAccess.Write);
+        //        //fileWriter = new StreamWriter(inp);
+                
+        //        if (validInfo == true)
+        //        {
+        //            using (StreamWriter sw = new StreamWriter(@"C:\Users\LabUser\source\repos\abbihankey\Scheduler\Scheduler\Resources\TextIO\LoginRecords.txt"))
+        //            {
+        //                sw.AutoFlush = true;
+        //                DateTime currentTime = DB.getCurrentTime();
+        //                sw.WriteLine(String.Format($"{username} logged in successfully at {currentTime}"));
+        //                sw.Close();
+        //                MessageBox.Show("Successful login recorded.");
+        //                return;
+        //            }
+        //        }
+        //        else
+        //        {
+        //            using (StreamWriter sw = new StreamWriter(@"C:\Users\LabUser\source\repos\abbihankey\Scheduler\Scheduler\Resources\TextIO\LoginRecords.txt"))
+        //            {
+        //                sw.AutoFlush = true;
+        //                DateTime currentTime = DB.getCurrentTime();
+        //                sw.WriteLine(String.Format($"{username} failed to login at {currentTime}"));
+        //                sw.Close();
+        //                MessageBox.Show("Failed login recorded.");
+        //                return;
+        //            }
+        //        }
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        MessageBox.Show("An error has occured.");
+        //    }
+
+        //}
+
         private void changeLanguage(string name)
         {
             if (name == "es-ES")
@@ -62,46 +102,53 @@ namespace Scheduler
             newMDIChild.StartPosition = FormStartPosition.Manual;
             
             newMDIChild.Show();
+
+
+            
         }
 
-        public static void recordLogIn(string username, bool validInfo)
+        public static void recordLogin(string username, bool validInfo)
         {
             //https://learn.microsoft.com/en-us/dotnet/api/system.io.file.appendtext?view=net-8.0
 
-            string file = "LoginRecords.text";
-            
+            string file = "LoginRecords.txt";
+            var directory = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+            var filePath = Path.Combine(directory, file);
+
             //string details = $"{username} logged in successfully at {currentTime}";
             //File.AppendAllText(file, details);
-            
-            if (!File.Exists(file))
+
+            if (!File.Exists(filePath))
             {
-                using (StreamWriter sw = File.CreateText(file))
+                using (StreamWriter sw = File.CreateText(filePath))
                 {
                     sw.WriteLine("New File Created");
                     sw.Flush();
                     sw.Close();
-                    return;
+                    MessageBox.Show("Login Record file created in MyDocuments.");
+                    
                 }
 
             }
             if (validInfo == true)
             {
-                DateTime currentTime = DB.getCurrentTime();
-                using (StreamWriter sw = File.AppendText(file))
+                DateTime currentUTCTime = DB.getCurrentTime();
+                DateTime currentTime = currentUTCTime.ToLocalTime();
+                using (StreamWriter sw = File.AppendText(filePath))
                 {
                     sw.WriteLine($"{username} logged in successfully at {currentTime}");
                     sw.Flush();
                     sw.Close();
-                    
+
                     MessageBox.Show("Successful login recorded.");
 
                 }
             }
             else
-            {   
+            {
 
                 DateTime currentTime = DB.getCurrentTime();
-                using (StreamWriter sw = File.AppendText(file))
+                using (StreamWriter sw = File.AppendText(filePath))
                 {
                     sw.WriteLine($"{username} failed to login at {currentTime}");
                     sw.Close();
@@ -110,6 +157,7 @@ namespace Scheduler
             }
 
         }
+
         private static void CloseAllForms()
         {
             List<Form> openForms = new List<Form>();
@@ -238,7 +286,7 @@ namespace Scheduler
                 string username = textBoxUsername.Text;
                 validInfo = true;
 
-                recordLogIn(username, validInfo);
+                recordLogin(username, validInfo);
                 //record success to text file
                 //upcoming appointments
                 bool within15 = DB.findMeetings15Min(username);
