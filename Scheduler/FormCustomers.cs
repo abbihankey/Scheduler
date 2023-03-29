@@ -18,6 +18,7 @@ namespace Scheduler
     {
         public static Dictionary<string, string> selectedCustomerDictionary = new Dictionary<string, string>();
         public static Dictionary<string, string> updatedCustomerDictionary = new Dictionary<string, string>();
+        
         //statement lambda expression using action delegate
         //creates a reusable function instead of using up multiple lines for messagebox statements each time a DB record is modified
         Action<string> DBChange = changeType =>

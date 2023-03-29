@@ -164,8 +164,8 @@ namespace Scheduler
                         int maxAppID = DB.selectMaxID("appointment", "appointmentId");
                         int newAppID = maxAppID + 1;
                         textBoxAppointmentID.Text = newAppID.ToString();
-                        var createTime = DB.getCurrentTime();
-                        var username = DB.getUsername();
+                        //var createTime = DB.getCurrentTime();
+                        //var username = DB.getUsername();
                         bool notEmpty = DB.verifyInput(panelAppointmentDetails);
 
 

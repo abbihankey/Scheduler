@@ -30,45 +30,7 @@ namespace Scheduler
     public partial class FormMainMenu : Form
     {
         public static Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
-        //public static void writeLogin(string username, bool validInfo)
-        //{
-            
-        //    try
-        //    {
-        //        //FileStream inp = new FileStream(fileName, FileMode.Open, FileAccess.Write);
-        //        //fileWriter = new StreamWriter(inp);
-                
-        //        if (validInfo == true)
-        //        {
-        //            using (StreamWriter sw = new StreamWriter(@"C:\Users\LabUser\source\repos\abbihankey\Scheduler\Scheduler\Resources\TextIO\LoginRecords.txt"))
-        //            {
-        //                sw.AutoFlush = true;
-        //                DateTime currentTime = DB.getCurrentTime();
-        //                sw.WriteLine(String.Format($"{username} logged in successfully at {currentTime}"));
-        //                sw.Close();
-        //                MessageBox.Show("Successful login recorded.");
-        //                return;
-        //            }
-        //        }
-        //        else
-        //        {
-        //            using (StreamWriter sw = new StreamWriter(@"C:\Users\LabUser\source\repos\abbihankey\Scheduler\Scheduler\Resources\TextIO\LoginRecords.txt"))
-        //            {
-        //                sw.AutoFlush = true;
-        //                DateTime currentTime = DB.getCurrentTime();
-        //                sw.WriteLine(String.Format($"{username} failed to login at {currentTime}"));
-        //                sw.Close();
-        //                MessageBox.Show("Failed login recorded.");
-        //                return;
-        //            }
-        //        }
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        MessageBox.Show("An error has occured.");
-        //    }
 
-        //}
 
         private void changeLanguage(string name)
         {
@@ -296,9 +258,7 @@ namespace Scheduler
                 }
                 else
                 {
-                    //var upcomingAppCustID = upcomingAppDictionary["customerId"];
-                    //var upcomingAppStart = upcomingAppDictionary["start"];
-                    //MessageBox.Show(string.Format("A meeting with Customer ID: {0} starting at {1}.", upcomingAppCustID, upcomingAppStart));
+                    
                     MessageBox.Show("15 Minute Reminder: Appointment(s) occuring soon. You can view these meetings on your dashboard. ");
                 }
             }
