@@ -201,7 +201,7 @@ namespace Scheduler
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
-            this.ClientSize = new System.Drawing.Size(1169, 635);
+            this.ClientSize = new System.Drawing.Size(1169, 682);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView15Min);
             this.Controls.Add(this.comboBoxMonth);

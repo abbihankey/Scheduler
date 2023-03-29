@@ -264,7 +264,10 @@ namespace Scheduler
             }
             else
             {
+                validInfo = false;
                 //record failure to text file
+                string username = textBoxUsername.Text;
+                recordLogin(username, validInfo);
                 if (labelPassword.Text == "Contraseña")
                 {
                     MessageBox.Show("Nombre de usuario o contraseña no válidos. Inténtalo de nuevo.");

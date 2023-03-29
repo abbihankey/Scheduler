@@ -15,7 +15,8 @@ namespace Scheduler.Resources
 {
     public class DB
     {
-        
+        private static int userID;
+        private static string username;
         public static string getUsername()
         {
             return username = "test";
@@ -565,14 +566,51 @@ namespace Scheduler.Resources
         
         static public int checkUpcomingAppointments(string username)
         {
-            //I cannot figure out why this isnt working, using other method above
+            //I cannot figure out why this isnt working, using other method
             //https://learn.microsoft.com/en-us/dotnet/api/microsoft.data.sqlclient.sqlcommand.parameters?view=sqlclient-dotnet-standard-5.1
             DateTime currentTime = getCurrentTime();
             DateTime timePlus15Min = currentTime.AddMinutes(15);
             var formattedTimePlus15Min = formatTime(timePlus15Min);
             var formattedCurrentTime = formatTime(currentTime);
             int userID = selectUserID(username);
-            
+            //I DONT THINK THE QUERY IS WORKING, TRYING PARAM
+            //var commandText = "SELECT customerId, start FROM appointment WHERE userId = @userId AND start BETWEEN @formattedCurrentTime AND @formattedTimePlus15Min;";
+
+            //MySqlCommand command = new MySqlCommand(commandText, con);
+            //command.Parameters.AddWithValue("@UserId", userID);
+            //command.Parameters["@userId"].Value = userID;
+            //command.Parameters.Add("@formattedCurrentTime", (MySqlDbType)SqlDbType.DateTime);
+            //command.Parameters["@formattedCurrentTime"].Value = formattedCurrentTime;
+            //command.Parameters.Add("@formattedTimePlus15Min", (MySqlDbType)SqlDbType.DateTime);
+            //command.Parameters["@formattedTimePlus15Min"].Value = formattedTimePlus15Min;
+
+
+            //startConnection();
+            //Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
+            //using (var query = new MySqlCommand("SELECT customerId FROM appointment WHERE userId = @userId AND start BETWEEN @formattedCurrentTime AND @formattedTimePlus15Min;", con))
+            //{
+
+            //   query.Parameters.AddWithValue("@userId", userID);
+            //   query.Parameters.AddWithValue("@formattedCurrentTime", formattedCurrentTime);
+            //   query.Parameters.AddWithValue("@formattedTimePlus15Min", formattedTimePlus15Min);
+
+            //   query.ExecuteScalar();
+            //   //MySqlDataReader reader = query.ExecuteReader();
+            //   //reader.Read();
+            //   //if (reader.Read())
+            //   // {
+            //   //     upcomingAppDictionary.Add("customerId", reader[0].ToString());
+            //   //     upcomingAppDictionary.Add("start", reader[1].ToString());
+            //   //     reader.Close();
+            //   //}
+            //   //else
+            //   //{
+            //   //     upcomingAppDictionary.Add("customerId", null);
+            //   //     upcomingAppDictionary.Add("start", null);
+            //   //     reader.Close();
+            //   //}
+            //}
+
             startConnection();
             //$"SELECT customerId FROM appointment WHERE userId = '{userID}' AND start >= '{formattedCurrentTime}' AND start <= '{formattedTimePlus15Min}'";
             var query = $"SELECT * FROM appointment WHERE start BETWEEN CAST('" + formattedCurrentTime + "' AS datetime) AND CAST('" + formattedTimePlus15Min + "' AS datetime);";
