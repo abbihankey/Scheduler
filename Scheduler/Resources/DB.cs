@@ -336,8 +336,8 @@ namespace Scheduler.Resources
             //address dictionary
             customerDictionary.Add("address", reader[1].ToString());
             customerDictionary.Add("cityId", reader[3].ToString());
-            customerDictionary.Add("postalCode", reader[4].ToString());
-            customerDictionary.Add("phone", reader[5].ToString());
+            customerDictionary.Add("postalCode", reader[5].ToString());
+            customerDictionary.Add("phone", reader[4].ToString());
             reader.Close();
 
             //city query

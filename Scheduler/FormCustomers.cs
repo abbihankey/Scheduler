@@ -104,14 +104,17 @@ namespace Scheduler
                 textBoxCity.Text = selectedCustomerDictionary["city"];
                 textBoxCountry.Text = selectedCustomerDictionary["country"];
                 textBoxZipCode.Text = selectedCustomerDictionary["postalCode"];
+                 
                 if (selectedCustomerDictionary["active"] == "1")
                 {
                     comboBoxActive.SelectedText = "Yes";
+                    comboBoxActive.Text = "Yes";
                     return;
                 }
                 else
                 {
                     comboBoxActive.SelectedText = "No";
+                    comboBoxActive.Text = "No";
                     return;
                 }
 
