@@ -15,15 +15,27 @@ namespace Scheduler.Resources
 {
     public class DB
     {
-        private static int userID;
-        private static string username;
+        
+        
         public static string getUsername()
         {
-            return username = "test";
+            FormMainMenu formMainMenu = new FormMainMenu();
+            string user = FormMainMenu.textBoxUsername.Text;
+            return user;
+            
 
+        }
+        public static int getUserID()
+        {   
+            FormMainMenu formMainMenu = new FormMainMenu();
+            string user = formMainMenu.textBoxUsername.Text;
+            int userID = DB.selectUserID(user);
+            return userID;
         }
 
         public static MySqlConnection con { get; set; }
+
+        
 
         public static bool verifyInput(Panel panel) //https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.controls?view=windowsdesktop-7.0
         {
@@ -140,7 +152,11 @@ namespace Scheduler.Resources
             string createDate = formatTime(createTime);
 
 
-            string user = DB.getUsername();
+            
+            FormMainMenu formMainMenu = new FormMainMenu();
+            string user = formMainMenu.textBoxUsername.Text;
+            int userID = DB.getUserID();
+            
 
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
@@ -417,7 +433,7 @@ namespace Scheduler.Resources
             //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
 
             // pass in appID
-            int userID = 1; //method later
+            int userID = getUserID();
             string formattedStart = formatTime(start);
             string formattedEnd = formatTime(end);
             startConnection();
@@ -425,7 +441,7 @@ namespace Scheduler.Resources
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
             string user = DB.getUsername();
-
+            MessageBox.Show($"Current username is: '{user}'");
             //query
             var query = "INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) "
                + $"VALUES ('{appID}', '{custID}', '{userID}', '{title}', '{description}', '{location}', 'null', '{type}', 'null', '{formattedStart}', '{formattedEnd}', '{formattedCurrentTime}', '{user}', '{formattedCurrentTime}', '{user}')";

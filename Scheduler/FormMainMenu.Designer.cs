@@ -41,9 +41,9 @@ namespace Scheduler
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.panelLogin = new System.Windows.Forms.Panel();
+            this.labelPassword = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
-            this.labelPassword = new System.Windows.Forms.Label();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.labelUsername = new System.Windows.Forms.Label();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
@@ -225,6 +225,18 @@ namespace Scheduler
             this.panelLogin.Size = new System.Drawing.Size(1170, 669);
             this.panelLogin.TabIndex = 5;
             // 
+            // labelPassword
+            // 
+            this.labelPassword.AutoSize = true;
+            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.labelPassword.Location = new System.Drawing.Point(325, 246);
+            this.labelPassword.Name = "labelPassword";
+            this.labelPassword.Size = new System.Drawing.Size(78, 20);
+            this.labelPassword.TabIndex = 22;
+            this.labelPassword.Text = "Password";
+            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::Scheduler.Properties.Resources.password;
@@ -246,18 +258,6 @@ namespace Scheduler
             this.buttonSubmit.Text = "Submit";
             this.buttonSubmit.UseVisualStyleBackColor = true;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
-            // 
-            // labelPassword
-            // 
-            this.labelPassword.AutoSize = true;
-            this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelPassword.Location = new System.Drawing.Point(325, 246);
-            this.labelPassword.Name = "labelPassword";
-            this.labelPassword.Size = new System.Drawing.Size(78, 20);
-            this.labelPassword.TabIndex = 22;
-            this.labelPassword.Text = "Password";
-            this.labelPassword.Click += new System.EventHandler(this.labelPassword_Click);
             // 
             // textBoxUsername
             // 
@@ -325,13 +325,13 @@ namespace Scheduler
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
-        private System.Windows.Forms.Panel panelLogin;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.Label labelPassword;
-        private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Label labelUsername;
         private System.Windows.Forms.TextBox textBoxPassword;
+        public System.Windows.Forms.Panel panelLogin;
+        public System.Windows.Forms.TextBox textBoxUsername;
     }
 }
 

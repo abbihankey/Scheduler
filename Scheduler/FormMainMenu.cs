@@ -31,6 +31,7 @@ namespace Scheduler
     {
         public static Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
 
+        
 
         private void changeLanguage(string name)
         {

@@ -42,28 +42,50 @@ namespace Scheduler
         }
         private void handleWeek()
         {
-            dt.Clear();
-            int dow = (int)currentDate.DayOfWeek;
-            string startDate = currentDate.AddDays(-dow).ToString();
+            
+
+            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(constr);
+            //int dow = (int)currentDate.DayOfWeek;
+            //string startDate = currentDate.AddDays(-dow).ToString();
+            //DateTime startDate = Convert.ToDateTime(currentDate.ToString());
+            //DateTime formattedStartDate = Convert.ToDateTime(startDate);
+            //DateTime endDate = Convert.ToDateTime(currentDate.AddDays(7).ToString());
+            //DateTime formattedEndDate = Convert.ToDateTime(endDate);
+
+            //getData("SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);");
+
+            int mo = (int)currentDate.Month;
+            
+            int yr = (int)currentDate.Year;
+            int d = (int)currentDate.Day;
+            int endD = ((int)currentDate.Day) + 7;
+            string startDate = yr.ToString() + "-" + mo.ToString() + "-" + d.ToString();
             DateTime tempDate = Convert.ToDateTime(startDate);
-            string endDate = currentDate.AddDays(7 - dow).ToString();
-            getData("SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);");
-            //convert to local time 
-            //for (int i = 0; i < dt.Rows.Count; i++)
-            //{
-            //    DateTime y = (DateTime)dt.Rows[i]["start"];
-            //    dt.Rows[i]["start"] = y.ToLocalTime();
-            //}
-     
+            
+            string endDate = yr.ToString() + "/" + mo.ToString() + "/" + endD.ToString();
+
+            string sqlString = "SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);";
+            //string sqlString = $"SELECT * FROM Appointment WHERE start BETWEEN '{formattedStartDate}' = start AND '{formattedEndDate}' = end";
+            MySqlCommand cmd = new MySqlCommand(sqlString, con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
             dataGridViewCalendar.DataSource = dt;
+            con.Close();
+
+
         }
         private void handleMonth()
         {
-            dt.Clear();
+            
+            string constr = ConfigurationManager.ConnectionStrings["localdb"].ConnectionString;
+            MySqlConnection con = new MySqlConnection(constr);
+
             int mo = (int)currentDate.Month;
             int yr = (int)currentDate.Year;
             int d = 0;
-            string startDate = mo.ToString() + "/01/" + yr.ToString();
+            string startDate = yr.ToString() + "-" + mo.ToString() + "-01";
             DateTime tempDate = Convert.ToDateTime(startDate);
             switch (mo)
             {
@@ -85,9 +107,21 @@ namespace Scheduler
                     d = 29;
                     break;
             }
-            string endDate = mo.ToString() + "/" + d.ToString() + "/" + yr.ToString();
-            getData("SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);");
+            string endDate = yr.ToString() + "/" + mo.ToString() + "/" + d.ToString();
+
+            string sqlString = "SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);"; 
+            MySqlCommand cmd = new MySqlCommand(sqlString, con);
+            MySqlDataAdapter adp = new MySqlDataAdapter(cmd);
+            DataTable dt = new DataTable();
+            adp.Fill(dt);
             dataGridViewCalendar.DataSource = dt;
+            con.Close();
+            //dt.Clear();
+
+            //getData("SELECT * FROM Appointment WHERE start BETWEEN CAST('" + startDate + "' AS datetime) AND CAST('" + endDate + "' AS datetime);");
+            //dataGridViewCalendar.DataSource = dt;
+
+
         }
         public FormCalendar()
         {
@@ -112,16 +146,19 @@ namespace Scheduler
 
         private void radioButtonWeekly_CheckedChanged(object sender, EventArgs e)
         {
+            dt.Clear();
             handleWeek();
         }
 
         private void radioButtonMonthly_CheckedChanged(object sender, EventArgs e)
         {
+            dt.Clear();
             handleMonth();
         }
 
         private void radioButtonDaily_CheckedChanged(object sender, EventArgs e)
         {
+            dt.Clear();
             handleDay();
         }
 

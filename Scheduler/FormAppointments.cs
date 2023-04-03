@@ -12,12 +12,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Scheduler
-{   
+{
 
     public partial class FormAppointments : Form
     {
+        
+
         public static Dictionary<string, string> selectedAppDictionary = new Dictionary<string, string>();
         public static Dictionary<string, string> updatedAppDictionary = new Dictionary<string, string>();
+
+        
+        
+
         public FormAppointments()
         {
             InitializeComponent();
@@ -27,6 +33,11 @@ namespace Scheduler
             dateTimePickerStart.Format = DateTimePickerFormat.Custom;
             dateTimePickerEnd.CustomFormat = "MM/dd/yyyy hh:mm tt";
             dateTimePickerStart.CustomFormat = "MM/dd/yyyy hh:mm tt";
+            //string username = new FormMainMenu.Get_LoginUsername();
+
+            FormMainMenu formMainMenu = new FormMainMenu();
+            string username = formMainMenu.textBoxUsername.Text;
+            int userID = DB.selectUserID(username);
 
 
 
@@ -165,9 +176,9 @@ namespace Scheduler
                         int newAppID = maxAppID + 1;
                         textBoxAppointmentID.Text = newAppID.ToString();
                         var createTime = DB.getCurrentTime();
-                        var username = DB.getUsername();
+                        //var username = DB.getUsername();
                         bool notEmpty = DB.verifyInput(panelAppointmentDetails);
-
+                        
 
                         if (withinBusinessHours == true)
                         {

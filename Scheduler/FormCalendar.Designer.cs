@@ -33,7 +33,6 @@ namespace Scheduler
             this.radioButtonMonthly = new System.Windows.Forms.RadioButton();
             this.radioButtonWeekly = new System.Windows.Forms.RadioButton();
             this.radioButtonAll = new System.Windows.Forms.RadioButton();
-            this.radioButtonDaily = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewCalendar)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,7 +53,7 @@ namespace Scheduler
             this.radioButtonMonthly.AutoSize = true;
             this.radioButtonMonthly.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonMonthly.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioButtonMonthly.Location = new System.Drawing.Point(165, 12);
+            this.radioButtonMonthly.Location = new System.Drawing.Point(114, 12);
             this.radioButtonMonthly.Name = "radioButtonMonthly";
             this.radioButtonMonthly.Size = new System.Drawing.Size(59, 19);
             this.radioButtonMonthly.TabIndex = 3;
@@ -68,7 +67,7 @@ namespace Scheduler
             this.radioButtonWeekly.AutoSize = true;
             this.radioButtonWeekly.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.radioButtonWeekly.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioButtonWeekly.Location = new System.Drawing.Point(107, 12);
+            this.radioButtonWeekly.Location = new System.Drawing.Point(56, 12);
             this.radioButtonWeekly.Name = "radioButtonWeekly";
             this.radioButtonWeekly.Size = new System.Drawing.Size(52, 19);
             this.radioButtonWeekly.TabIndex = 4;
@@ -91,27 +90,12 @@ namespace Scheduler
             this.radioButtonAll.UseVisualStyleBackColor = true;
             this.radioButtonAll.CheckedChanged += new System.EventHandler(this.radioButtonAll_CheckedChanged);
             // 
-            // radioButtonDaily
-            // 
-            this.radioButtonDaily.AutoSize = true;
-            this.radioButtonDaily.Font = new System.Drawing.Font("Lucida Sans Unicode", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.radioButtonDaily.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.radioButtonDaily.Location = new System.Drawing.Point(56, 12);
-            this.radioButtonDaily.Name = "radioButtonDaily";
-            this.radioButtonDaily.Size = new System.Drawing.Size(45, 19);
-            this.radioButtonDaily.TabIndex = 6;
-            this.radioButtonDaily.TabStop = true;
-            this.radioButtonDaily.Text = "Day";
-            this.radioButtonDaily.UseVisualStyleBackColor = true;
-            this.radioButtonDaily.CheckedChanged += new System.EventHandler(this.radioButtonDaily_CheckedChanged);
-            // 
             // FormCalendar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
             this.ClientSize = new System.Drawing.Size(1252, 534);
-            this.Controls.Add(this.radioButtonDaily);
             this.Controls.Add(this.radioButtonAll);
             this.Controls.Add(this.radioButtonWeekly);
             this.Controls.Add(this.radioButtonMonthly);
@@ -131,6 +115,5 @@ namespace Scheduler
         private System.Windows.Forms.RadioButton radioButtonMonthly;
         private System.Windows.Forms.RadioButton radioButtonWeekly;
         private System.Windows.Forms.RadioButton radioButtonAll;
-        private System.Windows.Forms.RadioButton radioButtonDaily;
     }
 }

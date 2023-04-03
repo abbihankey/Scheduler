@@ -26,6 +26,7 @@ namespace Scheduler
 
 
         }
+        
         public void populateTypeDGV()
         {
             //populate data grid
