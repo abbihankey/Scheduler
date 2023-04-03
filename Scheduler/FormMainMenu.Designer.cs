@@ -213,9 +213,9 @@ namespace Scheduler
             // panelLogin
             // 
             this.panelLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.panelLogin.Controls.Add(this.labelPassword);
             this.panelLogin.Controls.Add(this.pictureBox1);
             this.panelLogin.Controls.Add(this.buttonSubmit);
-            this.panelLogin.Controls.Add(this.labelPassword);
             this.panelLogin.Controls.Add(this.textBoxUsername);
             this.panelLogin.Controls.Add(this.labelUsername);
             this.panelLogin.Controls.Add(this.textBoxPassword);
@@ -239,7 +239,7 @@ namespace Scheduler
             // 
             // buttonSubmit
             // 
-            this.buttonSubmit.Location = new System.Drawing.Point(646, 297);
+            this.buttonSubmit.Location = new System.Drawing.Point(604, 295);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(75, 23);
             this.buttonSubmit.TabIndex = 23;
@@ -252,7 +252,7 @@ namespace Scheduler
             this.labelPassword.AutoSize = true;
             this.labelPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelPassword.Location = new System.Drawing.Point(287, 258);
+            this.labelPassword.Location = new System.Drawing.Point(325, 246);
             this.labelPassword.Name = "labelPassword";
             this.labelPassword.Size = new System.Drawing.Size(78, 20);
             this.labelPassword.TabIndex = 22;
@@ -261,7 +261,7 @@ namespace Scheduler
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(371, 232);
+            this.textBoxUsername.Location = new System.Drawing.Point(329, 223);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(350, 20);
             this.textBoxUsername.TabIndex = 19;
@@ -272,7 +272,7 @@ namespace Scheduler
             this.labelUsername.AutoSize = true;
             this.labelUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUsername.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.labelUsername.Location = new System.Drawing.Point(285, 230);
+            this.labelUsername.Location = new System.Drawing.Point(325, 200);
             this.labelUsername.Name = "labelUsername";
             this.labelUsername.Size = new System.Drawing.Size(83, 20);
             this.labelUsername.TabIndex = 21;
@@ -281,7 +281,7 @@ namespace Scheduler
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Location = new System.Drawing.Point(371, 258);
+            this.textBoxPassword.Location = new System.Drawing.Point(329, 269);
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.Size = new System.Drawing.Size(350, 20);
             this.textBoxPassword.TabIndex = 20;

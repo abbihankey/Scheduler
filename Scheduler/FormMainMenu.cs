@@ -36,11 +36,27 @@ namespace Scheduler
         {
             if (name == "es-ES")
             {
+                //Label labelPassword = new Label
+                //{
+                //    Text = "Contraseña"
+                //};
                 labelPassword.Text = "Contraseña";
+                //Label labelUsername = new Label
+                //{
+                //    Text = "Nombre de usuario"
+                //};
+                //labelUsername = new Label();
                 labelUsername.Text = "Nombre de usuario";
+                //Button buttonSubmit = new Button
+                //{
+                //    Text = "Enviar"
+                //};
                 buttonSubmit.Text = "Enviar";
-                var Login = new Login();
-                Login.Text = "Iniciar sesión";
+                //var Login = new Login();
+                //Login.Text = "Iniciar sesión";
+                //labelPassword.Hide();
+                //labelSpanishPassword.Visible = true;
+
 
 
             }
@@ -51,8 +67,9 @@ namespace Scheduler
         public FormMainMenu()
         {
 
-            changeLanguage(CultureInfo.CurrentCulture.Name);
+            //changeLanguage(CultureInfo.CurrentUICulture.Name);
             InitializeComponent();
+            changeLanguage(CultureInfo.CurrentUICulture.Name);
             buttonDashboard.BackColor = Color.FromArgb(74, 74, 74);
             IsMdiContainer = true;
             
