@@ -126,31 +126,27 @@ namespace Scheduler
                     if (labelAppointmentDetails.Text == "Update")
                     {
                         DB.checkBusinessHours(UTCStart, UTCEnd);
-                        bool overlap = DB.isOverlaping(UTCStart, UTCEnd);
+                        
                         bool withinBusinessHours = DB.checkBusinessHours(UTCStart, UTCEnd);
 
                         if (withinBusinessHours == true)
                         {
-                            if (overlap == true)
-                            {
-                                MessageBox.Show("The start/end dates you selected overlap currently scheduled appointments. Please make changes and try again.");
-                            }
-                            else
-                            {
-                                updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
-                                updatedAppDictionary.Add("title", textBoxTitle.Text);
-                                updatedAppDictionary.Add("description", textBoxDescription.Text);
-                                updatedAppDictionary.Add("location", textBoxLocation.Text);
-                                updatedAppDictionary.Add("type", textBoxType.Text);
+                            
+                            
+                           updatedAppDictionary.Add("customerId", textBoxCustomerID.Text);
+                           updatedAppDictionary.Add("title", textBoxTitle.Text);
+                           updatedAppDictionary.Add("description", textBoxDescription.Text);
+                           updatedAppDictionary.Add("location", textBoxLocation.Text);
+                           updatedAppDictionary.Add("type", textBoxType.Text);
 
-                                updatedAppDictionary.Add("start", UTCStart.ToString());
-                                updatedAppDictionary.Add("end", UTCEnd.ToString());
+                           updatedAppDictionary.Add("start", UTCStart.ToString());
+                           updatedAppDictionary.Add("end", UTCEnd.ToString());
 
 
-                                DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
-                                panelAppointmentDetails.Visible = false;
-                                populateAppointmentDGV();
-                            }
+                           DB.UpdateAppointment(updatedAppDictionary, selectedAppDictionary);
+                           panelAppointmentDetails.Visible = false;
+                           populateAppointmentDGV();
+                            
                         }
                         else
                         {

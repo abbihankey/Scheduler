@@ -59,11 +59,27 @@ namespace Scheduler.Resources
                 reader.Read();
                 if (reader[0] == DBNull.Value)
                 {
+                    reader.Close();
+                    //closeConnection();
                     return 0;
                 }
-                return Convert.ToInt32(reader[0]);
+                else
+                {
+                    
+                    var maxId = Convert.ToInt32(reader[0]);
+                    reader.Close();
+                    //closeConnection();
+                    return maxId;
+                }
+                
             }
-            return 0;
+            else
+            {
+                reader.Close();
+                //closeConnection();
+                return 0;
+            }
+            
             
         }
         public static int selectUserID(string username)
@@ -81,11 +97,27 @@ namespace Scheduler.Resources
                 reader.Read();
                 if (reader[0] == DBNull.Value)
                 {
+                    reader.Close();
+                    //closeConnection();
                     return 0;
                 }
-                return Convert.ToInt32(reader[0]);
+                else
+                {   
+                    int userId = Convert.ToInt32(reader[0]);
+                    reader.Close();
+                    //closeConnection();
+                    return userId;
+                }
+
+                
             }
-            return 0;
+            else
+            {
+                reader.Close();
+                //closeConnection();
+                return 0;
+            }
+            
 
         }
         public static void startConnection()
@@ -133,20 +165,20 @@ namespace Scheduler.Resources
             //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
 
             // string sqlDateTime = formatTime(dateTime); //is this needed??
-            startConnection();
-            MySqlTransaction transaction = con.BeginTransaction();
+            
+            
             string createDate = formatTime(createTime);
 
 
             
-            FormMainMenu formMainMenu = new FormMainMenu();
-            string user = formMainMenu.textBoxUsername.Text;
             int userID = DB.selectUserID(Username.Name);
-            
+            string user = Username.Name;
 
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
+            startConnection();
+            MySqlTransaction transaction = con.BeginTransaction();
             //query
             var query = "INSERT INTO customer (customerId, customerName, addressId, active, createDate, createdBy, lastUpdateBy) "
                 + $"VALUES ('{id}', '{name}', '{addressID}', '{active}', '{formattedCurrentTime}', '{user}', '{user}')";
