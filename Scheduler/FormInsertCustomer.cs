@@ -31,7 +31,7 @@ namespace Scheduler
             int newCustomerID = maxCustomerID +1;
             int active;
             var createTime = DB.getCurrentTime();
-            var username = DB.getUsername();
+            var username = Username.Name;
 
             bool notEmpty = DB.verifyInput(panelInsertCustomers);
             if (notEmpty == true)

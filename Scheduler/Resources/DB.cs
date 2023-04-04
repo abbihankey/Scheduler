@@ -13,25 +13,30 @@ using System.Data;
 
 namespace Scheduler.Resources
 {
+
+    public static class Username
+    {
+        public static String Name { get; set; }
+    }
     public class DB
     {
         
         
-        public static string getUsername()
-        {
-            FormMainMenu formMainMenu = new FormMainMenu();
-            string user = FormMainMenu.textBoxUsername.Text;
-            return user;
+        //public static string getUsername()
+        //{
+        //    FormMainMenu formMainMenu = new FormMainMenu();
+        //    string user = formMainMenu.textBoxUsername.Text;
+        //    return username;
             
 
-        }
-        public static int getUserID()
-        {   
-            FormMainMenu formMainMenu = new FormMainMenu();
-            string user = formMainMenu.textBoxUsername.Text;
-            int userID = DB.selectUserID(user);
-            return userID;
-        }
+        //}
+        //public static int getUserID()
+        //{   
+        //    FormMainMenu formMainMenu = new FormMainMenu();
+        //    string user = formMainMenu.textBoxUsername.Text;
+        //    int userID = DB.selectUserID(user);
+        //    return userID;
+        //}
 
         public static MySqlConnection con { get; set; }
 
@@ -86,7 +91,7 @@ namespace Scheduler.Resources
             //https://learn.microsoft.com/en-us/dotnet/api/system.data.sqlclient.sqldatareader.read?view=dotnet-plat-ext-7.0
 
             startConnection();
-            var query = $"SELECT userId FROM user WHERE '{username}' = username";
+            var query = $"SELECT userId FROM user WHERE '{username}' = userName";
             MySqlCommand comm = new MySqlCommand(query, con);
             MySqlDataReader reader = comm.ExecuteReader();
             closeConnection();
@@ -155,7 +160,7 @@ namespace Scheduler.Resources
             
             FormMainMenu formMainMenu = new FormMainMenu();
             string user = formMainMenu.textBoxUsername.Text;
-            int userID = DB.getUserID();
+            int userID = DB.selectUserID(Username.Name);
             
 
             DateTime currentTime = getCurrentTime();
@@ -176,7 +181,7 @@ namespace Scheduler.Resources
         {
             int maxCityID = selectMaxID("city", "cityId");
             int newCityID = maxCityID + 1;
-            string user = DB.getUsername();
+            string user = Username.Name;
 
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
@@ -207,7 +212,7 @@ namespace Scheduler.Resources
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
-            string user = DB.getUsername();
+            string user = Username.Name;
 
             startConnection(); //not needed
             MySqlTransaction transaction = con.BeginTransaction();
@@ -232,7 +237,7 @@ namespace Scheduler.Resources
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
-            string user = DB.getUsername();
+            string user = Username.Name;
 
             startConnection(); //not needed
             MySqlTransaction transaction = con.BeginTransaction();
@@ -271,7 +276,7 @@ namespace Scheduler.Resources
         }
         public static void UpdateCustomer(Dictionary<string, string> newCustomerDetails, Dictionary<string, string> selectedCustomerDictionary)
         {
-            string user = DB.getUsername();
+            string user = Username.Name;
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
 
@@ -433,15 +438,18 @@ namespace Scheduler.Resources
             //https://learn.microsoft.com/en-us/dotnet/framework/data/adonet/local-transactions
 
             // pass in appID
-            int userID = getUserID();
+            int userID = selectUserID(Username.Name);
             string formattedStart = formatTime(start);
             string formattedEnd = formatTime(end);
             startConnection();
             MySqlTransaction transaction = con.BeginTransaction();
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
-            string user = DB.getUsername();
+            string user = Username.Name;
+            
+
             MessageBox.Show($"Current username is: '{user}'");
+            MessageBox.Show($"Current userID is: '{userID}'");
             //query
             var query = "INSERT INTO appointment (appointmentId, customerId, userId, title, description, location, contact, type, url, start, end, createDate, createdBy, lastUpdate, lastUpdateBy) "
                + $"VALUES ('{appID}', '{custID}', '{userID}', '{title}', '{description}', '{location}', 'null', '{type}', 'null', '{formattedStart}', '{formattedEnd}', '{formattedCurrentTime}', '{user}', '{formattedCurrentTime}', '{user}')";
@@ -454,7 +462,7 @@ namespace Scheduler.Resources
         }
         public static void UpdateAppointment(Dictionary<string, string> updatedAppDictionary, Dictionary<string, string> selectedAppDictionary)
         {
-            string user = DB.getUsername();
+            string user = Username.Name;
             DateTime currentTime = getCurrentTime();
             var formattedCurrentTime = formatTime(currentTime);
             
@@ -546,6 +554,8 @@ namespace Scheduler.Resources
             closeConnection();
             if (count > 0)
             {
+                //User myObj = new User();
+                //myObj.Username = username;
 
                 return true;
             }

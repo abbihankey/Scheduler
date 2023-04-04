@@ -27,6 +27,7 @@ using System.Windows.Forms;
 namespace Scheduler
 {
     
+
     public partial class FormMainMenu : Form
     {
         public static Dictionary<string, string> upcomingAppDictionary = new Dictionary<string, string>();
@@ -261,9 +262,12 @@ namespace Scheduler
             if (validInfo == true)
             {
                 
+                string username = textBoxUsername.Text;
+                Username.Name = username;
+
                 panelLogin.Enabled = false;
                 panelLogin.Visible = false;
-                string username = textBoxUsername.Text;
+                
                 validInfo = true;
 
                 recordLogin(username, validInfo);

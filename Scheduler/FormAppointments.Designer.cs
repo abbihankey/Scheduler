@@ -90,11 +90,12 @@ namespace Scheduler
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label6.Location = new System.Drawing.Point(51, 429);
+            this.label6.Location = new System.Drawing.Point(51, 431);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(76, 20);
             this.label6.TabIndex = 16;
             this.label6.Text = "End Time";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // labelAppointmentDetails
             // 
@@ -122,40 +123,44 @@ namespace Scheduler
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label4.Location = new System.Drawing.Point(51, 383);
+            this.label4.Location = new System.Drawing.Point(51, 385);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 20);
             this.label4.TabIndex = 14;
             this.label4.Text = "Start Time";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label3.Location = new System.Drawing.Point(51, 248);
+            this.label3.Location = new System.Drawing.Point(51, 250);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(89, 20);
             this.label3.TabIndex = 13;
             this.label3.Text = "Description";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label2.Location = new System.Drawing.Point(51, 203);
+            this.label2.Location = new System.Drawing.Point(51, 205);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(38, 20);
             this.label2.TabIndex = 12;
             this.label2.Text = "Title";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // textBoxTitle
             // 
-            this.textBoxTitle.Location = new System.Drawing.Point(55, 225);
+            this.textBoxTitle.Location = new System.Drawing.Point(55, 227);
             this.textBoxTitle.Name = "textBoxTitle";
             this.textBoxTitle.Size = new System.Drawing.Size(350, 20);
             this.textBoxTitle.TabIndex = 6;
+            this.textBoxTitle.TextChanged += new System.EventHandler(this.textBoxTitle_TextChanged);
             // 
             // buttonDelete
             // 
@@ -169,10 +174,11 @@ namespace Scheduler
             // 
             // textBoxDescription
             // 
-            this.textBoxDescription.Location = new System.Drawing.Point(55, 270);
+            this.textBoxDescription.Location = new System.Drawing.Point(55, 272);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.Size = new System.Drawing.Size(350, 20);
             this.textBoxDescription.TabIndex = 7;
+            this.textBoxDescription.TextChanged += new System.EventHandler(this.textBoxDescription_TextChanged);
             // 
             // buttonAdd
             // 
@@ -227,51 +233,56 @@ namespace Scheduler
             this.panelAppointmentDetails.Controls.Add(this.textBoxTitle);
             this.panelAppointmentDetails.Controls.Add(this.textBoxDescription);
             this.panelAppointmentDetails.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelAppointmentDetails.Location = new System.Drawing.Point(925, 0);
+            this.panelAppointmentDetails.Location = new System.Drawing.Point(934, 0);
             this.panelAppointmentDetails.Name = "panelAppointmentDetails";
-            this.panelAppointmentDetails.Size = new System.Drawing.Size(458, 660);
+            this.panelAppointmentDetails.Size = new System.Drawing.Size(449, 660);
             this.panelAppointmentDetails.TabIndex = 25;
+            this.panelAppointmentDetails.Paint += new System.Windows.Forms.PaintEventHandler(this.panelAppointmentDetails_Paint);
             // 
             // dateTimePickerEnd
             // 
-            this.dateTimePickerEnd.Location = new System.Drawing.Point(55, 452);
+            this.dateTimePickerEnd.Location = new System.Drawing.Point(55, 454);
             this.dateTimePickerEnd.Name = "dateTimePickerEnd";
             this.dateTimePickerEnd.Size = new System.Drawing.Size(350, 20);
             this.dateTimePickerEnd.TabIndex = 28;
+            this.dateTimePickerEnd.ValueChanged += new System.EventHandler(this.dateTimePickerEnd_ValueChanged);
             // 
             // dateTimePickerStart
             // 
-            this.dateTimePickerStart.Location = new System.Drawing.Point(55, 406);
+            this.dateTimePickerStart.Location = new System.Drawing.Point(55, 408);
             this.dateTimePickerStart.MaxDate = new System.DateTime(2500, 12, 31, 0, 0, 0, 0);
             this.dateTimePickerStart.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dateTimePickerStart.Name = "dateTimePickerStart";
             this.dateTimePickerStart.Size = new System.Drawing.Size(350, 20);
             this.dateTimePickerStart.TabIndex = 27;
+            this.dateTimePickerStart.ValueChanged += new System.EventHandler(this.dateTimePickerStart_ValueChanged);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label9.Location = new System.Drawing.Point(51, 338);
+            this.label9.Location = new System.Drawing.Point(51, 340);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(43, 20);
             this.label9.TabIndex = 26;
             this.label9.Text = "Type";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // textBoxType
             // 
-            this.textBoxType.Location = new System.Drawing.Point(55, 360);
+            this.textBoxType.Location = new System.Drawing.Point(55, 362);
             this.textBoxType.Name = "textBoxType";
             this.textBoxType.Size = new System.Drawing.Size(350, 20);
             this.textBoxType.TabIndex = 25;
+            this.textBoxType.TextChanged += new System.EventHandler(this.textBoxType_TextChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.label8.Location = new System.Drawing.Point(51, 293);
+            this.label8.Location = new System.Drawing.Point(51, 295);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(70, 20);
             this.label8.TabIndex = 24;
@@ -280,7 +291,7 @@ namespace Scheduler
             // 
             // textBoxLocation
             // 
-            this.textBoxLocation.Location = new System.Drawing.Point(55, 315);
+            this.textBoxLocation.Location = new System.Drawing.Point(55, 317);
             this.textBoxLocation.Name = "textBoxLocation";
             this.textBoxLocation.Size = new System.Drawing.Size(350, 20);
             this.textBoxLocation.TabIndex = 23;

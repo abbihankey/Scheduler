@@ -326,5 +326,60 @@ namespace Scheduler
             }
             
         }
+
+        private void panelAppointmentDetails_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerEnd_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerStart_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxType_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxDescription_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxTitle_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

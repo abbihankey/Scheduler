@@ -209,7 +209,7 @@ namespace Scheduler
                 textBoxCustomerID.Text = newCustomerID.ToString();
                 int active;
                 var createTime = DB.getCurrentTime();
-                var username = DB.getUsername();
+                var username = Username.Name;
 
                 bool notEmpty = DB.verifyInput(panelCustomers);
                 if (notEmpty == true)
