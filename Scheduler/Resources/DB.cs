@@ -20,27 +20,8 @@ namespace Scheduler.Resources
     }
     public class DB
     {
-        
-        
-        //public static string getUsername()
-        //{
-        //    FormMainMenu formMainMenu = new FormMainMenu();
-        //    string user = formMainMenu.textBoxUsername.Text;
-        //    return username;
-            
-
-        //}
-        //public static int getUserID()
-        //{   
-        //    FormMainMenu formMainMenu = new FormMainMenu();
-        //    string user = formMainMenu.textBoxUsername.Text;
-        //    int userID = DB.selectUserID(user);
-        //    return userID;
-        //}
 
         public static MySqlConnection con { get; set; }
-
-        
 
         public static bool verifyInput(Panel panel) //https://learn.microsoft.com/en-us/dotnet/api/system.windows.forms.control.controls?view=windowsdesktop-7.0
         {
@@ -94,7 +75,7 @@ namespace Scheduler.Resources
             var query = $"SELECT userId FROM user WHERE '{username}' = userName";
             MySqlCommand comm = new MySqlCommand(query, con);
             MySqlDataReader reader = comm.ExecuteReader();
-            closeConnection();
+            
             if (reader.HasRows)
             {
                 reader.Read();
@@ -105,7 +86,7 @@ namespace Scheduler.Resources
                 return Convert.ToInt32(reader[0]);
             }
             return 0;
-            
+
         }
         public static void startConnection()
         {
