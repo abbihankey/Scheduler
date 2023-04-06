@@ -104,16 +104,19 @@ namespace Scheduler
                 textBoxCity.Text = selectedCustomerDictionary["city"];
                 textBoxCountry.Text = selectedCustomerDictionary["country"];
                 textBoxZipCode.Text = selectedCustomerDictionary["postalCode"];
-                 
-                if (selectedCustomerDictionary["active"] == "1")
+                //string stringActive = selectedCustomerDictionary["active"];
+                //int active = int.Parse(stringActive);
+
+
+                if (selectedCustomerDictionary["active"] == "True")
                 {
-                    comboBoxActive.SelectedText = "Yes";
+                    //comboBoxActive.SelectedText = "Yes";
                     comboBoxActive.Text = "Yes";
                     return;
                 }
                 else
                 {
-                    comboBoxActive.SelectedText = "No";
+                    //comboBoxActive.SelectedText = "No";
                     comboBoxActive.Text = "No";
                     return;
                 }
@@ -188,7 +191,7 @@ namespace Scheduler
                 updatedCustomerDictionary.Add("country", textBoxCountry.Text);
                 updatedCustomerDictionary.Add("postalCode", textBoxZipCode.Text);
 
-                if (comboBoxActive.SelectedText == "Yes")
+                if (comboBoxActive.Text == "Yes")
                 {
                     updatedCustomerDictionary.Add("active", "1");
                 }
@@ -214,7 +217,7 @@ namespace Scheduler
                 bool notEmpty = DB.verifyInput(panelCustomers);
                 if (notEmpty == true)
                 {
-                    if (comboBoxActive.SelectedText == "Yes")
+                    if (comboBoxActive.Text == "Yes")
                     {
                         active = 1;
                     }
@@ -226,7 +229,7 @@ namespace Scheduler
                     var currentTime = DB.getCurrentTime();
                     int country = DB.insertCountry(textBoxCountry.Text);
                     int city = DB.insertCity(country, textBoxCity.Text);
-                    int address = DB.insertAddress(city, textBoxAddress.Text, textBoxPhone.Text, textBoxZipCode.Text);
+                    int address = DB.insertAddress(city, textBoxAddress.Text, textBoxZipCode.Text, textBoxPhone.Text);
                     DB.insertCustomer(newCustomerID, textBoxName.Text, address, active, createTime, username);
                     DBChange("inserted");
                 }

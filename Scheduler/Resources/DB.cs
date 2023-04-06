@@ -308,22 +308,22 @@ namespace Scheduler.Resources
             transaction.Commit();
 
             //query: update city
-            /*
+            
             transaction = con.BeginTransaction();
             query = $"UPDATE city" +
-                $" SET city = '{newCustomerDetails["city"]}', lastUpdate = '{formattedCurrentTime}, lastUpdateBy = '{user}', WHERE city = '{selectedCustomerDictionary["city"]}'";
-                // $" WHERE city = '{selectedCustomerDictionary["city"]}'";
+                $" SET city = '{newCustomerDetails["city"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" WHERE city = '{selectedCustomerDictionary["city"]}'";
 
             comm = new MySqlCommand(query, con);
             comm.Transaction = transaction;
             comm.ExecuteNonQuery();
-            transaction.Commit(); */
+            transaction.Commit(); 
 
 
             //query: update address
             transaction = con.BeginTransaction();
             query = $"UPDATE address" +
-                $" SET address = '{newCustomerDetails["address"]}', postalCode = '{newCustomerDetails["postalCode"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" SET address = '{newCustomerDetails["address"]}', postalCode = '{newCustomerDetails["postalCode"]}', phone = '{newCustomerDetails["phone"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
                 $" WHERE address = '{selectedCustomerDictionary["address"]}'";
 
             comm = new MySqlCommand(query, con);
@@ -334,7 +334,7 @@ namespace Scheduler.Resources
             //query: update country
             transaction = con.BeginTransaction();
             query = $"UPDATE country" +
-                $" SET country = '{newCustomerDetails["customerName"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
+                $" SET country = '{newCustomerDetails["country"]}', lastUpdate = '{formattedCurrentTime}', lastUpdateBy = '{user}'" +
                 $" WHERE country = '{selectedCustomerDictionary["country"]}'";
 
             comm = new MySqlCommand(query, con);
@@ -370,8 +370,8 @@ namespace Scheduler.Resources
             //address dictionary
             customerDictionary.Add("address", reader[1].ToString());
             customerDictionary.Add("cityId", reader[3].ToString());
-            customerDictionary.Add("postalCode", reader[5].ToString());
-            customerDictionary.Add("phone", reader[4].ToString());
+            customerDictionary.Add("postalCode", reader[4].ToString());
+            customerDictionary.Add("phone", reader[5].ToString());
             reader.Close();
 
             //city query
