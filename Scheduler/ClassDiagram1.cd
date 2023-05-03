@@ -1,82 +1,82 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Scheduler.FormAppointments" Collapsed="true">
-    <Position X="2.25" Y="0.5" Width="1.5" />
+  <Class Name="Scheduler.FormAppointments">
+    <Position X="5" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAEAwAQAACYAAFEAACrADgBCMBCAAQAAIAAAABFCBAA=</HashCode>
       <FileName>FormAppointments.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.FormCalendar" Collapsed="true">
-    <Position X="4" Y="0.5" Width="1.5" />
+  <Class Name="Scheduler.FormCalendar">
+    <Position X="8.25" Y="0.5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AABUQAQAACQgACAAAACAAAACBEGAAEAIAAQAAAAAAQA=</HashCode>
       <FileName>FormCalendar.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.FormCustomers" Collapsed="true">
-    <Position X="5.75" Y="0.5" Width="1.5" />
+  <Class Name="Scheduler.FormCustomers">
+    <Position X="11.25" Y="0.5" Width="3" />
     <TypeIdentifier>
       <HashCode>AAVEAAAAAqAAAFCCAAnABBACEAQAEYBAQAAAEAhBBCI=</HashCode>
       <FileName>FormCustomers.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.FormDashboard" Collapsed="true">
-    <Position X="0.5" Y="1.5" Width="1.5" />
+  <Class Name="Scheduler.FormDashboard">
+    <Position X="17.25" Y="0.5" Width="3.5" />
     <TypeIdentifier>
       <HashCode>ABAAIAAACCIAABAQCAGAAQDCIAACAKAAAAgKAQAIQAA=</HashCode>
       <FileName>FormDashboard.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.FormInsertCustomer" Collapsed="true">
-    <Position X="2.25" Y="1.5" Width="1.5" />
+  <Class Name="Scheduler.FormInsertCustomer">
+    <Position X="14.5" Y="0.5" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AARAAAAAAKAAABCAAEGABBICAAQAEABAAAAAAABCACA=</HashCode>
       <FileName>FormInsertCustomer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.FormMainMenu" Collapsed="true">
-    <Position X="4" Y="1.5" Width="1.5" />
+  <Class Name="Scheduler.FormMainMenu">
+    <Position X="8.25" Y="5.75" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AQQIIAgIADAEADAQEACRwBQCCBAQBGAAAQAIAAJAJAA=</HashCode>
       <FileName>FormMainMenu.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.Login" Collapsed="true">
-    <Position X="5.75" Y="1.5" Width="1.5" />
+  <Class Name="Scheduler.Login">
+    <Position X="0.5" Y="8" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAQAAAAIACAEAAAAAACBABQCAAAAAAAAAQAAAAJAAAA=</HashCode>
       <FileName>Login.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.Program" Collapsed="true">
-    <Position X="0.5" Y="2.5" Width="1.5" />
+  <Class Name="Scheduler.Program">
+    <Position X="0.5" Y="6.75" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.Properties.Resources" Collapsed="true">
-    <Position X="2.25" Y="2.5" Width="1.5" />
+  <Class Name="Scheduler.Properties.Resources">
+    <Position X="3" Y="0.5" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAEIAABAAAAAAAAAABBEAAAAQQAAAAAAAACAgACAIA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.Properties.Settings" Collapsed="true">
-    <Position X="4" Y="2.5" Width="1.5" />
+  <Class Name="Scheduler.Properties.Settings">
+    <Position X="3" Y="4.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAAA=</HashCode>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.Resources.Username" Collapsed="true">
-    <Position X="5.75" Y="2.5" Width="1.5" />
+  <Class Name="Scheduler.Resources.Username">
+    <Position X="3" Y="6.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Resources\DB.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Scheduler.Resources.DB" Collapsed="true">
-    <Position X="0.5" Y="0.5" Width="1.5" />
+  <Class Name="Scheduler.Resources.DB">
+    <Position X="0.5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>QgABAAAAJwACAEAABABACQiAAgAQCECAgCAQAAACAAA=</HashCode>
       <FileName>Resources\DB.cs</FileName>
