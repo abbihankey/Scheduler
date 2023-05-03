@@ -207,6 +207,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ERD.png" />
+    <Content Include="UI Screenshots\Appointments.png" />
+    <Content Include="UI Screenshots\Calendar.png" />
+    <Content Include="UI Screenshots\Customers.png" />
+    <Content Include="UI Screenshots\Dashboard.png" />
+    <Content Include="UI Screenshots\LogIn.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
