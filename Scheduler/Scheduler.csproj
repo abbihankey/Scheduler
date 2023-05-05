@@ -212,6 +212,7 @@
     <Content Include="UI Screenshots\Customers.png" />
     <Content Include="UI Screenshots\Dashboard.png" />
     <Content Include="UI Screenshots\LogIn.png" />
+    <Content Include="UI Screenshots\Start.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
